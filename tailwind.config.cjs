@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
     extend: {},
     fontFamily: {
@@ -8,13 +11,6 @@ module.exports = {
       serif: ['ui-serif', 'Georgia'],
       mono: ['ui-monospace', 'SFMono-Regular'],
     },
-    color: {
-      transparent: 'transparent',
-      black: '#111111',
-      white: '#ffffff',
-      red: '#ED1E24',
-      green: '#16a34a',
-    }
   },
   plugins: [],
 };
