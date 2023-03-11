@@ -1,4 +1,4 @@
-import HeroSection from "../components/hero";
+import HeroSection from "../modules/hero";
 
 export default function Shop() {
      return (

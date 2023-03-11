@@ -15,17 +15,17 @@ export default function Footer() {
                     <div>
                          <ul className="inline-block mr-20">
                               <li><h2 className="font-bold text-white uppercase mb-5">Shopping</h2></li>
-                              <li><a href="" className="mb-2 transition duration-500 hover:text-white">Clothing Store</a></li>
-                              <li><a href=""  className="mb-2 transition duration-500 hover:text-white">Trading Shoes</a></li>
-                              <li><a href=""  className="mb-2 transition duration-500 hover:text-white">Accessories</a></li>
-                              <li><a href=""  className="mb-2 transition duration-500 hover:text-white">Sale</a></li>
+                              <li><a href="" className="mb-2 hover:text-white sl-animated-md">Clothing Store</a></li>
+                              <li><a href=""  className="mb-2 hover:text-white sl-animated-md">Trading Shoes</a></li>
+                              <li><a href=""  className="mb-2 hover:text-white sl-animated-md">Accessories</a></li>
+                              <li><a href=""  className="mb-2 hover:text-white sl-animated-md">Sale</a></li>
                          </ul>
                          <ul className="inline-block">
                               <li><h2 className="font-bold text-white uppercase mb-5">Details</h2></li>
-                              <li><a href=""  className="mb-2 transition duration-500 hover:text-white">Contact Us</a></li>
-                              <li><a href=""  className="mb-2 transition duration-500 hover:text-white">Payment Methods</a></li>
-                              <li><a href=""  className="mb-2 transition duration-500 hover:text-white">Delivery</a></li>
-                              <li><a href=""  className="mb-2 transition duration-500 hover:text-white">Return & Exchanges</a></li>
+                              <li><a href=""  className="mb-2 hover:text-white sl-animated-md">Contact Us</a></li>
+                              <li><a href=""  className="mb-2 hover:text-white sl-animated-md">Payment Methods</a></li>
+                              <li><a href=""  className="mb-2 hover:text-white sl-animated-md">Delivery</a></li>
+                              <li><a href=""  className="mb-2 hover:text-white sl-animated-md">Return & Exchanges</a></li>
                          </ul>
                     </div>
                     <div className="w-72">
