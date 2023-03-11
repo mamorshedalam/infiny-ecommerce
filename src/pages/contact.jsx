@@ -1,5 +1,9 @@
+import HeroSection from "../components/hero";
+
 export default function Contact() {
      return (
-          <h1>Contact</h1>
+          <>
+               <HeroSection />
+          </>
      )
 }

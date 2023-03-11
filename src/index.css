@@ -2,13 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .sl-container {
+    @apply relative max-w-[1600px] w-[95%] mx-auto z-[1];
+  }
+}
+
 @layer base {
   body {
     @apply text-neutral-900;
-  }
-
-  section {
-    @apply relative max-w-[1600px] w-[95%] mx-auto z-[1];
   }
 
   a,
