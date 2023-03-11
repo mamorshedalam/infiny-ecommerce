@@ -19,7 +19,7 @@
   input,
   select,
   textarea {
-    @apply outline-none bg-transparent;
+    @apply w-full outline-none bg-transparent;
   }
 
   /* img {
