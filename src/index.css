@@ -37,7 +37,7 @@
     @apply w-full outline-none bg-transparent;
   }
 
-  /* img {
-    @apply object-cover;
-  } */
+  img {
+    @apply rounded w-full object-cover;
+  }
 }
