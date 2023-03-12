@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import heroImg from '../assets/hero.jpg'
 import Item from '../components/item'
 import saleImg from '../assets/product-sale.png'
+import instagramImg from '../assets/instagram-1.jpg'
 
 
 export default function Index() {
@@ -67,6 +68,24 @@ export default function Index() {
                                    </div>
                               </div>
                               <Link to={`/shop`} className="flex justify-center items-center w-60 bg-neutral-900 uppercase font-bold tracking-[5px] text-white rounded py-4 mt-8">shop now</Link>
+                         </div>
+                    </div>
+               </section>
+
+               <section className="sl-container py-32">
+                    <div className="flex flex-wrap items-center">
+                         <div className="grid grid-cols-3 basis-2/3 pr-10">
+                              <img src={instagramImg} alt="" className="rounded-none" />
+                              <img src={instagramImg} alt="" className="rounded-none" />
+                              <img src={instagramImg} alt="" className="rounded-none" />
+                              <img src={instagramImg} alt="" className="rounded-none" />
+                              <img src={instagramImg} alt="" className="rounded-none" />
+                              <img src={instagramImg} alt="" className="rounded-none" />
+                         </div>
+                         <div className="basis-1/3">
+                              <h2 className="font-bold text-4xl mb-8">Instagram</h2>
+                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                              <h3 className="font-bold text-3xl text-red-500 mt-12">#Male_Fashion</h3>
                          </div>
                     </div>
                </section>

@@ -6,7 +6,7 @@ export default function Footer() {
 
      return (
           <footer className="bg-neutral-900 text-zinc-400">
-               <div className="flex flex-wrap items-center justify-between px-9 py-12">
+               <div className="flex flex-wrap items-center justify-between max-w-[1600px] px-9 py-12 mx-auto">
                     <div className="w-72">
                          <Link to={`/`} className="w-40"><img src={logo} alt="logo" /></Link>
                          <p className="my-5">The customer is at the heart of our unique business model, which includes design.</p>
