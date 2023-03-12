@@ -1,20 +1,21 @@
 import { Link } from 'react-router-dom'
 import heroImg from '../assets/hero.jpg'
 import Item from '../components/item'
+import saleImg from '../assets/product-sale.png'
 
 
 export default function Index() {
-     
+
 
      return (
           <main>
                <section className="bg-stone-100" style={{ backgroundImage: `url(${heroImg})` }}>
                     <div className="relative flex items-center h-[85vh] sl-container">
                          <div className="basis-1/3">
-                              <h2 className="uppercase font-bold text-red-500">summer collection</h2>
+                              <h2 className="uppercase font-bold tracking-widest text-red-500">summer collection</h2>
                               <h1 className="font-bold leading-normal text-5xl my-8">Fall - Winter Collections 2023</h1>
                               <p className="leading-loose">A specialist label creating luxury essentials. Ethically crafted with an unwavering commitment to exceptional quality.</p>
-                              <Link to={`/shop`} className="flex justify-center items-center w-60 bg-neutral-900 uppercase font-bold tracking-[5px] text-white fill-white rounded py-4 mt-8 hover:fill-red-500 sl-animated-lg">shop now <svg className="w-4 ml-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" /></svg></Link>
+                              <Link to={`/shop`} className="flex justify-center items-center w-60 bg-neutral-900 uppercase font-bold tracking-[5px] text-white rounded py-4 mt-8">shop now</Link>
                          </div>
                     </div>
                </section>
@@ -28,6 +29,44 @@ export default function Index() {
                     <div className="flex flex-wrap">
                          <div className="basis-1/4 px-4 mb-10 overflow-hidden">
                               <Item />
+                         </div>
+                    </div>
+               </section>
+
+               <section className="bg-stone-100 py-32">
+                    <div className="flex items-center max-w-[1600px] w-4/5 mx-auto">
+                         <div className="relative basis-1/4 before:absolute before:top-0 before:-left-1/2 before:w-80 before:h-full before:bg-white before:rounded before:z-10">
+                              <h3 className="relative leading-loose text-4xl text-zinc-400 py-10 z-20">Clothings Hot<br /><span className="font-bold text-neutral-900">Shoes Collection</span><br />Accessories</h3>
+                         </div>
+                         <div className="relative basis-1/3">
+                              <img src={saleImg} alt="sale" />
+                              <div className="absolute right-0 -top-10 flex flex-col justify-center items-center w-24 h-24 rounded-full bg-neutral-900 text-white">
+                                   <span>Sale Of</span>
+                                   <h4 className="font-bold text-xl">$29.99</h4>
+                              </div>
+                         </div>
+                         <div className="basis-1/3 ml-auto">
+                              <h2 className="uppercase font-bold tracking-widest text-red-500 mb-2">deal of the week</h2>
+                              <h3 className="font-bold leading-tight text-4xl">Multi-pocket Chest Bag Black</h3>
+                              <div className="flex flex-wrap my-5">
+                                   <div className="basis-1/4 text-center">
+                                        <span className="relative block font-bold text-4xl mb-2 after:absolute after:content-[':'] after:right-0 after:top-1/2 after:-translate-y-1/2">30</span>
+                                        <p>Days</p>
+                                   </div>
+                                   <div className="basis-1/4 text-center">
+                                        <span className="relative block font-bold text-4xl mb-2 after:absolute after:content-[':'] after:right-0 after:top-1/2 after:-translate-y-1/2">04</span>
+                                        <p>Hours</p>
+                                   </div>
+                                   <div className="basis-1/4 text-center">
+                                        <span className="relative block font-bold text-4xl mb-2 after:absolute after:content-[':'] after:right-0 after:top-1/2 after:-translate-y-1/2">59</span>
+                                        <p>Minutes</p>
+                                   </div>
+                                   <div className="basis-1/4 text-center">
+                                        <span className="relative block font-bold text-4xl mb-2">21</span>
+                                        <p>Seconds</p>
+                                   </div>
+                              </div>
+                              <Link to={`/shop`} className="flex justify-center items-center w-60 bg-neutral-900 uppercase font-bold tracking-[5px] text-white rounded py-4 mt-8">shop now</Link>
                          </div>
                     </div>
                </section>
