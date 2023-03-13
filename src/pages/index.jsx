@@ -16,7 +16,7 @@ export default function Index() {
                               <h2 className="uppercase font-bold tracking-widest text-red-500">summer collection</h2>
                               <h1 className="font-bold leading-normal text-5xl my-8">Fall - Winter Collections 2023</h1>
                               <p className="leading-loose">A specialist label creating luxury essentials. Ethically crafted with an unwavering commitment to exceptional quality.</p>
-                              <Link to={`/shop`} className="flex justify-center items-center w-60 bg-neutral-900 uppercase font-bold tracking-[5px] text-white rounded py-4 mt-8">shop now</Link>
+                              <Link to={`/shop`} className="flex justify-center items-center w-60 bg-neutral-900 uppercase font-bold tracking-[5px] text-white py-4 mt-8">shop now</Link>
                          </div>
                     </div>
                </section>
@@ -36,7 +36,7 @@ export default function Index() {
 
                <section className="bg-stone-100 py-32">
                     <div className="flex items-center max-w-[1600px] w-4/5 mx-auto">
-                         <div className="relative basis-1/4 before:absolute before:top-0 before:-left-1/2 before:w-80 before:h-full before:bg-white before:rounded before:z-10">
+                         <div className="relative basis-1/4 before:absolute before:top-0 before:-left-1/2 before:w-80 before:h-full before:bg-white before:z-10">
                               <h3 className="relative leading-loose text-4xl text-zinc-400 py-10 z-20">Clothings Hot<br /><span className="font-bold text-neutral-900">Shoes Collection</span><br />Accessories</h3>
                          </div>
                          <div className="relative basis-1/3">
@@ -67,7 +67,7 @@ export default function Index() {
                                         <p>Seconds</p>
                                    </div>
                               </div>
-                              <Link to={`/shop`} className="flex justify-center items-center w-60 bg-neutral-900 uppercase font-bold tracking-[5px] text-white rounded py-4 mt-8">shop now</Link>
+                              <Link to={`/shop`} className="flex justify-center items-center w-60 bg-neutral-900 uppercase font-bold tracking-[5px] text-white py-4 mt-8">shop now</Link>
                          </div>
                     </div>
                </section>
@@ -75,12 +75,12 @@ export default function Index() {
                <section className="sl-container py-32">
                     <div className="flex flex-wrap items-center">
                          <div className="grid grid-cols-3 basis-2/3 pr-10">
-                              <img src={instagramImg} alt="" className="rounded-none" />
-                              <img src={instagramImg} alt="" className="rounded-none" />
-                              <img src={instagramImg} alt="" className="rounded-none" />
-                              <img src={instagramImg} alt="" className="rounded-none" />
-                              <img src={instagramImg} alt="" className="rounded-none" />
-                              <img src={instagramImg} alt="" className="rounded-none" />
+                              <img src={instagramImg} alt="" />
+                              <img src={instagramImg} alt="" />
+                              <img src={instagramImg} alt="" />
+                              <img src={instagramImg} alt="" />
+                              <img src={instagramImg} alt="" />
+                              <img src={instagramImg} alt="" />
                          </div>
                          <div className="basis-1/3">
                               <h2 className="font-bold text-4xl mb-8">Instagram</h2>

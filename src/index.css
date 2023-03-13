@@ -38,6 +38,6 @@
   }
 
   img {
-    @apply rounded w-full object-cover;
+    @apply w-full object-cover;
   }
 }
