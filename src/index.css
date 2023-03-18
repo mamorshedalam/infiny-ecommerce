@@ -19,6 +19,18 @@
   .sl-animated-xl {
     @apply transition-all duration-700 ease-in-out before:transition-all before:duration-700 before:ease-in-out after:transition-all after:duration-700 after:ease-in-out;
   }
+
+  .cardBar::-webkit-scrollbar {
+    @apply hidden w-1.5 bg-zinc-200 rounded-full;
+  }
+  
+  .cardBar:hover::-webkit-scrollbar {
+    @apply block;
+  }
+
+  .cardBar::-webkit-scrollbar-thumb {
+    @apply bg-neutral-900 rounded-full;
+  }
 }
 
 @layer base {
@@ -40,4 +52,20 @@
   img {
     @apply w-full object-cover;
   }
+}
+
+@layer utilities {
+  /* .cardBar::-webkit-scrollbar {
+    width: 0.3rem;
+  }
+  
+  .cardBar::-webkit-scrollbar-track {
+    background-color: rgb(161 161 170);
+    border-radius: 10px;
+  }
+   
+  .cardBar::-webkit-scrollbar-thumb {
+    background: red; 
+    border-radius: 10px;
+  } */
 }

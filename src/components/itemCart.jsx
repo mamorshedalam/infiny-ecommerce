@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import itemImg from '../assets/item.jpg'
 
-export default function Item() {
+export default function ItemCart() {
      const ifActive = () => { // choose color marking
           const inputField = document.querySelectorAll('[name="color"]')
           inputField.forEach(input => {

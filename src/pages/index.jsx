@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import heroImg from '../assets/hero.jpg'
-import Item from '../components/item'
+import ItemCart from '../components/itemCart'
 import saleImg from '../assets/product-sale.png'
 import instagramImg from '../assets/instagram-1.jpg'
 
@@ -9,7 +9,7 @@ export default function Index() {
 
 
      return (
-          <main>
+          <>
                <section className="bg-stone-100" style={{ backgroundImage: `url(${heroImg})` }}>
                     <div className="relative flex items-center h-[85vh] sl-container">
                          <div className="basis-1/3">
@@ -29,7 +29,7 @@ export default function Index() {
                     </ul>
                     <div className="flex flex-wrap">
                          <div className="basis-1/4 px-4 mb-10 overflow-hidden">
-                              <Item />
+                              <ItemCart />
                          </div>
                     </div>
                </section>
@@ -89,6 +89,6 @@ export default function Index() {
                          </div>
                     </div>
                </section>
-          </main>
+          </>
      )
 }
