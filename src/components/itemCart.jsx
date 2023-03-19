@@ -1,17 +1,15 @@
 import { useState } from 'react'
 import itemImg from '../assets/item.jpg'
 
-export default function ItemCart() {
-     const ifActive = () => { // choose color marking
-          const inputField = document.querySelectorAll('[name="color"]')
-          inputField.forEach(input => {
-               if (input.checked === true) {
-                    document.querySelector(`[for=${input.id}]`).classList.add("after:opacity-100");
-               } else {
-                    document.querySelector(`[for=${input.id}]`).classList.remove("after:opacity-100");
-               }
-          })
+export default function ItemCart({ item }) {
+     const [chooseColor, setChooseColor] = useState()
+
+     const { name, colors } = item;
+
+     const colorToggle = (color) => {
+          setChooseColor(color)
      }
+
      return (
           <div className="group">
                <div className="relative">
@@ -24,7 +22,7 @@ export default function ItemCart() {
                     </ul>
                </div>
                <div className="relative mt-6">
-                    <h3 className="font-semibold opacity-100 group-hover:opacity-0 sl-animated-lg">Piqué Biker Jacket</h3>
+                    <h3 className="font-semibold opacity-100 group-hover:opacity-0 sl-animated-lg">{name}</h3>
                     <a href="" className="absolute -top-10 left-0 font-bold text-red-500 opacity-0 group-hover:top-0 group-hover:opacity-100 sl-animated-xl">+ Add To Cart</a>
                     <ul className="flex my-2">
                          <li><svg className="w-4 fill-orange-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></li>
@@ -35,9 +33,13 @@ export default function ItemCart() {
                     </ul>
                     <h4 className="font-bold text-lg">$67.24</h4>
                     <ul className="absolute bottom-1 right-0 flex opacity-0 group-hover:opacity-100 sl-animated-lg">
-                         <li><label onClick={ifActive} htmlFor="color1" className="relative block w-3 h-3 rounded-full bg-lime-600 cursor-pointer ml-2 after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-5 after:h-5 after:rounded-full after:border after:opacity-0"><input id="color1" type="radio" name="color" className="hidden" /></label></li>
-                         <li><label onClick={ifActive} htmlFor="color2" className="relative block w-3 h-3 rounded-full bg-blue-600 cursor-pointer ml-2 after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-5 after:h-5 after:rounded-full after:border after:opacity-0"><input id="color2" type="radio" name="color" className="hidden" /></label></li>
-                         <li><label onClick={ifActive} htmlFor="color3" className="relative block w-3 h-3 rounded-full bg-orange-600 cursor-pointer ml-2 after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-5 after:h-5 after:rounded-full after:border after:opacity-0"><input id="color3" type="radio" name="color" className="hidden" /></label></li>
+                         {colors && colors.map((color, index) => (
+                              <li key={index} className="relative cursor-pointer ml-2.5">
+                                   <span style={{ backgroundColor: color }} className={`absolute inset-0 block w-3 h-3 rounded-full`}></span>
+                                   < input type="radio" name="color" onClick={() => colorToggle(color)} className={`block cursor-pointer after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-5 after:h-5 after:rounded-full after:border after:border-zinc-400 ${chooseColor == color ? "opacity-100" : "opacity-0"}`} />
+                              </li>
+                         ))
+                         }
                     </ul>
                </div>
           </div>
