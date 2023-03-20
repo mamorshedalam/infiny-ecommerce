@@ -1,4 +1,4 @@
-import ItemCart from "../components/itemCart";
+import ProductCart from "../components/productCart";
 import SidebarCart from "../components/sidebarCart";
 import HeroSection from "../modules/hero";
 
@@ -41,7 +41,7 @@ export default function Shop() {
                          </div>
                          <div className="flex flex-wrap">
                               {itemArray && itemArray.map((item, index) => (
-                                   <div key={index} className="basis-1/3 px-4"><ItemCart item={item} /></div>
+                                   <div key={index} className="basis-1/3 px-4"><ProductCart product={item} /></div>
                               ))}
                          </div>
                     </main>

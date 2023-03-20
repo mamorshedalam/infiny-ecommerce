@@ -7,7 +7,7 @@ import clientImg from "../assets/client-2.png"
 
 export default function About() {
      return (
-          <>
+          <main>
                <HeroSection />
 
                <section className="sl-container py-24">
@@ -146,6 +146,6 @@ export default function About() {
                          <a href="" className="basis-1/4 px-9 mb-20 opacity-50 hover:opacity-100 sl-animated-lg"><img src={clientImg} alt="" className="h-20 object-contain" /></a>
                     </div>
                </section>
-          </>
+          </main>
      )
 }

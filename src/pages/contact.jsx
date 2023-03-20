@@ -2,7 +2,7 @@ import HeroSection from "../modules/hero";
 
 export default function Contact() {
      return (
-          <>
+          <main>
                <HeroSection />
 
                <section className="sl-container flex flex-wrap items-end py-24">
@@ -32,6 +32,6 @@ export default function Contact() {
                          </form>
                     </div>
                </section>
-          </>
+          </main>
      )
 }
