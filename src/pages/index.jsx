@@ -8,10 +8,10 @@ import instagramImg from '../assets/instagram-1.jpg'
 export default function Index() {
 
      const itemArray = [
-          { key: 'S1202', name: "Piqué Biker Jacket", colors: ["green", "orange", "blue"] },
-          { key: 'S3202', name: "Multi-pocket Chest Bag", colors: ["red", "orange", "blue"] },
-          { key: 'S4302', name: "Diagonal Textured Cap", colors: ["yellow", "orange", "blue"] },
-          { key: 'S1212', name: "Lether Backpack", colors: ["green", "black", "blue"] },
+          { key: 'S1202', status: "new", name: "Piqué Biker Jacket", colors: ["green", "orange", "blue"] },
+          { key: 'S3202', status: "offer", name: "Multi-pocket Chest Bag", colors: ["red", "orange", "blue"] },
+          { key: 'S4302', status: "sale", name: "Diagonal Textured Cap", colors: ["yellow", "orange", "blue"] },
+          { key: 'S1212', status: "", name: "Lether Backpack", colors: ["green", "black", "blue"] },
      ]
 
      return (
@@ -36,7 +36,7 @@ export default function Index() {
                     <div className="flex flex-wrap">
                          {itemArray && itemArray.map((item) => {
                               return (
-                                   <div key={item.key} className="basis-1/4 px-4 mb-10 overflow-hidden">
+                                   <div key={item.key} className="basis-1/4 px-4">
                                         <ItemCart item={item} />
                                    </div>
                               )

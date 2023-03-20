@@ -1,7 +1,14 @@
+import ItemCart from "../components/itemCart";
 import SidebarCart from "../components/sidebarCart";
 import HeroSection from "../modules/hero";
 
 export default function Shop() {
+     const itemArray = [
+          { key: 'S1202', status: "new", name: "Piqué Biker Jacket", colors: ["green", "orange", "blue"] },
+          { key: 'S3202', status: "offer", name: "Multi-pocket Chest Bag", colors: ["red", "orange", "blue"] },
+          { key: 'S4302', status: "sale", name: "Diagonal Textured Cap", colors: ["yellow", "orange", "blue"] },
+          { key: 'S1212', status: "", name: "Lether Backpack", colors: ["green", "black", "blue"] },
+     ]
 
      return (
           <>
@@ -19,7 +26,24 @@ export default function Shop() {
                     </aside>
 
                     <main className="basis-3/4 px-4">
-                         content
+                         <div className="flex flex-wrap justify-between items-center px-4 mb-10">
+                              <div>
+                                   <p>Showing <span>1–12</span> of <span>126</span> results</p>
+                              </div>
+                              <div className="flex items-center">
+                                   <p className="w-20">Sort by:</p>
+                                   <select name="" id="" className="font-bold rounded-none">
+                                        <option value="default">Default</option>
+                                        <option value="high">Price (High To Low)</option>
+                                        <option value="low">Price (Low To High)</option>
+                                   </select>
+                              </div>
+                         </div>
+                         <div className="flex flex-wrap">
+                              {itemArray && itemArray.map((item, index) => (
+                                   <div key={index} className="basis-1/3 px-4"><ItemCart item={item} /></div>
+                              ))}
+                         </div>
                     </main>
                </section>
           </>
