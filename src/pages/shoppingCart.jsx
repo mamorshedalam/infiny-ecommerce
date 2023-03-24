@@ -1,22 +1,35 @@
+import ProductList from "../components/productList";
 import HeroSection from "../modules/hero";
 
 export default function ShoppingCart() {
+     const listArray = [1, 2, 3, 4, 5]
      return (
           <>
                <HeroSection />
 
                <section className="sl-container flex flex-wrap py-24">
                     <main className="basis-3/4 px-4">
-                         <table className="w-full">
+                         <table className="w-full mb-9">
                               <thead>
-                                   <tr className="border-b">
-                                        <th>Product</th>
-                                        <th>Quantity</th>
-                                        <th>Total</th>
-                                        <th></th>
+                                   <tr className="border-b text-left font-bold uppercase">
+                                        <th className="pb-6">Product</th>
+                                        <th className="pb-6">Quantity</th>
+                                        <th className="pb-6">Total</th>
+                                        <th className="pb-6"></th>
                                    </tr>
                               </thead>
+                              <tbody>
+                                   {
+                                        listArray.map((item, index) => (
+                                             <ProductList key={index} />
+                                        ))
+                                   }
+                              </tbody>
                          </table>
+                         <div className="flex justify-between">
+                              <button className="font-bold uppercase tracking-widest text-sm border border-neutral-900 py-4 px-9">Continue Shopping</button>
+                              <button className="bg-neutral-900 font-bold uppercase tracking-widest text-white text-sm py-4 px-9">Update cart</button>
+                         </div>
                     </main>
                     <aside className="basis-1/4 px-4">
                          <h2 className="font-bold uppercase mb-8">Discount codes</h2>

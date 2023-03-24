@@ -79,7 +79,7 @@ export default function ShopDetails() {
                          <div className="flex items-center my-9">
                               <div className="flex font-bold items-center fill-neutral-900 mr-20">
                                    <button onClick={() => setCount(Math.max(count - 1, 1))}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="w-4"><path d="M416 256c0 17.7-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z" /></svg></button>
-                                   <input id="inputValue" type="text" value={count} onChange={(e) => { setCount(parseInt(e.target.value)) }} className="w-10 text-right px-2 py-1 mr-3" />
+                                   <input id="inputValue" type="text" value={count} onChange={(e) => { setCount(parseInt(e.target.value)) }} className="w-12 text-center px-2 py-1" />
                                    <button onClick={() => setCount(Math.max(count + 1, 1))}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="w-4"><path d="M240 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H32c-17.7 0-32 14.3-32 32s14.3 32 32 32H176V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H384c17.7 0 32-14.3 32-32s-14.3-32-32-32H240V80z" /></svg></button>
                               </div>
                               <button className="w-52 bg-neutral-900 text-center uppercase font-bold tracking-widest text-white py-4">ADD TO CART</button>
