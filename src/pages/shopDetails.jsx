@@ -1,12 +1,15 @@
 import { useState } from 'react'
 import ProductCart from '../components/productCart'
-import bigImg from '../assets/product-big-2.png'
+import bigImg1 from '../assets/product-big-2.png'
+import bigImg2 from '../assets/product-big-3.png'
+import bigImg3 from '../assets/product-big.png'
 
 
 export default function ShopDetails() {
      const [chooseSize, setChooseSize] = useState()
      const [chooseColor, setChooseColor] = useState()
      const [countity, setCountity] = useState(1)
+     const [bigImg, setBigImg] = useState(bigImg1);
 
      const sizes = ["xxl", "xl", "l", "m"];
      const colors = ["green", "orange", "blue"];
@@ -38,11 +41,9 @@ export default function ShopDetails() {
                     <div className="basis-1/2">
                          <img src={bigImg} alt="" className="max-h-96 object-contain" />
                          <ul className="w-3/4 grid grid-cols-5 gap-3 mt-10 mx-auto">
-                              <li className="border cursor-pointer p-2"><img className="h-20 object-contain" src={bigImg} alt="" /></li>
-                              <li className="border cursor-pointer p-2"><img className="h-20 object-contain" src={bigImg} alt="" /></li>
-                              <li className="border cursor-pointer p-2"><img className="h-20 object-contain" src={bigImg} alt="" /></li>
-                              <li className="border cursor-pointer p-2"><img className="h-20 object-contain" src={bigImg} alt="" /></li>
-                              <li className="border cursor-pointer p-2"><img className="h-20 object-contain" src={bigImg} alt="" /></li>
+                              <li className="border cursor-pointer p-2"><img onClick={() => setBigImg(bigImg1)} className="h-20 object-contain" src={bigImg1} alt="" /></li>
+                              <li className="border cursor-pointer p-2"><img onClick={() => setBigImg(bigImg2)} className="h-20 object-contain" src={bigImg2} alt="" /></li>
+                              <li className="border cursor-pointer p-2"><img onClick={() => setBigImg(bigImg3)} className="h-20 object-contain" src={bigImg3} alt="" /></li>
                          </ul>
                     </div>
                     <div className="basis-1/2">
@@ -104,7 +105,6 @@ export default function ShopDetails() {
                     <h4 className="font-bold text-xl mb-3">Hooded thermal anorak</h4>
                     <p>A Pocket PC is a handheld computer, which features many of the same capabilities as a modern PC. These handy little devices allow individuals to retrieve and store e-mail messages, create a contact file, coordinate appointments, surf the internet, exchange text messages and more. Every product that is labeled as a Pocket PC must be accompanied with specific software to operate the unit and must feature a touchscreen and touchpad. As is the case with any new technology product, the cost of a Pocket PC was substantial during it’s early release. For approximately $700.00, consumers could purchase one of top-of-the-line Pocket PCs in 2003. These days, customers are finding that prices have become much more reasonable now that the newness is wearing off. For approximately $350.00, a new Pocket PC can now be purchased.</p>
                </section>
-
                <section className="pt-20">
                     <h3 className="text-center font-bold text-3xl mb-10">Related Product</h3>
                     <div className="flex flex-wrap">
