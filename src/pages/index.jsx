@@ -22,7 +22,7 @@ export default function Index() {
                               <h2 className="uppercase font-bold tracking-widest text-red-500">summer collection</h2>
                               <h1 className="font-bold leading-normal text-5xl my-8">Fall - Winter Collections 2023</h1>
                               <p className="leading-loose">A specialist label creating luxury essentials. Ethically crafted with an unwavering commitment to exceptional quality.</p>
-                              <Link to={`/shop`} className="flex justify-center items-center w-60 bg-neutral-900 uppercase font-bold tracking-[5px] text-white py-4 mt-8">shop now</Link>
+                              <Link to={`/shop`} className="w-60 bg-neutral-900 text-center uppercase font-bold tracking-[5px] text-white py-4 mt-8">shop now</Link>
                          </div>
                     </div>
                </section>
