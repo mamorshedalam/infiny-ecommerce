@@ -59,9 +59,11 @@ export default function ShopDetails() {
                               <span>- 5 reviews</span>
                          </div>
                          <div className="font-bold mb-6">
-                              <p className="mb-2"><span className="font-normal text-zinc-400">SKU: </span>3812912</p>
-                              <p className="mb-2"><span className="font-normal text-zinc-400">Categories: </span>Clothes</p>
-                              <p className="mb-2"><span className="font-normal text-zinc-400">Tag: </span>Clothes, Skin, Body</p>
+                              <ul>
+                                   <li className="mb-2"><span className="font-normal text-zinc-400">SKU: </span>3812912</li>
+                                   <li className="mb-2"><span className="font-normal text-zinc-400">Categories: </span>Clothes</li>
+                                   <li className="mb-2"><span className="font-normal text-zinc-400">Tag: </span>Clothes, Skin, Body</li>
+                              </ul>
                          </div>
                          <div className="flex items-center mb-6">
                               <span className="mr-2">Size:</span>
