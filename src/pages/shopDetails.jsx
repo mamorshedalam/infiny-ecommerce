@@ -6,10 +6,10 @@ import bigImg3 from '../assets/product-big.png'
 
 
 export default function ShopDetails() {
+     const [count, setCount] = useState(1)
+     const [bigImg, setBigImg] = useState(bigImg1)
      const [chooseSize, setChooseSize] = useState()
      const [chooseColor, setChooseColor] = useState()
-     const [countity, setCountity] = useState(1)
-     const [bigImg, setBigImg] = useState(bigImg1);
 
      const sizes = ["xxl", "xl", "l", "m"];
      const colors = ["green", "orange", "blue"];
@@ -21,19 +21,6 @@ export default function ShopDetails() {
           { key: 'S1212', status: "", name: "Lether Backpack", colors: ["green", "black", "blue"] },
      ];
 
-     const activeToggle = (item, set) => {
-          set(item)
-     }
-
-     const valueToggle = (oparetor) => {
-          let inputValue = document.getElementById("inputValue")
-          let newCountity;
-
-          oparetor === 0 && countity > 0 ? newCountity = countity - 1 : newCountity = countity + 1;
-
-          inputValue.value = newCountity;
-          setCountity(newCountity)
-     }
 
      return (
           <main className="sl-container">
@@ -71,7 +58,7 @@ export default function ShopDetails() {
                                    {sizes && sizes.map((size, index) => (
                                         <li key={index} className="relative w-10 h-6 flex items-center justify-center font-bold uppercase mr-4">
                                              <label htmlFor={index} className={`absolute inset-0 text-center cursor-pointer border border-neutral-900 m-auto ${chooseSize == size ? "bg-neutral-900 text-white" : " bg-white text-neutral-900"}`}>{size}</label>
-                                             <input id={index} type="radio" name="color" onClick={() => activeToggle(size, setChooseSize)} className={`invisible`} />
+                                             <input id={index} type="radio" name="color" onClick={() => setChooseSize(size)} className={`invisible`} />
                                         </li>
                                    ))
                                    }
@@ -83,7 +70,7 @@ export default function ShopDetails() {
                                    {colors && colors.map((color, index) => (
                                         <li key={index} className="relative w-7 h-7 flex items-center justify-center cursor-pointer mr-4">
                                              <label style={{ backgroundColor: color }} className={`absolute inset-0 flex w-5 h-5 rounded-full m-auto`}></label>
-                                             <input type="radio" name="color" onClick={() => activeToggle(color, setChooseColor)} className={`block cursor-pointer after:absolute after:inset-0 after:rounded-full after:border after:border-zinc-400 ${chooseColor == color ? "opacity-100" : "opacity-0"}`} />
+                                             <input type="radio" name="color" onClick={() => setChooseColor(color)} className={`block cursor-pointer after:absolute after:inset-0 after:rounded-full after:border after:border-zinc-400 ${chooseColor == color ? "opacity-100" : "opacity-0"}`} />
                                         </li>
                                    ))
                                    }
@@ -91,9 +78,9 @@ export default function ShopDetails() {
                          </div>
                          <div className="flex items-center my-9">
                               <div className="flex font-bold items-center fill-neutral-900 mr-20">
-                                   <button onClick={() => valueToggle(0)}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="w-4"><path d="M416 256c0 17.7-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z" /></svg></button>
-                                   <input id="inputValue" type="text" defaultValue="1" className="w-12 text-right border px-2 py-1 mx-4" />
-                                   <button onClick={() => valueToggle(1)}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="w-4"><path d="M240 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H32c-17.7 0-32 14.3-32 32s14.3 32 32 32H176V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H384c17.7 0 32-14.3 32-32s-14.3-32-32-32H240V80z" /></svg></button>
+                                   <button onClick={() => setCount(Math.max(count - 1, 1))}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="w-4"><path d="M416 256c0 17.7-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z" /></svg></button>
+                                   <input id="inputValue" type="text" value={count} onChange={(e) => { setCount(parseInt(e.target.value)) }} className="w-10 text-right px-2 py-1 mr-3" />
+                                   <button onClick={() => setCount(Math.max(count + 1, 1))}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="w-4"><path d="M240 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H32c-17.7 0-32 14.3-32 32s14.3 32 32 32H176V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H384c17.7 0 32-14.3 32-32s-14.3-32-32-32H240V80z" /></svg></button>
                               </div>
                               <button className="w-52 bg-neutral-900 text-center uppercase font-bold tracking-widest text-white py-4">ADD TO CART</button>
                          </div>

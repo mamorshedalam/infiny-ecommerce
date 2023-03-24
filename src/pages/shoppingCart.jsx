@@ -7,7 +7,16 @@ export default function ShoppingCart() {
 
                <section className="sl-container flex flex-wrap py-24">
                     <main className="basis-3/4 px-4">
-                         
+                         <table className="w-full">
+                              <thead>
+                                   <tr className="border-b">
+                                        <th>Product</th>
+                                        <th>Quantity</th>
+                                        <th>Total</th>
+                                        <th></th>
+                                   </tr>
+                              </thead>
+                         </table>
                     </main>
                     <aside className="basis-1/4 px-4">
                          <h2 className="font-bold uppercase mb-8">Discount codes</h2>
