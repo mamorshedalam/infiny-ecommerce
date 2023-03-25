@@ -8,7 +8,7 @@ export default function ShoppingCart() {
           <>
                <HeroSection />
 
-               <section className="sl-container flex flex-wrap py-24">
+               <div className="sl-container flex flex-wrap py-24">
                     <main className="basis-3/4 px-4">
                          <table className="w-full mb-9">
                               <thead>
@@ -35,7 +35,7 @@ export default function ShoppingCart() {
                     <aside className="basis-1/4 px-4">
                          <h2 className="font-bold uppercase mb-8">Discount codes</h2>
                          <form className="relative mb-16">
-                              <input type="text" placeholder="Coupon code" className="w-full text-zinc-400 text-sm border pl-5 py-3" />
+                              <input type="text" placeholder="Coupon code" className="text-zinc-400 text-sm border pl-5 py-3" />
                               <button className="absolute right-0 top-0 h-full bg-neutral-900 font-bold uppercase tracking-widest text-white text-sm px-6">apply</button>
                          </form>
                          <div className="bg-stone-100 py-9 px-10">
@@ -47,7 +47,7 @@ export default function ShoppingCart() {
                               <NavLink to={`/checkout`} className="w-full bg-neutral-900 text-center font-bold uppercase tracking-widest text-white text-sm py-3">Proceed to checkout</NavLink>
                          </div>
                     </aside>
-               </section>
+               </div>
           </>
      )
 }

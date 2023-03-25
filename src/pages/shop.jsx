@@ -14,7 +14,7 @@ export default function Shop() {
           <>
                <HeroSection />
 
-               <section className="sl-container flex flex-wrap py-24">
+               <div className="sl-container flex flex-wrap py-24">
 
                     <aside className="basis-1/4 px-4">
                          <form className="relative mb-12">
@@ -45,7 +45,7 @@ export default function Shop() {
                               ))}
                          </div>
                     </main>
-               </section>
+               </div>
           </>
      )
 }
