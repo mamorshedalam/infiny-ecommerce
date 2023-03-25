@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom'
 
 export default function HeroSection() {
      const location = useLocation();
-     const title = location.pathname.slice(1);
+     const title = location.pathname.slice(1); // title taking from url
      return (
           <section className="bg-stone-100 capitalize py-9">
                <div className="sl-container">
