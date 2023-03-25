@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import ProductList from "../components/productList";
 import HeroSection from "../modules/hero";
 
@@ -43,7 +44,7 @@ export default function ShoppingCart() {
                                    <li className="text-neutral-700 mb-3">Subtotal <span className="float-right font-bold text-red-500">$ 169.50</span></li>
                                    <li className="text-neutral-700 mb-3">Total <span className="float-right font-bold text-red-500">$ 169.50</span></li>
                               </ul>
-                              <button className="w-full bg-neutral-900 font-bold uppercase tracking-widest text-white text-sm py-3">Proceed to checkout</button>
+                              <NavLink to={`/checkout`} className="w-full bg-neutral-900 text-center font-bold uppercase tracking-widest text-white text-sm py-3">Proceed to checkout</NavLink>
                          </div>
                     </aside>
                </section>

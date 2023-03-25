@@ -1,7 +1,7 @@
 export default function Wishlist() {
      return (
-          <div className="wishlist">
-               <h1>Wishlist</h1>
+          <div className="font-bold text-center text-4xl py-40">
+               <h2>Coming Soon</h2>
           </div>
      )
 }
