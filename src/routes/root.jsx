@@ -69,7 +69,7 @@ const routes = createBrowserRouter([
                     },
                     {
                          path: '/dashboard/add',
-                         element: <DashAdd />
+                         element: <DashAdd />,
                     },
                ]
           }]
