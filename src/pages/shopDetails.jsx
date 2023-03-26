@@ -52,6 +52,7 @@ export default function ShopDetails() {
                                    <li className="mb-2"><span className="font-normal text-zinc-400">Tag: </span>Clothes, Skin, Body</li>
                               </ul>
                          </div>
+                         <h3 className="font-bold text-4xl mb-6">$270.00 <span className="font-normal line-through text-zinc-400 text-xl ml-2.5">70.00</span></h3>
                          <div className="flex items-center mb-6">
                               <span className="mr-2">Size:</span>
                               <ul className="flex">

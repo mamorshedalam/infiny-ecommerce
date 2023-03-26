@@ -23,7 +23,7 @@
   .cardBar::-webkit-scrollbar {
     @apply hidden w-1.5 bg-zinc-200 rounded-full;
   }
-  
+
   .cardBar:hover::-webkit-scrollbar {
     @apply block;
   }
@@ -68,4 +68,7 @@
     background: red; 
     border-radius: 10px;
   } */
+  .sl-scroll-hidden::-webkit-scrollbar {
+    display: none;
+  }
 }
