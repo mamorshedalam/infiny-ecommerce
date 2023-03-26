@@ -9,6 +9,7 @@ export default function DashList() {
                          <th className="border p-2">brand</th>
                          <th className="border p-2">name</th>
                          <th className="border p-2">status</th>
+                         <th className="border p-2">for</th>
                          <th className="border p-2">category</th>
                          <th className="border p-2">reviews</th>
                          <th className="border p-2">rating</th>
@@ -27,6 +28,7 @@ export default function DashList() {
                          <td className="border p-1">infiny</td>
                          <td className="border p-1">Hooded thermal anorak</td>
                          <td className="border p-1">new</td>
+                         <td className="border p-1">mens</td>
                          <td className="border p-1">Clothes</td>
                          <td className="border p-1">5</td>
                          <td className="border p-1">3</td>
