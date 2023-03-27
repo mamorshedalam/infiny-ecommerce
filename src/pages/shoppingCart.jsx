@@ -1,8 +1,9 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import ProductList from "../components/productList";
 import HeroSection from "../modules/hero";
 
 export default function ShoppingCart() {
+     const navigate = useNavigate()
      const listArray = [1, 2, 3, 4, 5]
      return (
           <>
@@ -28,7 +29,7 @@ export default function ShoppingCart() {
                               </tbody>
                          </table>
                          <div className="flex justify-between">
-                              <button className="font-bold uppercase tracking-widest text-sm border border-neutral-900 py-4 px-9">Continue Shopping</button>
+                              <button onClick={() => { navigate(-1) }} className="font-bold uppercase tracking-widest text-sm border border-neutral-900 py-4 px-9">Continue Shopping</button>
                               <button className="bg-neutral-900 font-bold uppercase tracking-widest text-white text-sm py-4 px-9">Update cart</button>
                          </div>
                     </main>

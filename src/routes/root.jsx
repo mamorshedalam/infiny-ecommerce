@@ -5,7 +5,7 @@ import Index from "../pages";
 import About from "../pages/about";
 import Checkout from "../pages/checkout";
 import Contact from "../pages/contact";
-import DashLogin from "../pages/dashLogin";
+import DashLogin, { action as login, } from "../pages/dashLogin";
 import DashList from "../pages/dashList";
 import DashAdd from "../pages/dashAdd";
 import ErrorPage from "../pages/errorPage";
@@ -62,7 +62,7 @@ const routes = createBrowserRouter([
           children: [{
                errorElement: <ErrorPage />,
                children: [
-                    { index: true, element: <DashLogin /> },
+                    { index: true, element: <DashLogin />, action: login,},
                     {
                          path: '/dashboard/list',
                          element: <DashList />
