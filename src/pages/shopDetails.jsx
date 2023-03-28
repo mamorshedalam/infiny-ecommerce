@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import ProductCart from '../components/productCart'
+import ProductCart from '../components/Cart/productCart'
 import ButtonWhite from '../components/Button/btnWhite'
 import bigImg1 from '../assets/product-big-2.png'
 import bigImg2 from '../assets/product-big-3.png'
@@ -11,10 +11,8 @@ export default function ShopDetails() {
      const [count, setCount] = useState(1)
      const [bigImg, setBigImg] = useState(bigImg1)
      const [chooseSize, setChooseSize] = useState()
-     const [chooseColor, setChooseColor] = useState()
 
      const sizes = ["xxl", "xl", "l", "m"];
-     const colors = ["green", "orange", "blue"];
 
      const itemArray = [
           { key: 'S1202', status: "new", name: "Piqué Biker Jacket", colors: ["green", "orange", "blue"] },
@@ -62,18 +60,6 @@ export default function ShopDetails() {
                                         <li key={index} className="relative w-10 h-6 flex items-center justify-center font-bold uppercase mr-4">
                                              <label htmlFor={index} className={`absolute inset-0 text-center cursor-pointer border border-neutral-900 m-auto ${chooseSize == size ? "bg-neutral-900 text-white" : " bg-white text-neutral-900"}`}>{size}</label>
                                              <input id={index} type="radio" name="color" onClick={() => setChooseSize(size)} className={`invisible`} />
-                                        </li>
-                                   ))
-                                   }
-                              </ul>
-                         </div>
-                         <div className="flex items-center mb-6">
-                              <span className="mr-2">Color:</span>
-                              <ul className="flex">
-                                   {colors && colors.map((color, index) => (
-                                        <li key={index} className="relative w-7 h-7 flex items-center justify-center cursor-pointer mr-4">
-                                             <label style={{ backgroundColor: color }} className={`absolute inset-0 flex w-5 h-5 rounded-full m-auto`}></label>
-                                             <input type="radio" name="color" onClick={() => setChooseColor(color)} className={`block cursor-pointer after:absolute after:inset-0 after:rounded-full after:border after:border-zinc-400 ${chooseColor == color ? "opacity-100" : "opacity-0"}`} />
                                         </li>
                                    ))
                                    }

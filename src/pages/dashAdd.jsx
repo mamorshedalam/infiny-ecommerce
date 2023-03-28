@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { redirect, useNavigate } from "react-router-dom";
-import Input from "../components/inputField";
+import Input from "../components/Input/inputField";
 import ButtonBlack from "../components/Button/btnBlack";
 import ButtonWhite from "../components/Button/btnWhite";
 

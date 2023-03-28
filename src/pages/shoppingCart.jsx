@@ -3,6 +3,7 @@ import ProductList from "../components/productList";
 import ButtonWhite from "../components/Button/btnWhite"
 import ButtonBlack from "../components/Button/btnBlack"
 import HeroSection from "../modules/hero";
+import Input from "../components/Input/inputField";
 
 export default function ShoppingCart() {
      const navigate = useNavigate()
@@ -38,7 +39,7 @@ export default function ShoppingCart() {
                     <aside className="basis-1/4 px-4">
                          <h2 className="font-bold uppercase mb-8">Discount codes</h2>
                          <form className="relative mb-16">
-                              <input type="text" placeholder="Coupon code" className="text-zinc-400 text-sm border pl-5 py-3" />
+                              <Input type="text" name="Coupon code" classes="text-zinc-400 text-sm "/>
                               <button className="absolute right-0 top-0 h-full bg-neutral-900 font-bold uppercase tracking-widest text-white text-sm px-6">apply</button>
                          </form>
                          <div className="bg-stone-100 py-9 px-10">

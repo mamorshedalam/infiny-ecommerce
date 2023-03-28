@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import heroImg from '../assets/hero.jpg'
-import ProductCart from '../components/productCart'
+import ProductCart from '../components/Cart/productCart'
 import saleImg from '../assets/product-sale.png'
 import instagramImg from '../assets/instagram-1.jpg'
 import ButtonBlack from '../components/Button/btnBlack'

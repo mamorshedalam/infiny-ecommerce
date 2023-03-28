@@ -1,5 +1,6 @@
 import HeroSection from "../modules/hero";
 import ButtonBlack from "../components/Button/btnBlack";
+import Input from "../components/Input/inputField";
 
 export default function Contact() {
      return (
@@ -23,13 +24,11 @@ export default function Contact() {
                          </div>
                     </div>
                     <div className="basis-1/2 px-4">
-                         <form>
-                              <div className="flex flex-wrap">
-                                   <div className="basis-1/2 px-4 mb-6"><input type="text" placeholder="Name" className="border py-4 pl-5" /></div>
-                                   <div className="basis-1/2 px-4 mb-6"><input type="email" placeholder="Email" className="border py-4 pl-5" /></div>
-                                   <div className="basis-full px-4 mb-6"><textarea placeholder="Message" className="border py-4 pl-5 h-40"></textarea></div>
-                                   <div className="basis-1/2 px-4 mb-6"><ButtonBlack>send message</ButtonBlack> </div>
-                              </div>
+                         <form className="grid grid-cols-2 gap-6">
+                                   <Input name="Name" type="text" classes="col-span-1" />
+                                   <Input name="Email" type="email" classes="col-span-1" />
+                                   <Input name="Message" type="textarea" classes="col-span-2 h-40" />
+                                   <div className="col-span-2 text-right"><ButtonBlack>send message</ButtonBlack> </div>
                          </form>
                     </div>
                </section>

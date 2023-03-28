@@ -1,5 +1,5 @@
-import ProductCart from "../components/productCart";
-import SidebarCart from "../components/sidebarCart";
+import ProductCart from "../components/Cart/productCart";
+import SidebarCart from "../components/Cart/sidebarCart";
 import HeroSection from "../modules/hero";
 
 export default function Shop() {

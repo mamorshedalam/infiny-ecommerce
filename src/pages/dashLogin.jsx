@@ -1,5 +1,5 @@
 import { Form, redirect } from "react-router-dom";
-import Input from "../components/inputField";
+import Input from "../components/Input/inputField";
 import ButtonBlack from "../components/Button/btnBlack";
 
 export async function action({ request }) {
