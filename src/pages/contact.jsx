@@ -1,4 +1,5 @@
 import HeroSection from "../modules/hero";
+import ButtonBlack from "../components/Button/btnBlack";
 
 export default function Contact() {
      return (
@@ -27,7 +28,7 @@ export default function Contact() {
                                    <div className="basis-1/2 px-4 mb-6"><input type="text" placeholder="Name" className="border py-4 pl-5" /></div>
                                    <div className="basis-1/2 px-4 mb-6"><input type="email" placeholder="Email" className="border py-4 pl-5" /></div>
                                    <div className="basis-full px-4 mb-6"><textarea placeholder="Message" className="border py-4 pl-5 h-40"></textarea></div>
-                                   <div className="basis-1/2 px-4 mb-6"><button className="bg-neutral-900 font-bold tracking-widest uppercase text-white py-3 px-8">send message</button></div>
+                                   <div className="basis-1/2 px-4 mb-6"><ButtonBlack>send message</ButtonBlack> </div>
                               </div>
                          </form>
                     </div>

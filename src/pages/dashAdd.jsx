@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { redirect, useNavigate } from "react-router-dom";
 import Input from "../components/inputField";
+import ButtonBlack from "../components/Button/btnBlack";
+import ButtonWhite from "../components/Button/btnWhite";
 
 
 export default function DashAdd() {
@@ -104,9 +106,9 @@ export default function DashAdd() {
                     </div>
                     <Input operation={handleChange} name="Description" type="textarea" classes="col-span-12 h-40" />
                </div>
-               <div className="text-right">
-                    <button type="submit" className="bg-neutral-900 text-center font-bold uppercase tracking-widest text-white text-sm py-3 px-9  mt-2 ml-4">Add This</button>
-                    <button type="button" onClick={() => { navigate(-1) }} className="text-center font-bold uppercase tracking-widest text-sm border py-3 px-9 mt-2 ml-4">Cancel</button>
+               <div className="text-right text-sm">
+                    <ButtonBlack type="submit" classes="mt-2 ml-4">Add This</ButtonBlack>
+                    <ButtonWhite type="button" operation={() => { navigate(-1) }} classes="mt-2 ml-4">Cancel</ButtonWhite>
                </div>
           </form>
      )

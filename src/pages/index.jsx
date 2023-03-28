@@ -3,6 +3,7 @@ import heroImg from '../assets/hero.jpg'
 import ProductCart from '../components/productCart'
 import saleImg from '../assets/product-sale.png'
 import instagramImg from '../assets/instagram-1.jpg'
+import ButtonBlack from '../components/Button/btnBlack'
 
 
 export default function Index() {
@@ -17,12 +18,12 @@ export default function Index() {
      return (
           <main>
                <section className="bg-stone-100" style={{ backgroundImage: `url(${heroImg})` }}>
-                    <div className="relative flex items-center h-[85vh] sl-container">
+                    <div className="relative flex items-center min-h-[85vh] py-20 sl-container">
                          <div className="basis-1/3">
                               <h2 className="uppercase font-bold tracking-widest text-red-500">summer collection</h2>
                               <h1 className="font-bold leading-normal text-5xl my-8">Fall - Winter Collections 2023</h1>
                               <p className="leading-loose">A specialist label creating luxury essentials. Ethically crafted with an unwavering commitment to exceptional quality.</p>
-                              <Link to={`/shop`} className="w-60 bg-neutral-900 text-center uppercase font-bold tracking-[5px] text-white py-4 mt-8">shop now</Link>
+                              <Link to={`/shop`} className="mt-8"><ButtonBlack>shop now</ButtonBlack></Link>
                          </div>
                     </div>
                </section>
@@ -78,7 +79,7 @@ export default function Index() {
                                         <p>Seconds</p>
                                    </div>
                               </div>
-                              <Link to={`/shop`} className="flex justify-center items-center w-60 bg-neutral-900 uppercase font-bold tracking-[5px] text-white py-4 mt-8">shop now</Link>
+                              <Link to={`/shop`} className="mt-8"><ButtonBlack type="button">shop now</ButtonBlack></Link>
                          </div>
                     </div>
                </section>

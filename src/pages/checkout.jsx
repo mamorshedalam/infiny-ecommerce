@@ -1,3 +1,4 @@
+import ButtonBlack from "../components/Button/btnBlack";
 import HeroSection from "../modules/hero";
 
 export default function Checkout() {
@@ -69,7 +70,7 @@ export default function Checkout() {
                                    <li className="flex items-center gap-4"><input type="radio" name="payment" id="nogod" className="w-auto" /><label htmlFor="nogod">Nogod</label></li>
                                    <li className="flex items-center gap-4"><input type="radio" name="payment" id="cod" className="w-auto" /><label htmlFor="cod">Cash on Delivery</label></li>
                               </ul>
-                              <button className="w-full bg-neutral-900 text-center font-bold uppercase tracking-widest text-white text-sm py-3 mt-6">place order</button>
+                              <ButtonBlack classes="w-full text-sm mt-6">place order</ButtonBlack>
                          </div>
                     </aside>
                </form>

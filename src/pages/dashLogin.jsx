@@ -1,5 +1,6 @@
 import { Form, redirect } from "react-router-dom";
 import Input from "../components/inputField";
+import ButtonBlack from "../components/Button/btnBlack";
 
 export async function action({ request }) {
      const formData = await request.formData();
@@ -13,7 +14,7 @@ export default function DashLogin() {
           <Form method="post" className="max-w-lg mx-auto ">
                <Input type="email" name="Email" classes="text-zinc-400 text-sm my-3" />
                <Input type="password" name="Password" classes="text-zinc-400 text-sm my-3" />
-               <button className="w-full bg-neutral-900 text-center font-bold uppercase tracking-widest text-white text-sm py-3 mt-6">Login</button>
+               <ButtonBlack classes="w-full text-sm mt-6">Login</ButtonBlack>
           </Form>
      )
 }
