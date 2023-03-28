@@ -53,6 +53,13 @@ export default function DashAdd() {
      ];
      const sizeOptions = ["xxxl", "xxl", "xl", "l", "m", "s", "free"];
 
+     const handleSubmit = (e) => {
+          e.preventDefault();
+          if (confirm("Confirm submit!")) {
+
+          }
+     }
+
      const handleChange = (e) => {
           const field = e.target;
 
@@ -73,13 +80,6 @@ export default function DashAdd() {
                newObject[field.name] = field.value
                newObject["Sizes"] = sizes
                setObject(newObject)
-          }
-     }
-
-     const handleSubmit = (e) => {
-          e.preventDefault();
-          if (confirm("Confirm submit!")) {
-
           }
      }
      return (

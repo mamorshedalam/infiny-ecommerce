@@ -5,7 +5,7 @@ import Index from "../pages";
 import About from "../pages/about";
 import Checkout from "../pages/checkout";
 import Contact from "../pages/contact";
-import DashLogin, { action as login, } from "../pages/dashLogin";
+import DashLogin from "../pages/dashLogin";
 import DashList from "../pages/dashList";
 import DashAdd from "../pages/dashAdd";
 import ErrorPage from "../pages/errorPage";
@@ -13,6 +13,7 @@ import Shop from "../pages/shop";
 import ShopDetails from "../pages/shopDetails";
 import ShoppingCart from "../pages/shoppingCart";
 import Wishlist from "../pages/wishlist";
+import Private from "./private";
 
 const routes = createBrowserRouter([
      {
@@ -62,14 +63,14 @@ const routes = createBrowserRouter([
           children: [{
                errorElement: <ErrorPage />,
                children: [
-                    { index: true, element: <DashLogin />, action: login,},
+                    { index: true, element: <DashLogin /> },
                     {
                          path: '/dashboard/list',
-                         element: <DashList />
+                         element: <Private><DashList /></Private>
                     },
                     {
                          path: '/dashboard/add',
-                         element: <DashAdd />,
+                         element: <Private><DashAdd /></Private>
                     },
                ]
           }]
