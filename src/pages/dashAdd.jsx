@@ -1,11 +1,14 @@
-import { useState } from "react";
-import { redirect, useNavigate } from "react-router-dom";
+import { useReducer, useState } from "react";
+import { getDatabase, ref, push, set } from "firebase/database";
+import { useNavigate } from "react-router-dom";
 import Input from "../components/Input/inputField";
 import ButtonBlack from "../components/Button/btnBlack";
 import ButtonWhite from "../components/Button/btnWhite";
+import { initialState, reducer } from "../reducers/stateReducer";
 
 
 export default function DashAdd() {
+     const db = getDatabase();
      const navigate = useNavigate()
      const [object, setObject] = useState({
           SKU: "",
@@ -22,7 +25,7 @@ export default function DashAdd() {
           Tags: [],
           Sizes: [],
      });
-     const [sizes, setSizes] = useState([])
+     const [status, dispatch] = useReducer(reducer, initialState)
 
      // assign value
      const statusOptions = [
@@ -53,10 +56,19 @@ export default function DashAdd() {
      ];
      const sizeOptions = ["xxxl", "xxl", "xl", "l", "m", "s", "free"];
 
-     const handleSubmit = (e) => {
+     async function handleSubmit(e) {
           e.preventDefault();
           if (confirm("Confirm submit!")) {
-
+               try {
+                    dispatch({ type: "SUCCESS", loading: true });
+                    const postListRef = await ref(db, 'products');
+                    const newPostRef = push(postListRef);
+                    set(newPostRef, object);
+                    navigate("/dashboard/list");
+               } catch (err) {
+                    console.log(err);
+                    dispatch({ type: "FAIL", error: "Fail to Upload Data, Try Again!" });
+               }
           }
      }
 
@@ -73,12 +85,15 @@ export default function DashAdd() {
           } else if (field.name === "Tags") {
                const keywords = field.value.split(', ')     // create array of keywords
                setObject({ ...object, Tags: keywords })
-          } else if (field.name === "Size" && field.checked && sizes.includes(field.id) !== true) { // create array of sizes
-               setSizes([...sizes, field.id])
+          } else if (field.name === "Size") { // create array of sizes
+               let checkedSize = []
+               const sizeFields = document.querySelectorAll("input[name=Size]:checked")
+
+               sizeFields.forEach(item => checkedSize = [...checkedSize, item.id])
+               setObject({ ...object, Size: checkedSize })
           } else {
                const newObject = { ...object }
                newObject[field.name] = field.value
-               newObject["Sizes"] = sizes
                setObject(newObject)
           }
      }
