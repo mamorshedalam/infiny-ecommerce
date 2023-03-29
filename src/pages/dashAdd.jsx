@@ -64,7 +64,7 @@ export default function DashAdd() {
                     const postListRef = await ref(db, 'products');
                     const newPostRef = push(postListRef);
                     set(newPostRef, object);
-                    navigate("/dashboard/list");
+                    navigate("/dashboard");
                } catch (err) {
                     console.log(err);
                     dispatch({ type: "FAIL", error: "Fail to Upload Data, Try Again!" });
@@ -86,11 +86,11 @@ export default function DashAdd() {
                const keywords = field.value.split(', ')     // create array of keywords
                setObject({ ...object, Tags: keywords })
           } else if (field.name === "Size") { // create array of sizes
-               let checkedSize = []
+               let checkedSizes = []
                const sizeFields = document.querySelectorAll("input[name=Size]:checked")
 
-               sizeFields.forEach(item => checkedSize = [...checkedSize, item.id])
-               setObject({ ...object, Size: checkedSize })
+               sizeFields.forEach(item => checkedSizes = [...checkedSizes, item.id])
+               setObject({ ...object, Sizes: checkedSizes })
           } else {
                const newObject = { ...object }
                newObject[field.name] = field.value

@@ -1,5 +1,5 @@
-import { Link, NavLink, useNavigate } from "react-router-dom";
-import ProductList from "../components/productList";
+import { NavLink, useNavigate } from "react-router-dom";
+import CartList from "../components/List/cartList";
 import ButtonWhite from "../components/Button/btnWhite"
 import ButtonBlack from "../components/Button/btnBlack"
 import HeroSection from "../modules/hero";
@@ -26,7 +26,7 @@ export default function ShoppingCart() {
                               <tbody>
                                    {
                                         listArray.map((item, index) => (
-                                             <ProductList key={index} />
+                                             <CartList key={index} />
                                         ))
                                    }
                               </tbody>
@@ -39,7 +39,7 @@ export default function ShoppingCart() {
                     <aside className="basis-1/4 px-4">
                          <h2 className="font-bold uppercase mb-8">Discount codes</h2>
                          <form className="relative mb-16">
-                              <Input type="text" name="Coupon code" classes="text-zinc-400 text-sm "/>
+                              <Input type="text" name="Coupon code" classes="text-zinc-400 text-sm " />
                               <button className="absolute right-0 top-0 h-full bg-neutral-900 font-bold uppercase tracking-widest text-white text-sm px-6">apply</button>
                          </form>
                          <div className="bg-stone-100 py-9 px-10">

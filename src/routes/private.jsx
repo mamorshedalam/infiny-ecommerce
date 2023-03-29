@@ -5,5 +5,5 @@ export default function Private({ children }) {
      const { currentUser } = useAuth();
      const location = useLocation();
 
-     return (currentUser ? (children) : <Navigate to={`/dashboard`} replace state={{ path: location.pathname }} />)
+     return (currentUser ? (children) : <Navigate to={`/dashboard/login`} replace state={{ path: location.pathname }} />)
 }

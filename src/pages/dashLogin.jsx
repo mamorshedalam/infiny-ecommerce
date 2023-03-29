@@ -20,7 +20,7 @@ export default function DashLogin() {
           try {
                dispatch({ type: "SUCCESS", loading: true });
                await login(user.Email, user.Password);
-               navigate("/dashboard/list");
+               navigate("/dashboard");
           } catch (err) {
                dispatch({ type: "FAIL", error: "Fail to Login, Try Again!" });
           }

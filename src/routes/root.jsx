@@ -6,7 +6,7 @@ import About from "../pages/about";
 import Checkout from "../pages/checkout";
 import Contact from "../pages/contact";
 import DashLogin from "../pages/dashLogin";
-import DashList from "../pages/dashList";
+import Dashboard from "../pages/dashboard";
 import DashAdd from "../pages/dashAdd";
 import ErrorPage from "../pages/errorPage";
 import Shop from "../pages/shop";
@@ -63,10 +63,10 @@ const routes = createBrowserRouter([
           children: [{
                errorElement: <ErrorPage />,
                children: [
-                    { index: true, element: <DashLogin /> },
+                    { index: true, element: <Private><Dashboard /></Private> },
                     {
-                         path: '/dashboard/list',
-                         element: <Private><DashList /></Private>
+                         path: '/dashboard/login',
+                         element: <DashLogin />
                     },
                     {
                          path: '/dashboard/add',
