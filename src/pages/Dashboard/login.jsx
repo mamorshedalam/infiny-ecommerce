@@ -1,8 +1,8 @@
-import Input from "../components/Input/inputField";
-import ButtonBlack from "../components/Button/btnBlack";
-import { useAuth } from "../contexts/AuthContext";
+import Input from "../../components/Input/inputField";
+import ButtonBlack from "../../components/Button/button";
+import { useAuth } from "../../contexts/AuthContext";
 import { useEffect, useReducer, useState } from "react";
-import { initialState, reducer } from "../reducers/stateReducer";
+import { initialState, reducer } from "../../reducers/stateReducer";
 import { useNavigate } from "react-router-dom";
 
 export default function DashLogin() {

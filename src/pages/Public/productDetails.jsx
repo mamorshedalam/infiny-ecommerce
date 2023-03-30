@@ -4,10 +4,10 @@ import ButtonWhite from '../components/Button/btnWhite'
 import bigImg1 from '../assets/product-big-2.png'
 import bigImg2 from '../assets/product-big-3.png'
 import bigImg3 from '../assets/product-big.png'
-import ButtonBlack from '../components/Button/btnBlack'
+import ButtonBlack from '../components/Button/button'
 
 
-export default function ShopDetails() {
+export default function ProductDetails() {
      const [count, setCount] = useState(1)
      const [bigImg, setBigImg] = useState(bigImg1)
      const [chooseSize, setChooseSize] = useState()

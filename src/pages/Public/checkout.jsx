@@ -1,4 +1,4 @@
-import ButtonBlack from "../components/Button/btnBlack";
+import ButtonBlack from "../components/Button/button";
 import HeroSection from "../modules/hero";
 import Input from "../components/Input/inputField";
 

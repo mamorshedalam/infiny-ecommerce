@@ -1,13 +1,14 @@
 import { useReducer, useState } from "react";
 import { getDatabase, ref, push, set } from "firebase/database";
-import { useNavigate } from "react-router-dom";
-import Input from "../components/Input/inputField";
-import ButtonBlack from "../components/Button/btnBlack";
-import ButtonWhite from "../components/Button/btnWhite";
-import { initialState, reducer } from "../reducers/stateReducer";
+import { useNavigate, useParams } from "react-router-dom";
+import Input from "../../components/Input/inputField";
+import ButtonBlack from "../../components/Button/button";
+import ButtonWhite from "../../components/Button/btnWhite";
+import { initialState, reducer } from "../../reducers/stateReducer";
 
 
-export default function DashEdit() {
+export default function DashProductEdit() {
+     const {sku} = useParams()
      const navigate = useNavigate()
      const [status, dispatch] = useReducer(reducer, initialState)
      const [object, setObject] = useState({
@@ -54,7 +55,7 @@ export default function DashEdit() {
           { value: "all", label: "All" }
      ];
      const sizeOptions = ["xxxl", "xxl", "xl", "l", "m", "s", "free"];
-
+     console.log(sku);
      async function handleSubmit(e) {   // submit data
           e.preventDefault();
           if (confirm("Confirm submit!")) {

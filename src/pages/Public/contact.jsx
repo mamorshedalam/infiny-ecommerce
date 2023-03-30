@@ -1,5 +1,5 @@
 import HeroSection from "../modules/hero";
-import ButtonBlack from "../components/Button/btnBlack";
+import ButtonBlack from "../components/Button/button";
 import Input from "../components/Input/inputField";
 
 export default function Contact() {

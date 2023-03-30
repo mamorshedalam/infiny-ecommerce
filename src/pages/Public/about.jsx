@@ -1,4 +1,4 @@
-import HeroSection from "../modules/hero"
+import HeroSection from "../../modules/hero"
 import aboutImg from "../assets/about-us.jpg"
 import testImg from "../assets/testimonial-pic.jpg"
 import authorImg from "../assets/testimonial-author.jpg"

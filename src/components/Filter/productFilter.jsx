@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function SidebarCart() {
+export default function ProductFilter() {
      const [isCollapsed, setIsCollapsed] = useState(true)
 
      const accordionToggle = () => {

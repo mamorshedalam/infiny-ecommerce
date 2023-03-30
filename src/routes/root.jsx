@@ -1,18 +1,19 @@
 import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../layouts/dashboardLayout";
 import RootLayout from "../layouts/rootLayout";
-import Index from "../pages";
-import About from "../pages/about";
-import Checkout from "../pages/checkout";
-import Contact from "../pages/contact";
-import DashLogin from "../pages/dashLogin";
-import Dashboard from "../pages/dashboard";
-import DashEdit from "../pages/dashEdit";
+import Index from "../pages/Public/index";
+import Shop from "../pages/Public/shop";
+import ProductDetails from "../pages/Public/productDetails";
+import ShoppingCart from "../pages/Public/shoppingCart";
+import Checkout from "../pages/public/checkout";
+import Wishlist from "../pages/Public/wishlist";
+import About from "../pages/public/about";
+import Contact from "../pages/public/contact";
+import Dashboard from "../pages/Dashboard/dashboard";
+import DashLogin from "../pages/Dashboard/login";
+import DashProductList from "../pages/Dashboard/productList";
+import DashProductEdit from "../pages/Dashboard/productEdit";
 import ErrorPage from "../pages/errorPage";
-import Shop from "../pages/shop";
-import ShopDetails from "../pages/shopDetails";
-import ShoppingCart from "../pages/shoppingCart";
-import Wishlist from "../pages/wishlist";
 import Private from "./private";
 
 const routes = createBrowserRouter([
@@ -38,19 +39,19 @@ const routes = createBrowserRouter([
                     },
                     {
                          path: '/shop/:productId',
-                         element: <ShopDetails />
+                         element: <ProductDetails />
                     },
                     {
                          path: '/cart',
                          element: <ShoppingCart />
                     },
                     {
-                         path: 'wishlist',
-                         element: <Wishlist />
-                    },
-                    {
                          path: 'checkout',
                          element: <Checkout />
+                    },
+                    {
+                         path: 'wishlist',
+                         element: <Wishlist />
                     },
                ]
 
@@ -63,14 +64,22 @@ const routes = createBrowserRouter([
           children: [{
                errorElement: <ErrorPage />,
                children: [
-                    { index: true, element: <Private><Dashboard /></Private> },
+                    { index: true, element: <Dashboard /> },
+                    {
+                         path: '/dashboard/product',
+                         element: <Private><DashProductList /></Private>
+                    },
+                    {
+                         path: '/dashboard/product/create',
+                         element: <Private><DashProductEdit /></Private>
+                    },
+                    {
+                         path: '/dashboard/product/edit/:sku',
+                         element: <Private><DashProductEdit /></Private>
+                    },
                     {
                          path: '/dashboard/login',
                          element: <DashLogin />
-                    },
-                    {
-                         path: '/dashboard/edit',
-                         element: <Private><DashEdit /></Private>
                     },
                ]
           }]

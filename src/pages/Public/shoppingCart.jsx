@@ -1,7 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import CartList from "../components/List/cartList";
+import CartList from "../components/Table/cartTable";
 import ButtonWhite from "../components/Button/btnWhite"
-import ButtonBlack from "../components/Button/btnBlack"
+import ButtonBlack from "../components/Button/button"
 import HeroSection from "../modules/hero";
 import Input from "../components/Input/inputField";
 

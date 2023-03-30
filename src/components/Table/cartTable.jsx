@@ -1,7 +1,7 @@
 import { useState } from "react"
 import bigImg1 from '../../assets/product-big-2.png'
 
-export default function CartList() {
+export default function CartTable() {
      const [count, setCount] = useState(1)
      return (
           <tr className="odd:bg-white even:bg-slate-50 border-b">
