@@ -42,7 +42,7 @@ const routes = createBrowserRouter([
                          element: <ProductDetails />
                     },
                     {
-                         path: '/cart',
+                         path: '/shopping-cart',
                          element: <ShoppingCart />
                     },
                     {

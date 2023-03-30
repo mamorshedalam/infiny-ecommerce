@@ -1,9 +1,8 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import CartList from "../components/Table/cartTable";
-import ButtonWhite from "../components/Button/btnWhite"
-import ButtonBlack from "../components/Button/button"
-import HeroSection from "../modules/hero";
-import Input from "../components/Input/inputField";
+import CartList from "../../components/Table/cartTable";
+import Button from "../../components/Button/button"
+import HeroSection from "../../modules/hero";
+import Input from "../../components/Input/inputField";
 
 export default function ShoppingCart() {
      const navigate = useNavigate()
@@ -32,8 +31,8 @@ export default function ShoppingCart() {
                               </tbody>
                          </table>
                          <div className="flex justify-between">
-                              <ButtonWhite operation={() => { navigate(-1) }}>Continue Shopping</ButtonWhite>
-                              <ButtonBlack>Update cart</ButtonBlack>
+                              <Button operation={() => { navigate(-1) }} variant="white">Continue Shopping</Button>
+                              <Button>Update cart</Button>
                          </div>
                     </main>
                     <aside className="basis-1/4 px-4">
@@ -48,7 +47,7 @@ export default function ShoppingCart() {
                                    <li className="text-neutral-700 mb-3">Subtotal <span className="float-right font-bold text-red-500">$ 169.50</span></li>
                                    <li className="text-neutral-700 mb-3">Total <span className="float-right font-bold text-red-500">$ 169.50</span></li>
                               </ul>
-                              <NavLink to={`/checkout`} className="w-full"><ButtonBlack classes="w-full text-sm">Proceed to checkout</ButtonBlack></NavLink>
+                              <NavLink to={`/checkout`} className="w-full"><Button classes="w-full text-sm">Proceed to checkout</Button></NavLink>
                          </div>
                     </aside>
                </div>

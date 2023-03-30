@@ -2,8 +2,7 @@ import { useReducer, useState } from "react";
 import { getDatabase, ref, push, set } from "firebase/database";
 import { useNavigate, useParams } from "react-router-dom";
 import Input from "../../components/Input/inputField";
-import ButtonBlack from "../../components/Button/button";
-import ButtonWhite from "../../components/Button/btnWhite";
+import Button from "../../components/Button/button";
 import { initialState, reducer } from "../../reducers/stateReducer";
 
 
@@ -137,8 +136,8 @@ export default function DashProductEdit() {
                     <Input operation={handleChange} name="Description" type="textarea" classes="col-span-12 h-40" />
                </div>
                <div className="text-right text-sm">
-                    <ButtonBlack disabled={status.loading} type="submit" classes="mt-2 ml-4">Add This</ButtonBlack>
-                    <ButtonWhite disabled={status.loading} type="button" operation={() => { navigate(-1) }} classes="mt-2 ml-4">Cancel</ButtonWhite>
+                    <Button disabled={status.loading} type="submit" classes="mt-2 ml-4">Add This</Button>
+                    <Button disabled={status.loading} variant="white" type="button" operation={() => { navigate(-1) }} classes="mt-2 ml-4">Cancel</Button>
                </div>
           </form>
      )

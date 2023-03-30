@@ -1,9 +1,9 @@
 import HeroSection from "../../modules/hero"
-import aboutImg from "../assets/about-us.jpg"
-import testImg from "../assets/testimonial-pic.jpg"
-import authorImg from "../assets/testimonial-author.jpg"
-import teamImg from "../assets/team-1.jpg"
-import clientImg from "../assets/client-2.png"
+import aboutImg from "../../assets/about-us.jpg"
+import testImg from "../../assets/testimonial-pic.jpg"
+import authorImg from "../../assets/testimonial-author.jpg"
+import teamImg from "../../assets/team-1.jpg"
+import clientImg from "../../assets/client-2.png"
 
 export default function About() {
      return (

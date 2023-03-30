@@ -1,6 +1,6 @@
-import ProductCart from "../components/Cart/productCart";
-import SidebarCart from "../components/Filter/productFilter";
-import HeroSection from "../modules/hero";
+import ProductCart from "../../components/Cart/productCart";
+import SidebarCart from "../../components/Filter/productFilter";
+import HeroSection from "../../modules/hero";
 
 export default function Shop() {
      const itemArray = [

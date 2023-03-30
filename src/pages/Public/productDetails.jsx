@@ -1,10 +1,9 @@
 import { useState } from 'react'
-import ProductCart from '../components/Cart/productCart'
-import ButtonWhite from '../components/Button/btnWhite'
-import bigImg1 from '../assets/product-big-2.png'
-import bigImg2 from '../assets/product-big-3.png'
-import bigImg3 from '../assets/product-big.png'
-import ButtonBlack from '../components/Button/button'
+import ProductCart from '../../components/Cart/productCart'
+import bigImg1 from '../../assets/product-big-2.png'
+import bigImg2 from '../../assets/product-big-3.png'
+import bigImg3 from '../../assets/product-big.png'
+import Button from '../../components/Button/button'
 
 
 export default function ProductDetails() {
@@ -72,8 +71,8 @@ export default function ProductDetails() {
                                    <button onClick={() => setCount(Math.max(count + 1, 1))}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="w-4"><path d="M240 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H32c-17.7 0-32 14.3-32 32s14.3 32 32 32H176V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H384c17.7 0 32-14.3 32-32s-14.3-32-32-32H240V80z" /></svg></button>
                               </div>
                               <div className="flex flex-col gap-4">
-                                   <ButtonBlack>add to cart</ButtonBlack>
-                                   <ButtonWhite>ADD TO WISHLIST</ButtonWhite>
+                                   <Button>add to cart</Button>
+                                   <Button variant="white">ADD TO WISHLIST</Button>
                               </div>
                          </div>
                          <div className="flex items-center">

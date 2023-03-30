@@ -1,6 +1,6 @@
-import HeroSection from "../modules/hero";
-import ButtonBlack from "../components/Button/button";
-import Input from "../components/Input/inputField";
+import HeroSection from "../../modules/hero";
+import Button from "../../components/Button/button";
+import Input from "../../components/Input/inputField";
 
 export default function Contact() {
      return (
@@ -25,10 +25,10 @@ export default function Contact() {
                     </div>
                     <div className="basis-1/2 px-4">
                          <form className="grid grid-cols-2 gap-6">
-                                   <Input name="Name" type="text" classes="col-span-1" />
-                                   <Input name="Email" type="email" classes="col-span-1" />
-                                   <Input name="Message" type="textarea" classes="col-span-2 h-40" />
-                                   <div className="col-span-2 text-right"><ButtonBlack>send message</ButtonBlack> </div>
+                              <Input name="Name" type="text" classes="col-span-1" />
+                              <Input name="Email" type="email" classes="col-span-1" />
+                              <Input name="Message" type="textarea" classes="col-span-2 h-40" />
+                              <div className="col-span-2 text-right"><Button>send message</Button> </div>
                          </form>
                     </div>
                </section>

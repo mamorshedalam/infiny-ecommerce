@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
-import heroImg from '../assets/hero.jpg'
+import heroImg from '../../assets/hero.jpg'
 import ProductCart from '../../components/Cart/productCart'
-import saleImg from '../assets/product-sale.png'
-import instagramImg from '../assets/instagram-1.jpg'
-import ButtonBlack from '../../components/Button/button'
+import saleImg from '../../assets/product-sale.png'
+import instagramImg from '../../assets/instagram-1.jpg'
+import Button from '../../components/Button/button'
 
 
 export default function Index() {
@@ -23,7 +23,7 @@ export default function Index() {
                               <h2 className="uppercase font-bold tracking-widest text-red-500">summer collection</h2>
                               <h1 className="font-bold leading-normal text-5xl my-8">Fall - Winter Collections 2023</h1>
                               <p className="leading-loose">A specialist label creating luxury essentials. Ethically crafted with an unwavering commitment to exceptional quality.</p>
-                              <Link to={`/shop`} className="mt-8"><ButtonBlack>shop now</ButtonBlack></Link>
+                              <Link to={`/shop`} className="mt-8"><Button>shop now</Button></Link>
                          </div>
                     </div>
                </section>
@@ -79,7 +79,7 @@ export default function Index() {
                                         <p>Seconds</p>
                                    </div>
                               </div>
-                              <Link to={`/shop`} className="mt-8"><ButtonBlack type="button">shop now</ButtonBlack></Link>
+                              <Link to={`/shop`} className="mt-8"><Button type="button">shop now</Button></Link>
                          </div>
                     </div>
                </section>

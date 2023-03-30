@@ -1,6 +1,6 @@
-import ButtonBlack from "../components/Button/button";
-import HeroSection from "../modules/hero";
-import Input from "../components/Input/inputField";
+import ButtonBlack from "../../components/Button/button";
+import HeroSection from "../../modules/hero";
+import Input from "../../components/Input/inputField";
 
 export default function Checkout() {
      return (
