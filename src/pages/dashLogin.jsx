@@ -1,26 +1,30 @@
-import { useNavigate } from "react-router-dom";
 import Input from "../components/Input/inputField";
 import ButtonBlack from "../components/Button/btnBlack";
 import { useAuth } from "../contexts/AuthContext";
-import { useReducer, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { initialState, reducer } from "../reducers/stateReducer";
+import { useNavigate } from "react-router-dom";
 
 export default function DashLogin() {
-     const [status, dispatch] = useReducer(reducer, initialState);
      const navigate = useNavigate();
-     const { login } = useAuth();
+     const [status, dispatch] = useReducer(reducer, initialState);
+     const { currentUser, login } = useAuth();
      const [user, setUser] = useState({
           Email: "",
           Password: ""
      })
 
+     useEffect(() => {   // redirect to dashboard after login
+          if (currentUser) {
+               navigate("/dashboard")
+          }
+     }, [currentUser])
 
      async function handleSubmit(e) {
           e.preventDefault();
           try {
                dispatch({ type: "SUCCESS", loading: true });
                await login(user.Email, user.Password);
-               navigate("/dashboard");
           } catch (err) {
                dispatch({ type: "FAIL", error: "Fail to Login, Try Again!" });
           }

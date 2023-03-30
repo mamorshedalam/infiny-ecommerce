@@ -7,7 +7,7 @@ import Checkout from "../pages/checkout";
 import Contact from "../pages/contact";
 import DashLogin from "../pages/dashLogin";
 import Dashboard from "../pages/dashboard";
-import DashAdd from "../pages/dashAdd";
+import DashEdit from "../pages/dashEdit";
 import ErrorPage from "../pages/errorPage";
 import Shop from "../pages/shop";
 import ShopDetails from "../pages/shopDetails";
@@ -69,8 +69,8 @@ const routes = createBrowserRouter([
                          element: <DashLogin />
                     },
                     {
-                         path: '/dashboard/add',
-                         element: <Private><DashAdd /></Private>
+                         path: '/dashboard/edit',
+                         element: <Private><DashEdit /></Private>
                     },
                ]
           }]

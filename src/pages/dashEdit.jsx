@@ -7,9 +7,9 @@ import ButtonWhite from "../components/Button/btnWhite";
 import { initialState, reducer } from "../reducers/stateReducer";
 
 
-export default function DashAdd() {
-     const db = getDatabase();
+export default function DashEdit() {
      const navigate = useNavigate()
+     const [status, dispatch] = useReducer(reducer, initialState)
      const [object, setObject] = useState({
           SKU: "",
           Brand: "",
@@ -25,7 +25,6 @@ export default function DashAdd() {
           Tags: [],
           Sizes: [],
      });
-     const [status, dispatch] = useReducer(reducer, initialState)
 
      // assign value
      const statusOptions = [
@@ -56,23 +55,39 @@ export default function DashAdd() {
      ];
      const sizeOptions = ["xxxl", "xxl", "xl", "l", "m", "s", "free"];
 
+     // submit data
      async function handleSubmit(e) {
           e.preventDefault();
           if (confirm("Confirm submit!")) {
-               try {
-                    dispatch({ type: "SUCCESS", loading: true });
-                    const postListRef = await ref(db, 'products');
-                    const newPostRef = push(postListRef);
-                    set(newPostRef, object);
-                    navigate("/dashboard");
-               } catch (err) {
-                    console.log(err);
-                    dispatch({ type: "FAIL", error: "Fail to Upload Data, Try Again!" });
-               }
+               const db = getDatabase();
+               await set(ref(db, 'products/' + object["SKU"]), {
+                    SKU: object["SKU"],
+                    Brand: object["Brand"],
+                    Name: object["Name"],
+                    Status: object["Status"],
+                    Category: object["Category"],
+                    Reviews: object["Reviews"],
+                    Rating: object["Rating"],
+                    Price: object["Price"],
+                    Image: object["Image"],
+                    For: object["For"],
+                    Description: object["Description"],
+                    Tags: object["Tags"],
+                    Sizes: object["Sizes"]
+               })
+                    .then(() => {
+                         dispatch({ type: "SUCCESS", loading: true });
+                         alert("Uploaded successfully!");
+                         navigate("/dashboard");
+                    })
+                    .catch((err) => {
+                         console.log(err);
+                         dispatch({ type: "FAIL", error: "Fail to Upload Data, Try Again!" });
+                    })
           }
      }
 
-     const handleChange = (e) => {
+     function handleChange(e) {
           const field = e.target;
 
           if (field.name === "Image") {
@@ -122,8 +137,8 @@ export default function DashAdd() {
                     <Input operation={handleChange} name="Description" type="textarea" classes="col-span-12 h-40" />
                </div>
                <div className="text-right text-sm">
-                    <ButtonBlack type="submit" classes="mt-2 ml-4">Add This</ButtonBlack>
-                    <ButtonWhite type="button" operation={() => { navigate(-1) }} classes="mt-2 ml-4">Cancel</ButtonWhite>
+                    <ButtonBlack disabled={status.loading} type="submit" classes="mt-2 ml-4">Add This</ButtonBlack>
+                    <ButtonWhite disabled={status.loading} type="button" operation={() => { navigate(-1) }} classes="mt-2 ml-4">Cancel</ButtonWhite>
                </div>
           </form>
      )

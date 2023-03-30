@@ -1,30 +1,9 @@
-import { useEffect, useReducer, useState } from "react";
-import { get, getDatabase, orderByKey, query, ref } from "firebase/database";
 import DashList from '../components/List/dashList';
-import { initialState, reducer } from '../reducers/stateReducer'
+import useLoaderData from '../hooks/useLoadData';
 
 export default function Dashboard() {
-     const [status, dispatch] = useReducer(reducer, initialState)
-     const [data, setData] = useState([])
+     const { status, data } = useLoaderData();
 
-     useEffect(() => {
-          async function fetchData() {
-               const db = getDatabase();
-               const dataRef = ref(db, "products");
-               const dataQuery = query(dataRef, orderByKey());
-               try {
-                    dispatch({ type: "SUCCESS", loading: true });
-                    const snapshot = await get(dataQuery);
-                    if (snapshot.exists()) {
-                         setData(Object.values(snapshot.val()))
-                    }
-               } catch (err) {
-                    console.log(err);
-                    dispatch({ type: "FAIL", error: "Fail to load Data, Try Again!" });
-               }
-          }
-          fetchData()
-     }, [])
      return (
           <table className="w-full">
                <thead>
@@ -46,9 +25,9 @@ export default function Dashboard() {
                          <th className="border p-2"></th>
                     </tr>
                </thead>
-               <tbody>
+               <tbody className="text-sm">
                     {data && data.map((product, index) => (<DashList key={product.SKU} sl={index} data={product} />))}
                </tbody>
-          </table>
+          </table >
      )
 }
