@@ -22,12 +22,15 @@ export default function DashLogin() {
 
      async function handleSubmit(e) {
           e.preventDefault();
-          try {
-               dispatch({ type: "SUCCESS", loading: true });
-               await login(user.Email, user.Password);
-          } catch (err) {
-               dispatch({ type: "FAIL", error: "Fail to Login, Try Again!" });
-          }
+
+          await login(user.Email, user.Password)
+               .then(() => {
+                    dispatch({ type: "SUCCESS", loading: true });
+               })
+               .catch((err) => {
+                    console.log(err);
+                    dispatch({ type: "FAIL", error: "Fail to Login, Try Again!" });
+               })
      }
 
      function handleChange(e) {

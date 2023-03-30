@@ -8,11 +8,7 @@ export default function DashList({ sl, data }) {
 
      async function handleDelete() {
           const db = getDatabase();
-          const dataRef = ref(db, `products/${SKU}`);
-          remove(dataRef).then(() => {
-               dispatch({ type: "SUCCESS", loading: true });
-               console.log("successfully deleted");
-          })
+          remove(ref(db, 'users/' + SKU),)
      }
      return (
           <tr className="odd:bg-white even:bg-slate-50">

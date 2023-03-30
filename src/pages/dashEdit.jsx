@@ -55,8 +55,7 @@ export default function DashEdit() {
      ];
      const sizeOptions = ["xxxl", "xxl", "xl", "l", "m", "s", "free"];
 
-     // submit data
-     async function handleSubmit(e) {
+     async function handleSubmit(e) {   // submit data
           e.preventDefault();
           if (confirm("Confirm submit!")) {
                const db = getDatabase();
