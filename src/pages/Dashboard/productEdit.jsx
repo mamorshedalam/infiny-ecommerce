@@ -1,5 +1,5 @@
 import { useReducer, useState } from "react";
-import { getDatabase, ref, push, set } from "firebase/database";
+import { getDatabase, ref, set } from "firebase/database";
 import { useNavigate, useParams } from "react-router-dom";
 import Input from "../../components/Input/inputField";
 import Button from "../../components/Button/button";
@@ -34,9 +34,13 @@ export default function DashProductEdit() {
           { value: 'non', label: 'Non' }
      ];
      const categoryOptions = [
+          { value: "t-shirt-print", label: "Print T-shirt" },
           { value: "t-shirt-plain", label: "Plain T-shirt" },
           { value: "t-shirt-polo", label: "Polo T-shirt" },
+          { value: "t-shirt-sleeve", label: "Sleeve T-shirt" },
+          { value: "t-shirt-maggie", label: "Maggie T-shirt" },
           { value: "shirt", label: "Shirt" },
+          { value: "panjabi", label: "Panjabi" },
           { value: "hoodie", label: "Hoodie" },
           { value: "jacket", label: "Jacket" },
           { value: "joggers", label: "Joggers" },
@@ -44,7 +48,9 @@ export default function DashProductEdit() {
           { value: "shorts", label: "Shorts" },
           { value: "underwear", label: "Underwear" },
           { value: "jersey", label: "Jersey" },
-          { value: "socks", label: "socks" },
+          { value: "kurti", label: "Kurti" },
+          { value: "tops", label: "Tops" },
+          { value: "socks", label: "Socks" },
           { value: "mask", label: "Face Mask" },
      ];
      const forOptions = [
@@ -57,6 +63,7 @@ export default function DashProductEdit() {
 
      async function handleSubmit(e) {   // submit data
           e.preventDefault();
+
           if (confirm("Confirm submit!")) {
                const db = getDatabase();
                await set(ref(db, 'products/' + object["SKU"]), {
@@ -105,12 +112,15 @@ export default function DashProductEdit() {
 
                sizeFields.forEach(item => checkedSizes = [...checkedSizes, item.id])
                setObject({ ...object, Sizes: checkedSizes })
+          } else if (field.name === "SKU") {
+               setObject({ ...object, SKU: field.value.toUpperCase() })
           } else {
                const newObject = { ...object }
                newObject[field.name] = field.value
                setObject(newObject)
           }
      }
+
      return (
           <form onSubmit={(e) => handleSubmit(e)} method="post" className="grid grid-cols-12 w-full gap-5 text-sm">
                <Input operation={handleChange} name="SKU" type="text" classes="col-span-2 uppercase" />

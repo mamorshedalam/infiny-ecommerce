@@ -1,0 +1,24 @@
+keywords:
+{
+t-shirt, solid color, plain t-shirt, men's t-shirt
+t-shirt, print t-shirt, men's t-shirt
+t-shirt, polo t-shirt, men's t-shirt
+sports, trouser, men's trouser, sports trouser
+t-shirt, kid's t-shirt, print t-shirt
+trouser, men's trouser
+jersey, men's jersey, sport jersey, sport t-shirt
+boxer, underwear, men's underware, men's boxer
+mask, face mask, kid's mask
+mask, face mask, women's mask
+trouser, kid's trouser, women's trouser
+trouser, kid's trouser, men's trouser
+shorts, kid's shorts
+t-shirt, solid color, plain t-shirt, kid's t-shirt
+sleeve t-shirt, men's t-shirt, t-shirt
+shirt, men's shirt
+hoodie, men's hoodie
+jacket, men's jacket
+joggers, men's joggers
+}
+
+SKU: DDMMYYTNCHHMMSSF (310323TFB125930M)
