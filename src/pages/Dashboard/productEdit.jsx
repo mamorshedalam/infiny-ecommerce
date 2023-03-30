@@ -7,7 +7,7 @@ import { initialState, reducer } from "../../reducers/stateReducer";
 
 
 export default function DashProductEdit() {
-     const {sku} = useParams()
+     const { sku } = useParams()
      const navigate = useNavigate()
      const [status, dispatch] = useReducer(reducer, initialState)
      const [object, setObject] = useState({
@@ -54,7 +54,7 @@ export default function DashProductEdit() {
           { value: "all", label: "All" }
      ];
      const sizeOptions = ["xxxl", "xxl", "xl", "l", "m", "s", "free"];
-     console.log(sku);
+
      async function handleSubmit(e) {   // submit data
           e.preventDefault();
           if (confirm("Confirm submit!")) {
@@ -112,30 +112,24 @@ export default function DashProductEdit() {
           }
      }
      return (
-          <form onSubmit={(e) => handleSubmit(e)} method="post" className="w-full text-sm">
-               <div className="grid grid-cols-12 gap-5 mb-6">
-                    <Input operation={handleChange} name="SKU" type="text" classes="col-span-2 uppercase" />
-                    <Input operation={handleChange} name="Brand" type="text" classes="col-span-3" />
-                    <Input operation={handleChange} name="Name" type="text" classes="col-span-7" />
+          <form onSubmit={(e) => handleSubmit(e)} method="post" className="grid grid-cols-12 w-full gap-5 text-sm">
+               <Input operation={handleChange} name="SKU" type="text" classes="col-span-2 uppercase" />
+               <Input operation={handleChange} name="Brand" type="text" classes="col-span-3" />
+               <Input operation={handleChange} name="Name" type="text" classes="col-span-7" />
+               <Input operation={handleChange} name="Status" type="select" classes="col-span-2" options={statusOptions} />
+               <Input operation={handleChange} name="Category" type="select" classes="col-span-2" options={categoryOptions} />
+               <Input operation={handleChange} name="Reviews" type="number" classes="col-span-2" />
+               <Input operation={handleChange} name="Rating" type="number" classes="col-span-2" />
+               <Input operation={handleChange} name="Price" type="number" classes="col-span-2" />
+               <Input operation={handleChange} name="Image" type="file" classes="col-span-2" />
+               <Input operation={handleChange} name="For" type="select" classes="col-span-2" options={forOptions} />
+               <Input operation={handleChange} name="Tags" type="text" classes="col-span-4" />
+               <div className="col-span-1 flex items-center">
+                    <h5 className="font-bold mr-6">Size:</h5>
+                    {sizeOptions && sizeOptions.map((size, index) => (<Input key={index} operation={handleChange} name="Size" type="checkbox" id={size} classes="mr-6" />))}
                </div>
-               <div className="grid grid-cols-12 gap-5 mb-6">
-                    <Input operation={handleChange} name="Status" type="select" classes="col-span-2" options={statusOptions} />
-                    <Input operation={handleChange} name="Category" type="select" classes="col-span-2" options={categoryOptions} />
-                    <Input operation={handleChange} name="Reviews" type="number" classes="col-span-2" />
-                    <Input operation={handleChange} name="Rating" type="number" classes="col-span-2" />
-                    <Input operation={handleChange} name="Price" type="number" classes="col-span-2" />
-                    <Input operation={handleChange} name="Image" type="file" classes="col-span-2" />
-               </div>
-               <div className="grid grid-cols-12 gap-5 font-semibold uppercase mb-6">
-                    <Input operation={handleChange} name="For" type="select" classes="col-span-2" options={forOptions} />
-                    <Input operation={handleChange} name="Tags" type="text" classes="col-span-4" />
-                    <div className="col-span-1 flex items-center">
-                         <h5 className="font-bold mr-6">Size:</h5>
-                         {sizeOptions && sizeOptions.map((size, index) => (<Input key={index} operation={handleChange} name="Size" type="checkbox" id={size} classes="mr-6" />))}
-                    </div>
-                    <Input operation={handleChange} name="Description" type="textarea" classes="col-span-12 h-40" />
-               </div>
-               <div className="text-right text-sm">
+               <Input operation={handleChange} name="Description" type="textarea" classes="col-span-12 h-40" />
+               <div className="col-span-12 text-right text-sm">
                     <Button disabled={status.loading} type="submit" classes="mt-2 ml-4">Add This</Button>
                     <Button disabled={status.loading} variant="white" type="button" operation={() => { navigate(-1) }} classes="mt-2 ml-4">Cancel</Button>
                </div>
