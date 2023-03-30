@@ -1,14 +1,10 @@
 import ProductCart from "../../components/Cart/productCart";
 import SidebarCart from "../../components/Filter/productFilter";
+import useLoadData from "../../hooks/useLoadData";
 import HeroSection from "../../modules/hero";
 
 export default function Shop() {
-     const itemArray = [
-          { key: 'S1202', status: "new", name: "Piqué Biker Jacket", colors: ["green", "orange", "blue"] },
-          { key: 'S3202', status: "offer", name: "Multi-pocket Chest Bag", colors: ["red", "orange", "blue"] },
-          { key: 'S4302', status: "sale", name: "Diagonal Textured Cap", colors: ["yellow", "orange", "blue"] },
-          { key: 'S1212', status: "", name: "Lether Backpack", colors: ["green", "black", "blue"] },
-     ]
+     const {status, data} = useLoadData("All")
 
      return (
           <>
@@ -39,9 +35,9 @@ export default function Shop() {
                                    </select>
                               </div>
                          </div>
-                         <div className="flex flex-wrap">
-                              {itemArray && itemArray.map((item, index) => (
-                                   <div key={index} className="basis-1/3 px-4"><ProductCart product={item} /></div>
+                         <div className="grid grid-cols-3 gap-6">
+                              {data && data.map((product) => (
+                                   <div key={product["SKU"]} className="col-span-1"><ProductCart product={product} /></div>
                               ))}
                          </div>
                     </main>

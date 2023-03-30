@@ -2,7 +2,7 @@ import { useEffect, useReducer, useState } from "react";
 import { child, get, getDatabase, orderByKey, query, ref } from "firebase/database";
 import { initialState, reducer } from '../reducers/stateReducer';
 
-export default function useLoaderData({ SKU = 0 }) {
+export default function useLoadData({ SKU = 0 }) {
      const [status, dispatch] = useReducer(reducer, initialState)
      const [data, setData] = useState([])
 
