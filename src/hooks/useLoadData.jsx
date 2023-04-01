@@ -1,21 +1,26 @@
 import { useEffect, useReducer, useState } from "react";
-import { get, getDatabase, orderByKey, query, ref } from "firebase/database";
+import { get, getDatabase, orderByKey, query, ref, limitToFirst, startAt } from "firebase/database";
 import { initialState, reducer } from '../reducers/stateReducer';
 
-export default function useLoadData() {
+export default function useLoadData(limit, page = 1) {
      const [status, dispatch] = useReducer(reducer, initialState)
      const [data, setData] = useState([])
+     const [hasMore, setHasMore] = useState(true);
 
      useEffect(() => {
           async function fetchData() {
                const db = getDatabase();
-               const dataRef = query(ref(db, 'products'), orderByKey());
+               let dataRef
+               if (limit) { dataRef = query(ref(db, 'products'), orderByKey(), limitToFirst(limit)), startAt("" + page) }
+               else { dataRef = query(ref(db, 'products'), orderByKey()) }
                await get(dataRef)
                     .then((snapshot) => {
                          dispatch({ type: "SUCCESS", loading: true })
                          if (snapshot.exists()) {
-                              setData(Object.values(snapshot.val()))
-                              // setData((prevData) => [...prevData, ...Object.values(snapshot.val())])
+                              // setData(Object.values(snapshot.val()))
+                              setData((prevData) => [...prevData, ...Object.values(snapshot.val())])
+                         } else {
+                              setHasMore(false);
                          }
                     })
                     .catch((err) => {
@@ -26,5 +31,5 @@ export default function useLoadData() {
           }
           fetchData()
      }, [])
-     return { status, data }
+     return { status, hasMore, data }
 }

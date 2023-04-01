@@ -3,11 +3,13 @@ import ProductCart from "../../components/Cart/productCart";
 import SidebarCart from "../../components/Filter/productFilter";
 import useLoadData from "../../hooks/useLoadData";
 import HeroSection from "../../modules/hero";
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 export default function Shop() {
-     const { status, data } = useLoadData()
+     const [page, setPage] = useState(1)
      const [products, setProducts] = useState([]);
-
+     const { status, hasMore, data } = useLoadData(12, page)
+console.log(data);
      // useEffect(() => {
      //      let newProducts = [...products];
      //      newProducts.push(...data);
@@ -43,11 +45,11 @@ export default function Shop() {
                                    </select>
                               </div>
                          </div>
-                         <div className="grid grid-cols-3 gap-6">
+                         <InfiniteScroll className="grid grid-cols-3 gap-6" dataLength={data.length} hasMore={hasMore} next={() => setPage(page + 12)}>
                               {data && data.map((product) => (
                                    <div key={product["SKU"]} className="col-span-1"><ProductCart product={product} /></div>
                               ))}
-                         </div>
+                         </InfiniteScroll>
                     </main>
                </div>
           </>

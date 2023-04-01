@@ -1,13 +1,8 @@
 import { useEffect, useReducer, useState } from "react";
-import { child, get, getDatabase, orderByKey, query, ref } from "firebase/database";
+import { child, get, getDatabase, ref } from "firebase/database";
 import { initialState, reducer } from '../../reducers/stateReducer';
-import ProductCart from '../../components/Cart/productCart'
-import bigImg1 from '../../assets/product-big-2.png'
-import bigImg2 from '../../assets/product-big-3.png'
-import bigImg3 from '../../assets/product-big.png'
-import Button from '../../components/Button/button'
-import { useParams } from 'react-router-dom'
-import useLoadSingleData from '../../hooks/useLoadSingleData'
+import Button from '../../components/Button/button';
+import { useParams } from 'react-router-dom';
 
 
 export default function ProductDetails() {

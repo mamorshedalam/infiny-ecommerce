@@ -4,16 +4,13 @@ import ProductCart from '../../components/Cart/productCart'
 import saleImg from '../../assets/product-sale.png'
 import instagramImg from '../../assets/instagram-1.jpg'
 import Button from '../../components/Button/button'
+import useLoadData from '../../hooks/useLoadData'
+import { useState } from 'react'
 
 
 export default function Index() {
-
-     const itemArray = [
-          { key: 'S1202', status: "new", name: "Piqué Biker Jacket", colors: ["green", "orange", "blue"] },
-          { key: 'S3202', status: "offer", name: "Multi-pocket Chest Bag", colors: ["red", "orange", "blue"] },
-          { key: 'S4302', status: "sale", name: "Diagonal Textured Cap", colors: ["yellow", "orange", "blue"] },
-          { key: 'S1212', status: "", name: "Lether Backpack", colors: ["green", "black", "blue"] },
-     ]
+     const [active, setActive] = useState("new")
+     const { status, data } = useLoadData(4);
 
      return (
           <main>
@@ -30,15 +27,15 @@ export default function Index() {
 
                <section className="sl-container py-24">
                     <ul className="flex items-center justify-center mb-10">
-                         <li className="font-bold text-2xl mr-20"><button>Best Sellers</button></li>
-                         <li className="font-bold text-2xl text-zinc-400 mr-20"><button>New Arrivals</button></li>
-                         <li className="font-bold text-2xl text-zinc-400 mr-20"><button>Hot Sales</button></li>
+                         <li onClick={() => setActive("best")} className={`font-bold text-2xl mr-20 ${active == "best" ? "text-neutral-900" : "text-zinc-400"}`}><button>Best Sellers</button></li>
+                         <li onClick={() => setActive("new")} className={`font-bold text-2xl mr-20 ${active == "new" ? "text-neutral-900" : "text-zinc-400"}`}><button>New Arrivals</button></li>
+                         <li onClick={() => setActive("hot")} className={`font-bold text-2xl mr-20 ${active == "hot" ? "text-neutral-900" : "text-zinc-400"}`}><button>Hot Sales</button></li>
                     </ul>
-                    <div className="flex flex-wrap">
-                         {itemArray && itemArray.map((item) => {
+                    <div className="grid grid-cols-4 gap-6">
+                         {data && data.map((product) => {
                               return (
-                                   <div key={item.key} className="basis-1/4 px-4">
-                                        <ProductCart product={item} />
+                                   <div key={product.SKU} className="col-span-1">
+                                        <ProductCart product={product} />
                                    </div>
                               )
                          })
