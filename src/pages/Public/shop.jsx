@@ -1,11 +1,19 @@
+import { useEffect, useState } from "react";
 import ProductCart from "../../components/Cart/productCart";
 import SidebarCart from "../../components/Filter/productFilter";
 import useLoadData from "../../hooks/useLoadData";
 import HeroSection from "../../modules/hero";
 
 export default function Shop() {
-     const {status, data} = useLoadData("All")
+     const { status, data } = useLoadData()
+     const [products, setProducts] = useState([]);
 
+     // useEffect(() => {
+     //      let newProducts = [...products];
+     //      newProducts.push(...data);
+     //      setProducts(newProducts);
+     // }, [data])
+     // console.log(products);
      return (
           <>
                <HeroSection />

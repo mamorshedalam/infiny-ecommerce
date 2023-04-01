@@ -1,20 +1,22 @@
 import { useEffect, useReducer, useState } from "react";
-import { get, getDatabase, orderByKey, query, ref } from "firebase/database";
+import { child, get, getDatabase, orderByKey, query, ref } from "firebase/database";
 import { initialState, reducer } from '../reducers/stateReducer';
 
-export default function useLoadData() {
+export default function useLoadSingleData({ sku }) {
      const [status, dispatch] = useReducer(reducer, initialState)
      const [data, setData] = useState([])
 
      useEffect(() => {
           async function fetchData() {
-               const db = getDatabase();
-               const dataRef = query(ref(db, 'products'), orderByKey());
-               await get(dataRef)
+               const dbRef = ref(getDatabase());
+               await get(child(dbRef, `products/${sku}`))
                     .then((snapshot) => {
+                         console.log(object);
+                         console.log(snapshot.exists());
                          dispatch({ type: "SUCCESS", loading: true })
                          if (snapshot.exists()) {
-                              setData(Object.values(snapshot.val()))
+                              console.log(snapshot.val());
+                              // setData(Object.values(snapshot.val()))
                               // setData((prevData) => [...prevData, ...Object.values(snapshot.val())])
                          }
                     })
