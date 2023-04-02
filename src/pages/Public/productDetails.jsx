@@ -60,6 +60,7 @@ export default function ProductDetails() {
                                    <ul>
                                         <li className="mb-2"><span className="font-normal text-zinc-400">SKU: </span>{data.SKU}</li>
                                         <li className="mb-2 capitalize"><span className="font-normal text-zinc-400">Categories: </span>{data.Category}</li>
+                                        <li className="mb-2 capitalize"><span className="font-normal text-zinc-400">Brand: </span>{data.Brand}</li>
                                         <li className="mb-2"><span className="font-normal text-zinc-400">Tag: </span>{data.Tags.map((tag, index) => (<span key={index}>{tag}, </span>))}</li>
                                    </ul>
                               </div>

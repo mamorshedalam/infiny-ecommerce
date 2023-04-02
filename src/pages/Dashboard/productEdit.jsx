@@ -66,9 +66,9 @@ export default function DashProductEdit() {
 
           if (confirm("Confirm submit!")) {
                const db = getDatabase();
-               await set(ref(db, 'products/' + object["SKU"]), {
-                    SKU: object["SKU"],
-                    Brand: object["Brand"],
+               await set(ref(db, 'products/' + object["SKU"].toUpperCase()), {
+                    SKU: object["SKU"].toUpperCase(),
+                    Brand: object["Brand"].toLowerCase(),
                     Name: object["Name"],
                     Status: object["Status"],
                     Category: object["Category"],
@@ -96,28 +96,30 @@ export default function DashProductEdit() {
      function handleChange(e) {
           const field = e.target;
 
-          if (field.name === "Image") {
-               const img = field.files[0]
-               const reader = new FileReader()    // convert image to base64
-               reader.readAsDataURL(img)
-               reader.onload = () => {
-                    setObject({ ...object, Image: reader.result })
-               }
-          } else if (field.name === "Tags") {
-               const keywords = field.value.split(', ')     // create array of keywords
-               setObject({ ...object, Tags: keywords })
-          } else if (field.name === "Size") { // create array of sizes
-               let checkedSizes = []
-               const sizeFields = document.querySelectorAll("input[name=Size]:checked")
-
-               sizeFields.forEach(item => checkedSizes = [...checkedSizes, item.id])
-               setObject({ ...object, Sizes: checkedSizes })
-          } else if (field.name === "SKU") {
-               setObject({ ...object, SKU: field.value.toUpperCase() })
-          } else {
-               const newObject = { ...object }
-               newObject[field.name] = field.value
-               setObject(newObject)
+          switch (field.name) {
+               case "Image":
+                    const img = field.files[0]
+                    const reader = new FileReader()    // convert image to base64
+                    reader.readAsDataURL(img)
+                    reader.onload = () => {
+                         setObject({ ...object, Image: reader.result })
+                    }
+                    break;
+               case "Tags":
+                    const keywords = field.value.toLowerCase().split(', ')     // create array of keywords
+                    setObject({ ...object, Tags: keywords })
+                    break;
+               case "Size":   // create array of sizes
+                    let checkedSizes = []
+                    const sizeFields = document.querySelectorAll("input[name=Size]:checked")
+                    sizeFields.forEach(item => checkedSizes = [...checkedSizes, item.id])
+                    setObject({ ...object, Sizes: checkedSizes })
+                    break;
+               default:
+                    const newObject = { ...object }
+                    newObject[field.name] = field.value
+                    setObject(newObject)
+                    break;
           }
      }
 

@@ -10,8 +10,10 @@ export default function Shop() {
      const { status, hasMore, data } = useLoadData(12, lastSKU)  // PARSING LAST DATA SKU FOR LOAD NEW DATA
 
      function nextSKU() {     // FINDING LAST DATA SKU
-          const last = data[data.length - 1];
-          setLastSKU(last.SKU)
+          if (data.length > 0) {
+               const last = data[data.length - 1];
+               setLastSKU(last.SKU)
+          }
      }
      return (
           <>

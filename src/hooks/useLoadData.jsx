@@ -2,7 +2,7 @@ import { useEffect, useReducer, useRef, useState } from "react";
 import { get, getDatabase, orderByKey, query, ref, limitToFirst, startAfter } from "firebase/database";
 import { initialState, reducer } from '../reducers/stateReducer';
 
-export default function useLoadData(limit, lastSKU) {
+export default function useLoadData(limit, lastSKU = " ") {
      const effectRun = useRef(false)
      const [status, dispatch] = useReducer(reducer, initialState)
      const [data, setData] = useState([])
