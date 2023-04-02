@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ProductCart from "../../components/Cart/productCart";
 import SidebarCart from "../../components/Filter/productFilter";
 import useLoadData from "../../hooks/useLoadData";
@@ -6,16 +6,13 @@ import HeroSection from "../../modules/hero";
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 export default function Shop() {
-     const [page, setPage] = useState(1)
-     const [products, setProducts] = useState([]);
-     const { status, hasMore, data } = useLoadData(12, page)
-console.log(data);
-     // useEffect(() => {
-     //      let newProducts = [...products];
-     //      newProducts.push(...data);
-     //      setProducts(newProducts);
-     // }, [data])
-     // console.log(products);
+     const [lastSKU, setLastSKU] = useState(" ")
+     const { status, hasMore, data } = useLoadData(12, lastSKU)  // PARSING LAST DATA SKU FOR LOAD NEW DATA
+
+     function nextSKU() {     // FINDING LAST DATA SKU
+          const last = data[data.length - 1];
+          setLastSKU(last.SKU)
+     }
      return (
           <>
                <HeroSection />
@@ -45,7 +42,11 @@ console.log(data);
                                    </select>
                               </div>
                          </div>
-                         <InfiniteScroll className="grid grid-cols-3 gap-6" dataLength={data.length} hasMore={hasMore} next={() => setPage(page + 12)}>
+                         <InfiniteScroll className="grid grid-cols-3 gap-6"
+                              dataLength={data.length}
+                              hasMore={hasMore}
+                              next={nextSKU}
+                              loader={<h4 className="text-center">Loading...</h4>}>
                               {data && data.map((product) => (
                                    <div key={product["SKU"]} className="col-span-1"><ProductCart product={product} /></div>
                               ))}
