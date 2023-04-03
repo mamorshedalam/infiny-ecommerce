@@ -84,7 +84,7 @@ export default function DashProductEdit() {
                     .then(() => {
                          dispatch({ type: "SUCCESS", loading: true });
                          alert("Uploaded successfully!");
-                         navigate("/dashboard");
+                         // navigate("/dashboard");
                     })
                     .catch((err) => {
                          console.log(err);
@@ -97,25 +97,25 @@ export default function DashProductEdit() {
           const field = e.target;
 
           switch (field.name) {
-               case "Image":
+               case "Image":  // convert image to base64 & store
                     const img = field.files[0]
-                    const reader = new FileReader()    // convert image to base64
+                    const reader = new FileReader()
                     reader.readAsDataURL(img)
                     reader.onload = () => {
                          setObject({ ...object, Image: reader.result })
                     }
                     break;
-               case "Tags":
-                    const keywords = field.value.toLowerCase().split(', ')     // create array of keywords
+               case "Tags":   // create array of keywords & store
+                    const keywords = field.value.toLowerCase().split(', ')
                     setObject({ ...object, Tags: keywords })
                     break;
-               case "Size":   // create array of sizes
+               case "Size":   // create array of sizes & store
                     let checkedSizes = []
                     const sizeFields = document.querySelectorAll("input[name=Size]:checked")
                     sizeFields.forEach(item => checkedSizes = [...checkedSizes, item.id])
                     setObject({ ...object, Sizes: checkedSizes })
                     break;
-               default:
+               default:       // store rest of fields
                     const newObject = { ...object }
                     newObject[field.name] = field.value
                     setObject(newObject)

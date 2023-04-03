@@ -19,6 +19,7 @@ shirt, men's shirt
 hoodie, men's hoodie
 jacket, men's jacket
 joggers, men's joggers
+joggers, men's joggers, side-stripes
 }
 
 SKU: DDMMYYTNCHHMMSSF (310323TFB125930M)
