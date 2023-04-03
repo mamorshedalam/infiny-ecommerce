@@ -1,13 +1,13 @@
 import { useState } from "react";
 import ProductCart from "../../components/Cart/productCart";
 import SidebarCart from "../../components/Filter/productFilter";
-import useLoadData from "../../hooks/useLoadData";
 import HeroSection from "../../modules/hero";
 import InfiniteScroll from 'react-infinite-scroll-component';
+import useLoadData from "../../hooks/useLoadData";
 
 export default function Shop() {
      const [lastSKU, setLastSKU] = useState(" ")
-     const { status, hasMore, data } = useLoadData(12, lastSKU)  // PARSING LAST DATA SKU FOR LOAD NEW DATA
+     const { status, hasMore, data } = useLoadData(lastSKU, 12)  // PARSING LAST DATA SKU FOR LOAD NEW DATA
 
      function nextSKU() {     // FINDING LAST DATA SKU
           if (data.length > 0) {

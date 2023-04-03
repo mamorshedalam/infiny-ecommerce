@@ -1,29 +1,23 @@
 import { useEffect, useReducer, useRef, useState } from "react";
-import { get, getDatabase, orderByKey, query, ref, limitToFirst, startAfter} from "firebase/database";
+import { get, getDatabase, query, ref, orderByChild, equalTo, orderByKey, orderByValue, limitToLast } from "firebase/database";
 import { initialState, reducer } from '../reducers/stateReducer';
 
-export default function useLoadData(lastSKU, limit) {
+export default function useFilterData(child, value) {
      const effectRun = useRef(false)
      const [status, dispatch] = useReducer(reducer, initialState)
      const [data, setData] = useState([])
-     const [hasMore, setHasMore] = useState(true);
 
      useEffect(() => {
           if (effectRun.current === true) {
                async function fetchData() {
                     const db = getDatabase();
                     let dataRef;
-
-                    limit !== undefined ? dataRef = query(ref(db, 'products'), orderByKey(), startAfter(`${lastSKU}`), limitToFirst(limit))
-                         : dataRef = query(ref(db, 'products'), orderByKey())
-
+                    dataRef = query(ref(db, 'products'), orderByChild(`${child}`), equalTo(`${value}`), limitToLast(4))
                     await get(dataRef)
                          .then((snapshot) => {
                               dispatch({ type: "SUCCESS", loading: true })
                               if (snapshot.exists()) {
-                                   setData((prevData) => [...prevData, ...Object.values(snapshot.val())])
-                              } else {
-                                   setHasMore(false);
+                                   setData([...Object.values(snapshot.val())])
                               }
                          })
                          .catch((err) => {
@@ -35,6 +29,6 @@ export default function useLoadData(lastSKU, limit) {
                fetchData()
           }
           return () => { effectRun.current = true }
-     }, [lastSKU])
-     return { status, hasMore, data }
+     }, [value])
+     return { status, data }
 }

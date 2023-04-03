@@ -4,13 +4,13 @@ import ProductCart from '../../components/Cart/productCart'
 import saleImg from '../../assets/product-sale.png'
 import instagramImg from '../../assets/instagram-1.jpg'
 import Button from '../../components/Button/button'
-import useLoadData from '../../hooks/useLoadData'
+import useFilterData from '../../hooks/useFilterData'
 import { useState } from 'react'
 
 
 export default function Index() {
      const [active, setActive] = useState("new")
-     const { status, data } = useLoadData(4);
+     const { status, data } = useFilterData("Status", active);
 
      return (
           <main>
@@ -27,9 +27,9 @@ export default function Index() {
 
                <section className="sl-container py-24">
                     <ul className="flex items-center justify-center mb-10">
-                         <li onClick={() => setActive("best")} className={`font-bold text-2xl mr-20 ${active == "best" ? "text-neutral-900" : "text-zinc-400"}`}><button>Best Sellers</button></li>
+                         <li onClick={() => setActive("offer")} className={`font-bold text-2xl mr-20 ${active == "offer" ? "text-neutral-900" : "text-zinc-400"}`}><button>Offer Sellers</button></li>
                          <li onClick={() => setActive("new")} className={`font-bold text-2xl mr-20 ${active == "new" ? "text-neutral-900" : "text-zinc-400"}`}><button>New Arrivals</button></li>
-                         <li onClick={() => setActive("hot")} className={`font-bold text-2xl mr-20 ${active == "hot" ? "text-neutral-900" : "text-zinc-400"}`}><button>Hot Sales</button></li>
+                         <li onClick={() => setActive("sale")} className={`font-bold text-2xl mr-20 ${active == "sale" ? "text-neutral-900" : "text-zinc-400"}`}><button>Hot Sales</button></li>
                     </ul>
                     <div className="grid grid-cols-4 gap-6">
                          {data && data.map((product) => {
