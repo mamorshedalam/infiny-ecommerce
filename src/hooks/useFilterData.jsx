@@ -11,8 +11,7 @@ export default function useFilterData(child, value) {
           if (effectRun.current === true) {
                async function fetchData() {
                     const db = getDatabase();
-                    let dataRef;
-                    dataRef = query(ref(db, 'products'), orderByChild(`${child}`), equalTo(`${value}`), limitToLast(4))
+                    const dataRef = query(ref(db, 'products'), orderByChild(`${child}`), equalTo(`${value}`), limitToLast(4))
                     await get(dataRef)
                          .then((snapshot) => {
                               dispatch({ type: "SUCCESS", loading: true })

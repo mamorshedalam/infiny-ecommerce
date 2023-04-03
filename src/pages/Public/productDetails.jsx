@@ -3,6 +3,7 @@ import { child, get, getDatabase, ref } from "firebase/database";
 import { initialState, reducer } from '../../reducers/stateReducer';
 import Button from '../../components/Button/button';
 import { useParams } from 'react-router-dom';
+import FilterList from "../../modules/filterList";
 
 
 export default function ProductDetails() {
@@ -20,7 +21,6 @@ export default function ProductDetails() {
                          dispatch({ type: "SUCCESS", loading: true })
                          if (snapshot.exists()) {
                               setData(snapshot.val())
-                              // setData((prevData) => [...prevData, ...Object.values(snapshot.val())])
                          }
                     })
                     .catch((err) => {
@@ -98,19 +98,10 @@ export default function ProductDetails() {
                          <h4 className="font-bold text-xl mb-3">{data.Name}</h4>
                          <p>{data.Description}</p>
                     </section>
-                    {/* <section className="pt-20">
+                    <section className="py-20">
                          <h3 className="text-center font-bold text-3xl mb-10">Related Product</h3>
-                         <div className="flex flex-wrap">
-                              {itemArray && itemArray.map((item) => {
-                         return (
-                              <div key={item.key} className="basis-1/4 px-4">
-                                   <ProductCart product={item} />
-                              </div>
-                         )
-                    })
-                    }
-                         </div>
-                    </section> */}
+                         {data && <FilterList child="Category" value={data.Category} />}
+                    </section>
                </main>}
           </>
      )
