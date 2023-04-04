@@ -1,65 +1,39 @@
-import { useReducer, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { getDatabase, ref, set } from "firebase/database";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Input from "../../components/Input/inputField";
 import Button from "../../components/Button/button";
 import { initialState, reducer } from "../../reducers/stateReducer";
+import useLoadHighlight from "../../hooks/useLoadHighlight";
+import useLoadCategory from "../../hooks/useLoadCategory";
+import useLoadConsumer from "../../hooks/useLoadConsumer.jsx";
+import useLoadSize from "../../hooks/useLoadSize";
 
 
 export default function DashProductEdit() {
-     const { sku } = useParams()
      const navigate = useNavigate()
      const [status, dispatch] = useReducer(reducer, initialState)
+     const [sizeOption, setSizeOption] = useState("default")
      const [object, setObject] = useState({
           SKU: "",
           Brand: "",
           Name: "",
-          Status: "",
+          Highlight: "",
           Category: "",
           Reviews: "",
           Rating: "",
           Price: "",
           Image: "",
-          For: "",
+          Consumer: "",
           Description: "",
           Tags: [],
           Sizes: [],
      });
 
-     // assign value
-     const statusOptions = [
-          { value: 'new', label: 'New' },
-          { value: 'offer', label: 'Offer' },
-          { value: 'sale', label: 'Sale' },
-          { value: 'non', label: 'Non' }
-     ];
-     const categoryOptions = [
-          { value: "t-shirt-print", label: "Print T-shirt" },
-          { value: "t-shirt-plain", label: "Plain T-shirt" },
-          { value: "t-shirt-polo", label: "Polo T-shirt" },
-          { value: "t-shirt-sleeve", label: "Sleeve T-shirt" },
-          { value: "t-shirt-maggie", label: "Maggie T-shirt" },
-          { value: "shirt", label: "Shirt" },
-          { value: "panjabi", label: "Panjabi" },
-          { value: "hoodie", label: "Hoodie" },
-          { value: "jacket", label: "Jacket" },
-          { value: "joggers", label: "Joggers" },
-          { value: "trouser", label: "Trouser" },
-          { value: "shorts", label: "Shorts" },
-          { value: "underwear", label: "Underwear" },
-          { value: "jersey", label: "Jersey" },
-          { value: "kurti", label: "Kurti" },
-          { value: "tops", label: "Tops" },
-          { value: "socks", label: "Socks" },
-          { value: "mask", label: "Face Mask" },
-     ];
-     const forOptions = [
-          { value: "mens", label: "Mens" },
-          { value: "womens", label: "Womens" },
-          { value: "kids", label: "Kids" },
-          { value: "all", label: "All" }
-     ];
-     const sizeOptions = ["xxxl", "xxl", "xl", "l", "m", "s", "free"];
+     const { highlight } = useLoadHighlight()     // load highlight value from database
+     const { category } = useLoadCategory()       // load category value from database
+     const { consumer } = useLoadConsumer()       // load consumer value from database
+     const { sizes } = useLoadSize(sizeOption)     // load size value from database
 
      async function handleSubmit(e) {   // submit data
           e.preventDefault();
@@ -122,23 +96,29 @@ export default function DashProductEdit() {
                     break;
           }
      }
-
      return (
           <form onSubmit={(e) => handleSubmit(e)} method="post" className="grid grid-cols-12 w-full gap-5 text-sm">
                <Input operation={handleChange} name="SKU" type="text" classes="col-span-2 uppercase" />
                <Input operation={handleChange} name="Brand" type="text" classes="col-span-3" />
                <Input operation={handleChange} name="Name" type="text" classes="col-span-7" />
-               <Input operation={handleChange} name="Status" type="select" classes="col-span-2" options={statusOptions} />
-               <Input operation={handleChange} name="Category" type="select" classes="col-span-2" options={categoryOptions} />
+               {highlight && <Input operation={handleChange} name="Highlight" type="select" classes="col-span-2" options={highlight} />}
+               {category && <Input operation={handleChange} name="Category" type="select" classes="col-span-2" options={category} />}
                <Input operation={handleChange} name="Reviews" type="number" classes="col-span-2" />
                <Input operation={handleChange} name="Rating" type="number" classes="col-span-2" />
                <Input operation={handleChange} name="Price" type="number" classes="col-span-2" />
                <Input operation={handleChange} name="Image" type="file" classes="col-span-2" />
-               <Input operation={handleChange} name="For" type="select" classes="col-span-2" options={forOptions} />
+               {consumer && <Input operation={handleChange} name="Consumer" type="select" classes="col-span-2" options={consumer} />}
                <Input operation={handleChange} name="Tags" type="text" classes="col-span-4" />
-               <div className="col-span-1 flex items-center">
-                    <h5 className="font-bold mr-6">Size:</h5>
-                    {sizeOptions && sizeOptions.map((size, index) => (<Input key={index} operation={handleChange} name="Size" type="checkbox" id={size} classes="mr-6" />))}
+               <div className="col-span-1">
+                    <ul className="flex gap-2 font-semibold mb-2">
+                         <li className="bg-neutral-900 text-white px-2 py-px cursor-pointer"><button type="button" onClick={() => setSizeOption("default")}>Default</button></li>
+                         <li className="bg-neutral-900 text-white px-2 py-px cursor-pointer"><button type="button" onClick={() => setSizeOption("inch")}>Inch</button></li>
+                         <li className="bg-neutral-900 text-white px-2 py-px cursor-pointer"><button type="button" onClick={() => setSizeOption("kids")}>Kids</button></li>
+                    </ul>
+                    <div className="flex items-center">
+                         <h5 className="font-bold mr-2">Size:</h5>
+                         {sizes && sizes.map((size, index) => (<Input key={index} operation={handleChange} name="Size" type="checkbox" id={size} classes="mr-4" />))}
+                    </div>
                </div>
                <Input operation={handleChange} name="Description" type="textarea" classes="col-span-12 h-40" />
                <div className="col-span-12 text-right text-sm">

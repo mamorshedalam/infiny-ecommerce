@@ -1,13 +1,14 @@
 keywords:
 {
 t-shirt, solid color, plain t-shirt, men's t-shirt
-t-shirt, print t-shirt, men's t-shirt
+t-shirt, print t-shirt, men's t-shirt, designer t-shirt
 t-shirt, polo t-shirt, men's t-shirt
 sports, trouser, men's trouser, sports trouser
 t-shirt, kid's t-shirt, print t-shirt
 trouser, men's trouser
 jersey, men's jersey, sport jersey, sport t-shirt
 boxer, underwear, men's underware, men's boxer
+mask, face mask, men's mask, women's mask
 mask, face mask, kid's mask
 mask, face mask, women's mask
 trouser, kid's trouser, women's trouser
@@ -20,6 +21,154 @@ hoodie, men's hoodie
 jacket, men's jacket
 joggers, men's joggers
 joggers, men's joggers, side-stripes
+socks, men's socks, women's socks
+jeans, man'e jeans
 }
 
 SKU: DDMMYYTNCHHMMSSF (310323TFB125930M)
+
+Product List: {
+
+
+     
+     https://fabrilife.com/product/72091-fabrilife-mens-premium-designer-edition-t-shirt-youniverse
+     https://fabrilife.com/product/71920-fabrilife-mens-premium-short-sleeve-raglan-navy
+     https://fabrilife.com/product/72098-fabrilife-mens-premium-designer-edition-t-shirt-memento
+     https://fabrilife.com/product/72112-fabrilife-mens-premium-t-shirt-weekend
+     https://fabrilife.com/product/72064-fabrilife-mens-premium-t-shirt-interdimension
+     https://fabrilife.com/product/71924-fabrilife-mens-premium-short-sleeve-raglan-gray-melange
+     https://fabrilife.com/product/72022-fabrilife-mens-premium-t-shirt-street-light
+     https://fabrilife.com/product/71569-fabrilife-mens-premium-t-shirt-wolf
+     https://fabrilife.com/product/71491-mens-premium-blank-t-shirt-black
+     https://fabrilife.com/product/71667-mens-premium-blank-t-shirt-silver
+     https://fabrilife.com/product/71666-mens-premium-blank-t-shirt-olive
+     https://fabrilife.com/product/71485-mens-premium-blank-t-shirt-navy
+     https://fabrilife.com/product/72321-fabrilife-premium-elite-edition-double-pk-cotton-polo-green
+     https://fabrilife.com/product/71911-fabrilife-single-jersey-knitted-cotton-polo-chocolate
+     https://fabrilife.com/product/72123-fabrilife-premium-double-pk-cotton-polo-navy-blue
+     https://fabrilife.com/product/72306-fabrilife-premium-elite-edition-double-pk-cotton-polo-stellar
+     https://fabrilife.com/product/72332-fabrilife-designer-edition-single-jersey-knitted-cotton-polo-elite
+     https://fabrilife.com/product/71913-fabrilife-single-jersey-knitted-cotton-polo-gray-melange
+     https://fabrilife.com/product/72113-fabrilife-designer-edition-single-jersey-knitted-cotton-polo-grandy
+     https://fabrilife.com/product/72117-fabrilife-premium-double-pk-cotton-polo-green
+     https://fabrilife.com/product/72280-premium-casual-shirt-milan
+     https://fabrilife.com/product/72281-premium-casual-shirt-munich
+     https://fabrilife.com/product/72277-premium-casual-shirt-vienna
+     https://fabrilife.com/product/72283-premium-casual-shirt-dallas
+     https://fabrilife.com/product/71873-mens-urban-edition-premium-t-shirt-believe
+     https://fabrilife.com/product/71785-mens-premium-blank-full-sleeve-t-shirt-black
+     https://fabrilife.com/product/71735-premium-full-sleeve-raglan-t-shirt-navy
+     https://fabrilife.com/product/71775-mens-premium-blank-full-sleeve-t-shirt-charcoal
+     https://fabrilife.com/product/72272-mens-metro-edition-premium-t-shirt-authentic
+     https://fabrilife.com/product/72153-mens-premium-blank-full-sleeve-t-shirt-stellar
+     https://fabrilife.com/product/71880-mens-urban-edition-premium-t-shirt-inspired
+     https://fabrilife.com/product/71789-mens-premium-blank-full-sleeve-t-shirt-olive
+     https://fabrilife.com/product/72202-fabrilife-mens-premium-designer-edition-full-sleeve-t-shirt-stellar
+     https://fabrilife.com/product/72236-mens-premium-hoodie-x-factor-gray-melange
+     https://fabrilife.com/product/72243-mens-premium-hoodie-racing-navy
+     https://fabrilife.com/product/72249-mens-premium-hoodie-urban-charcoal
+     https://fabrilife.com/product/72251-mens-premium-hoodie-urban-gray-melange
+     https://fabrilife.com/product/72248-mens-premium-hoodie-urban-black
+     https://fabrilife.com/product/72238-mens-premium-jacket-cryogenic-ash
+     https://fabrilife.com/product/72212-mens-premium-bomber-jacket-camo
+     https://fabrilife.com/product/72239-mens-premium-jacket-sizzler-ash
+     https://fabrilife.com/product/72195-mens-premium-jacket-cryogenic-black
+     https://fabrilife.com/product/72254-mens-premium-joggers-navy
+     https://fabrilife.com/product/72253-mens-premium-joggers-black
+     https://fabrilife.com/product/72256-mens-premium-joggers-gray-melange
+     https://fabrilife.com/product/69092-mens-premium-trouser-black
+     https://fabrilife.com/product/71881-mens-premium-trouser-camo
+     https://fabrilife.com/product/72109-mens-premium-trouser-carbon
+     https://fabrilife.com/product/72078-mens-premium-trouser-ink-black
+     https://fabrilife.com/product/71470-mens-premium-trouser-endura
+     https://fabrilife.com/product/71982-fabrilife-sports-edition-shorts-kinetic
+     https://fabrilife.com/product/71979-fabrilife-sports-edition-shorts-strike
+     https://fabrilife.com/product/71978-fabrilife-sports-edition-shorts-dribble
+     https://fabrilife.com/product/71947-mens-premium-antibacterial-boxer-brief-black-1pc
+     https://fabrilife.com/product/72062-mens-premium-antibacterial-boxer-brief-maroon-1pc
+     https://fabrilife.com/product/71946-mens-premium-antibacterial-boxer-brief-charcoal-1pc
+     https://fabrilife.com/product/71949-mens-premium-antibacterial-boxer-brief-navy-1pc
+     https://fabrilife.com/product/72174-premium-antibacterial-sports-socks-playmaker-grey-melange
+     https://fabrilife.com/product/72172-premium-antibacterial-sports-socks-winger-black
+     https://fabrilife.com/product/72181-premium-antibacterial-sports-socks-raven-antha-melange
+     https://fabrilife.com/product/72180-premium-antibacterial-sports-socks-raven-chocolate
+     https://fabrilife.com/product/72186-premium-antibacterial-socks-diamond-antha-melange
+     https://fabrilife.com/product/72335-fabrilife-mens-premium-sports-edition-trouser-long-run
+     https://fabrilife.com/product/71816-mens-premium-track-trouser-black
+     https://fabrilife.com/product/72334-fabrilife-mens-premium-sports-edition-trouser-revel
+     https://fabrilife.com/product/72329-fabrilife-mens-premium-sports-edition-trouser-active
+     https://fabrilife.com/product/72328-fabrilife-mens-premium-sports-edition-trouser-trio
+     https://fabrilife.com/product/71810-mens-premium-track-trouser-grey-melange
+     https://fabrilife.com/product/72039-fabrilife-mens-premium-sports-t-shirt-athletica
+     https://fabrilife.com/product/72047-fabrilife-mens-premium-sports-t-shirt-frigate
+     https://fabrilife.com/product/72047-fabrilife-mens-premium-sports-t-shirt-frigate
+     https://fabrilife.com/product/72047-fabrilife-mens-premium-sports-t-shirt-frigate
+     https://fabrilife.com/product/72038-fabrilife-mens-premium-sports-t-shirt-heriot
+     https://fabrilife.com/product/72038-fabrilife-mens-premium-sports-t-shirt-heriot
+     https://fabrilife.com/product/72213-fabrilife-mens-premium-sports-full-sleeve-t-shirt-sheild
+     https://fabrilife.com/product/72213-fabrilife-mens-premium-sports-full-sleeve-t-shirt-sheild
+     https://fabrilife.com/product/71968-women-premium-tee-flora
+     https://fabrilife.com/product/71963-women-premium-tee-freda
+     https://fabrilife.com/product/71963-women-premium-tee-freda
+     https://fabrilife.com/product/71957-women-premium-tee-neith
+     https://fabrilife.com/product/71970-women-premium-tee-polaris
+     https://fabrilife.com/product/71964-women-premium-tee-ornate
+     https://fabrilife.com/product/71964-women-premium-tee-ornate
+     https://fabrilife.com/product/71682-woman-premium-trouser-black
+     https://fabrilife.com/product/71930-woman-premium-trouser-seattle
+     https://fabrilife.com/product/71930-woman-premium-trouser-seattle
+     https://fabrilife.com/product/71697-woman-premium-trouser-ice-blue
+     https://fabrilife.com/product/71679-woman-premium-trouser-navy
+     https://fabrilife.com/product/72083-kids-premium-polo-t-shirt-pow-pow
+     https://fabrilife.com/product/72084-kids-premium-polo-t-shirt-lets-play
+     https://fabrilife.com/product/72085-kids-premium-polo-t-shirt-cat-pack
+     https://fabrilife.com/product/72086-kids-premium-polo-t-shirt-wild-friends
+     https://fabrilife.com/product/71932-kids-premium-t-shirt-spiderman
+     https://fabrilife.com/product/71935-kids-premium-t-shirt-captain-america
+     https://fabrilife.com/product/71937-kids-premium-t-shirt-ironman
+     https://fabrilife.com/product/71933-kids-premium-t-shirt-thor
+     https://fabrilife.com/product/71933-kids-premium-t-shirt-thor
+     https://fabrilife.com/product/71934-kids-premium-t-shirt-hulk
+     https://fabrilife.com/product/71444-kids-premium-maggie-captain-america
+     https://fabrilife.com/product/71444-kids-premium-maggie-captain-america
+     https://fabrilife.com/product/71445-kids-premium-maggie-thor
+     https://fabrilife.com/product/71443-kids-premium-maggie-spiderman
+     https://fabrilife.com/product/71441-kids-premium-maggie-hulk
+     https://fabrilife.com/product/71758-kids-premium-full-sleeve-t-shirt-captain-america
+     https://fabrilife.com/product/71756-kids-premium-full-sleeve-t-shirt-spiderman
+     https://fabrilife.com/product/71757-kids-premium-full-sleeve-t-shirt-ironman
+     https://fabrilife.com/product/71505-kids-premium-blank-t-shirt-black
+     https://fabrilife.com/product/71505-kids-premium-blank-t-shirt-black
+     https://fabrilife.com/product/72071-kids-premium-blank-t-shirt-sky-blue
+     https://fabrilife.com/product/71838-kids-premium-blank-t-shirt-olive
+     https://fabrilife.com/product/71496-kids-premium-blank-t-shirt-white
+     https://fabrilife.com/product/71585-kids-premium-cotton-shorts-black
+     https://fabrilife.com/product/71597-kids-premium-cotton-shorts-olive
+     https://fabrilife.com/product/71597-kids-premium-cotton-shorts-olive
+     https://fabrilife.com/product/71581-kids-premium-cotton-shorts-navy
+     https://fabrilife.com/product/71596-kids-premium-cotton-shorts-anthra-melange
+     https://fabrilife.com/product/71587-kids-premium-cotton-shorts-charcoal
+     https://fabrilife.com/product/71587-kids-premium-cotton-shorts-charcoal
+     https://fabrilife.com/product/71587-kids-premium-cotton-shorts-charcoal
+     https://fabrilife.com/product/71742-premium-boys-trouser-captain-america
+     https://fabrilife.com/product/70354-premium-girls-trouser-blue-gold
+     https://fabrilife.com/product/71748-premium-girls-trouser-cream
+     https://fabrilife.com/product/71749-premium-girls-trouser-sky-blue
+     https://fabrilife.com/product/71749-premium-girls-trouser-sky-blue
+     https://fabrilife.com/product/70355-premium-girls-trouser-floral-pink
+     https://fabrilife.com/product/70352-premium-girls-trouser-block-paste
+     https://fabrilife.com/product/70352-premium-girls-trouser-block-paste
+     https://fabrilife.com/product/53421-premium-cotton-face-mask-denim
+     https://fabrilife.com/product/53421-premium-cotton-face-mask-denim
+     https://fabrilife.com/product/53426-premium-cotton-face-mask-black
+     https://fabrilife.com/product/53426-premium-cotton-face-mask-black
+     https://fabrilife.com/product/69712-spider-kids-designer-edition-cotton-mask
+     https://fabrilife.com/product/69711-rider-kids-designer-edition-cotton-mask
+     https://fabrilife.com/product/69711-rider-kids-designer-edition-cotton-mask
+     https://fabrilife.com/product/69719-foresty-kids-designer-edition-cotton-mask
+     https://fabrilife.com/product/69420-yale-womens-designer-edition-mask-wdm-03
+     https://fabrilife.com/product/71435-alpha-designer-edition-mask
+     https://fabrilife.com/product/70257-casanova-exclusive-embroidery-edition-mask
+     https://fabrilife.com/product/69425-floral-blush-womens-designer-edition-mask-wdm-08
+     https://fabrilife.com/product/69424-aspen-womens-designer-edition-mask-wdm-07
+}
