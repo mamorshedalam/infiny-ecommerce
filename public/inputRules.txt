@@ -16,6 +16,8 @@ trouser, kid's trouser, men's trouser
 shorts, kid's shorts
 t-shirt, solid color, plain t-shirt, kid's t-shirt
 sleeve t-shirt, men's t-shirt, t-shirt
+kid's t-shirt, t-shirt, maggie t-shirt
+kid's t-shirt, polo t-shirt, t-shirt
 shirt, men's shirt
 hoodie, men's hoodie
 jacket, men's jacket

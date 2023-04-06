@@ -28,8 +28,8 @@ export default function DashTable({ data }) {
                          <th className="border p-2">sku</th>
                          <th className="border p-2">brand</th>
                          <th className="border p-2">name</th>
-                         <th className="border p-2">status</th>
-                         <th className="border p-2">for</th>
+                         <th className="border p-2">Highlight</th>
+                         <th className="border p-2">Consumer</th>
                          <th className="border p-2">category</th>
                          <th className="border p-2">reviews</th>
                          <th className="border p-2">rating</th>
@@ -48,8 +48,8 @@ export default function DashTable({ data }) {
                               <td className="border p-1">{product.SKU}</td>
                               <td className="border p-1">{product.Brand}</td>
                               <td className="border p-1">{product.Name}</td>
-                              <td className="border p-1">{product.Status}</td>
-                              <td className="border p-1">{product.For}</td>
+                              <td className="border p-1">{product.Highlight}</td>
+                              <td className="border p-1">{product.Consumer}</td>
                               <td className="border p-1">{product.Category}</td>
                               <td className="border p-1">{product.Reviews}</td>
                               <td className="border p-1">{product.Rating}</td>

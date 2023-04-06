@@ -1,12 +1,12 @@
 import { useEffect, useReducer, useRef, useState } from "react";
-import { get, getDatabase, orderByKey, query, ref, limitToFirst, startAfter} from "firebase/database";
+import { get, getDatabase, orderByKey, query, ref, limitToFirst, startAfter } from "firebase/database";
 import { initialState, reducer } from '../reducers/stateReducer';
 
 export default function useLoadData(lastSKU, limit) {
      const effectRun = useRef(false)
      const [status, dispatch] = useReducer(reducer, initialState)
      const [data, setData] = useState([])
-     const [hasMore, setHasMore] = useState(true);
+     const [hasMore, setHasMore] = useState(false);
 
      useEffect(() => {
           if (effectRun.current === true) {
@@ -14,7 +14,8 @@ export default function useLoadData(lastSKU, limit) {
                     const db = getDatabase();
                     let dataRef;
 
-                    limit !== undefined ? dataRef = query(ref(db, 'products'), orderByKey(), startAfter(`${lastSKU}`), limitToFirst(limit))
+                    // limit !== undefined ? dataRef = query(ref(db, 'products'), orderByKey(), startAfter(`${lastSKU}`), limitToFirst(limit))
+                    limit !== undefined ? dataRef = query(ref(db, 'products'), orderByKey())
                          : dataRef = query(ref(db, 'products'), orderByKey())
 
                     await get(dataRef)

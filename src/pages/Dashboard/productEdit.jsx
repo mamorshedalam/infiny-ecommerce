@@ -33,7 +33,7 @@ export default function DashProductEdit() {
      const { highlight } = useLoadHighlight()     // load highlight value from database
      const { category } = useLoadCategory()       // load category value from database
      const { consumer } = useLoadConsumer()       // load consumer value from database
-     const { sizes } = useLoadSize(sizeOption)     // load size value from database
+     const { sizes } = useLoadSize(sizeOption)    // load size value from database
 
      async function handleSubmit(e) {   // submit data
           e.preventDefault();
@@ -44,13 +44,13 @@ export default function DashProductEdit() {
                     SKU: object["SKU"].toUpperCase(),
                     Brand: object["Brand"].toLowerCase(),
                     Name: object["Name"],
-                    Status: object["Status"],
+                    Highlight: object["Highlight"],
                     Category: object["Category"],
                     Reviews: object["Reviews"],
                     Rating: object["Rating"],
                     Price: object["Price"],
                     Image: object["Image"],
-                    For: object["For"],
+                    Consumer: object["Consumer"],
                     Description: object["Description"],
                     Tags: object["Tags"],
                     Sizes: object["Sizes"]
