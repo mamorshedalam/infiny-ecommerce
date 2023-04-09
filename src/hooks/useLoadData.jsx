@@ -6,7 +6,7 @@ export default function useLoadData(lastSKU, limit) {
      const effectRun = useRef(false)
      const [status, dispatch] = useReducer(reducer, initialState)
      const [data, setData] = useState([])
-     const [hasMore, setHasMore] = useState(false);
+     // const [hasMore, setHasMore] = useState(false);
 
      useEffect(() => {
           if (effectRun.current === true) {
@@ -16,15 +16,15 @@ export default function useLoadData(lastSKU, limit) {
 
                     // limit !== undefined ? dataRef = query(ref(db, 'products'), orderByKey(), startAfter(`${lastSKU}`), limitToFirst(limit))
                     limit !== undefined ? dataRef = query(ref(db, 'products'), orderByKey())
-                         : dataRef = query(ref(db, 'products'), orderByKey())
+                         : dataRef = query(ref(db, 'products'), orderByKey(), limitToFirst(15))
 
                     await get(dataRef)
                          .then((snapshot) => {
-                              dispatch({ type: "SUCCESS", loading: true })
+                              dispatch({ type: "SUCCESS", loading: false })
                               if (snapshot.exists()) {
-                                   setData((prevData) => [...prevData, ...Object.values(snapshot.val())])
+                                   setData((prevData) => [...prevData, ...Object.values(snapshot.val())]);
                               } else {
-                                   setHasMore(false);
+                                   // setHasMore(false);
                               }
                          })
                          .catch((err) => {
@@ -37,5 +37,5 @@ export default function useLoadData(lastSKU, limit) {
           }
           return () => { effectRun.current = true }
      }, [lastSKU])
-     return { status, hasMore, data }
+     return { status, data }
 }

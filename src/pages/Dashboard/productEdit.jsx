@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from "react";
+import { useReducer, useState } from "react";
 import { getDatabase, ref, set } from "firebase/database";
 import { useNavigate } from "react-router-dom";
 import Input from "../../components/Input/inputField";
@@ -58,7 +58,7 @@ export default function DashProductEdit() {
                     .then(() => {
                          dispatch({ type: "SUCCESS", loading: true });
                          alert("Uploaded successfully!");
-                         // navigate("/dashboard");
+                         navigate("/dashboard");
                     })
                     .catch((err) => {
                          console.log(err);
