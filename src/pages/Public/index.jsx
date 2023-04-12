@@ -10,7 +10,7 @@ import { useState } from 'react'
 
 export default function Index() {
      const [active, setActive] = useState("new")
-     const { status, data } = useFilterData("Status", active);
+     const { status, data } = useFilterData("Highlight", active);
 
      return (
           <main>

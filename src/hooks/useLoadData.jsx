@@ -12,11 +12,11 @@ export default function useLoadData(lastSKU, limit) {
           if (effectRun.current === true) {
                async function fetchData() {
                     const db = getDatabase();
-                    let dataRef;
+                    // let dataRef;
 
                     // limit !== undefined ? dataRef = query(ref(db, 'products'), orderByKey(), startAfter(`${lastSKU}`), limitToFirst(limit))
-                    limit !== undefined ? dataRef = query(ref(db, 'products'), orderByKey())
-                         : dataRef = query(ref(db, 'products'), orderByKey(), limitToFirst(15))
+                    // : dataRef = query(ref(db, 'products'), orderByKey())
+                    const dataRef = query(ref(db, 'products'), orderByKey())
 
                     await get(dataRef)
                          .then((snapshot) => {

@@ -1,13 +1,20 @@
 import { useState } from "react";
 import ProductCart from "../../components/Cart/productCart";
-import SidebarCart from "../../components/Filter/productFilter";
+import ProductFilter from "../../components/Filter/productFilter";
 import HeroSection from "../../modules/hero";
-import InfiniteScroll from 'react-infinite-scroll-component';
 import useLoadData from "../../hooks/useLoadData";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import useLoadHighlight from "../../hooks/useLoadHighlight";
+import useLoadCategory from "../../hooks/useLoadCategory";
+import useLoadConsumer from "../../hooks/useLoadConsumer";
 
 export default function Shop() {
      const [lastSKU, setLastSKU] = useState(" ")
-     const { status, hasMore, data } = useLoadData(lastSKU, 12)  // PARSING LAST DATA SKU FOR LOAD NEW DATA
+     const { status, data } = useLoadData(lastSKU, 12)  // PARSING LAST DATA SKU FOR LOAD NEW DATA
+     const { highlight } = useLoadHighlight()     // load highlight value from database
+     const { category } = useLoadCategory()       // load category value from database
+     const { consumer } = useLoadConsumer()       // load consumer value from database
 
      function nextSKU() {     // FINDING LAST DATA SKU
           if (data.length > 0) {
@@ -21,19 +28,21 @@ export default function Shop() {
 
                <div className="sl-container flex flex-wrap py-24">
 
-                    <aside className="basis-1/4 px-4">
+                    <aside className="basis-1/5 px-4">
                          <form className="relative mb-12">
                               <input type="text" placeholder="Search..." className="border pl-5 py-2.5" />
-                              <button className="absolute right-2 top-1/2 -translate-y-1/2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 fill-zinc-400 -scale-x-100"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" /></svg></button>
+                              <button className="absolute right-2 top-1/2 -translate-y-1/2"><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
                          </form>
 
-                         <SidebarCart />
+                         <ProductFilter name="consumer" data={consumer} />
+                         <ProductFilter name="category" data={category} />
+                         <ProductFilter name="highlight" data={highlight} />
                     </aside>
 
-                    <main className="basis-3/4 px-4">
+                    <main className="basis-4/5 px-4">
                          <div className="flex flex-wrap justify-between items-center px-4 mb-10">
                               <div>
-                                   <p>Showing <span>1–12</span> of <span>126</span> results</p>
+                                   <p>Showing {data.length} results</p>
                               </div>
                               <div className="flex items-center">
                                    <p className="w-20">Sort by:</p>
@@ -44,15 +53,11 @@ export default function Shop() {
                                    </select>
                               </div>
                          </div>
-                         <InfiniteScroll className="grid grid-cols-3 gap-6"
-                              dataLength={data.length}
-                              hasMore={hasMore}
-                              next={nextSKU}
-                              loader={<h4 className="text-center">Loading...</h4>}>
+                         <div className="grid grid-cols-3 gap-6">
                               {data && data.map((product) => (
-                                   <div key={product["SKU"]} className="col-span-1"><ProductCart product={product} /></div>
+                                   <div key={product["SKU"]}><ProductCart product={product} /></div>
                               ))}
-                         </InfiniteScroll>
+                         </div>
                     </main>
                </div>
           </>
