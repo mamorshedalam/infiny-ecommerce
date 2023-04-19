@@ -14,7 +14,7 @@ export default function useLoadSize(child) {
                     const dataRef = query(ref(db, 'size/' + child), orderByKey())
                     await get(dataRef)
                          .then((snapshot) => {
-                              dispatch({ type: "SUCCESS", loading: true })
+                              dispatch({ type: "SUCCESS", loading: false })
                               if (snapshot.exists()) {
                                    setSizes([...Object.values(snapshot.val())])
                               }

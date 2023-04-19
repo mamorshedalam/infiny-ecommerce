@@ -6,6 +6,7 @@ import instagramImg from '../../assets/instagram-1.jpg'
 import Button from '../../components/Button/button'
 import useFilterData from '../../hooks/useFilterData'
 import { useState } from 'react'
+import LoadingMessage from '../../components/Spinner/loadingMessage'
 
 
 export default function Index() {
@@ -31,16 +32,14 @@ export default function Index() {
                          <li onClick={() => setActive("new")} className={`font-bold text-2xl mr-20 ${active == "new" ? "text-neutral-900" : "text-zinc-400"}`}><button>New Arrivals</button></li>
                          <li onClick={() => setActive("sale")} className={`font-bold text-2xl mr-20 ${active == "sale" ? "text-neutral-900" : "text-zinc-400"}`}><button>Hot Sales</button></li>
                     </ul>
-                    <div className="grid grid-cols-4 gap-6">
-                         {data && data.map((product) => {
-                              return (
-                                   <div key={product.SKU} className="col-span-1">
-                                        <ProductCart product={product} />
-                                   </div>
-                              )
-                         })
-                         }
-                    </div>
+                    {status.error && <p className="text-center">There wsa an error!</p>}
+                    {!status.loading && data.length === 0 && <p className="text-center">No data found</p>}
+                    {status.loading && <LoadingMessage text="Product" />}
+                    {data.length > 0 && <div className="grid grid-cols-4 gap-6">
+                         {data && data.map((product) => (
+                              <ProductCart key={product["SKU"]} product={product} />
+                         ))}
+                    </div>}
                </section>
 
                <section className="bg-stone-100 py-32">

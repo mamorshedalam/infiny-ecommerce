@@ -4,6 +4,7 @@ import { initialState, reducer } from '../../reducers/stateReducer';
 import Button from '../../components/Button/button';
 import { useParams } from 'react-router-dom';
 import FilterList from "../../modules/filterList";
+import LoadingMessage from "../../components/Spinner/loadingMessage";
 
 
 export default function ProductDetails() {
@@ -18,7 +19,7 @@ export default function ProductDetails() {
                const dbRef = ref(getDatabase());
                await get(child(dbRef, `products/${sku}`))
                     .then((snapshot) => {
-                         dispatch({ type: "SUCCESS", loading: true })
+                         dispatch({ type: "SUCCESS", loading: false })
                          if (snapshot.exists()) {
                               setData(snapshot.val())
                          }
@@ -31,10 +32,12 @@ export default function ProductDetails() {
           }
           fetchData()
      }, [sku])
-
      return (
           <>
-               {status.loading && <main className="sl-container">
+               {status.error && <p className="text-center">There wsa an error!</p>}
+               {!status.loading && data === null && <p className="text-center">No data found</p>}
+               {status.loading && <LoadingMessage text="Product" />}
+               {data && <main className="sl-container">
                     <section className="flex pt-10">
                          <div className="basis-1/2">
                               <img src={data.Image} alt="" className="max-h-96 object-contain" />
@@ -61,7 +64,8 @@ export default function ProductDetails() {
                                         <li className="mb-2"><span className="font-normal text-zinc-400">SKU: </span>{data.SKU}</li>
                                         <li className="mb-2 capitalize"><span className="font-normal text-zinc-400">Categories: </span>{data.Category}</li>
                                         <li className="mb-2 capitalize"><span className="font-normal text-zinc-400">Brand: </span>{data.Brand}</li>
-                                        <li className="mb-2"><span className="font-normal text-zinc-400">Tag: </span>{data.Tags.map((tag, index) => (<span key={index}>{tag}, </span>))}</li>
+                                        <li className="mb-2 capitalize"><span className="font-normal text-zinc-400">For: </span>{data.Consumer}</li>
+                                        {data.Tags && <li className="mb-2"><span className="font-normal text-zinc-400">Tag: </span>{data.Tags.map((tag, index) => (<span key={index}>{tag}, </span>))}</li>}
                                    </ul>
                               </div>
                               {/* <h3 className="font-bold text-4xl mb-6">$270.00 <span className="font-normal line-through text-zinc-400 text-xl ml-2.5">70.00</span></h3> */}
@@ -100,7 +104,11 @@ export default function ProductDetails() {
                     </section>
                     <section className="py-20">
                          <h3 className="text-center font-bold text-3xl mb-10">Related Product</h3>
-                         {data && <FilterList child="Category" value={data.Category} />}
+                         {data && <FilterList child="Category" value={data.Category} filterChild="Consumer" filterValue={data.Consumer} />}
+                    </section>
+                    <section className="pb-20">
+                         <h3 className="text-center font-bold text-3xl mb-10">This Brand's Product</h3>
+                         {data && <FilterList child="Brand" value={data.Brand} filterChild="Category" filterValue={data.Category} />}
                     </section>
                </main>}
           </>

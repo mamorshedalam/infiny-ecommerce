@@ -15,7 +15,7 @@ export default function useLoadHighlight() {
 
                     await get(dataRef)
                          .then((snapshot) => {
-                              dispatch({ type: "SUCCESS", loading: true })
+                              dispatch({ type: "SUCCESS", loading: false })
                               if (snapshot.exists()) {
                                    setHighlight([...Object.values(snapshot.val())])
                               }

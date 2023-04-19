@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ProductCart from "../../components/Cart/productCart";
+import LoadingMessage from "../../components/Spinner/loadingMessage";
 import ProductFilter from "../../components/Filter/productFilter";
 import HeroSection from "../../modules/hero";
 import useLoadData from "../../hooks/useLoadData";
@@ -10,18 +11,19 @@ import useLoadCategory from "../../hooks/useLoadCategory";
 import useLoadConsumer from "../../hooks/useLoadConsumer";
 
 export default function Shop() {
-     const [lastSKU, setLastSKU] = useState(" ")
-     const { status, data } = useLoadData(lastSKU, 12)  // PARSING LAST DATA SKU FOR LOAD NEW DATA
-     const { highlight } = useLoadHighlight()     // load highlight value from database
-     const { category } = useLoadCategory()       // load category value from database
-     const { consumer } = useLoadConsumer()       // load consumer value from database
+     // const [lastSKU, setLastSKU] = useState(" ")
+     const { status, data } = useLoadData() // PARSING LAST DATA SKU FOR LOAD NEW DATA
+     const { highlight } = useLoadHighlight()          // load highlight value from database
+     const { category } = useLoadCategory()            // load category value from database
+     const { consumer } = useLoadConsumer()            // load consumer value from database
 
-     function nextSKU() {     // FINDING LAST DATA SKU
-          if (data.length > 0) {
-               const last = data[data.length - 1];
-               setLastSKU(last.SKU)
-          }
-     }
+     /*   function nextSKU() {     // FINDING LAST DATA SKU
+            if (data.length > 0) {
+                 const last = data[data.length - 1];
+                 setLastSKU(last.SKU)
+            }
+       } */
+
      return (
           <>
                <HeroSection />
@@ -53,11 +55,14 @@ export default function Shop() {
                                    </select>
                               </div>
                          </div>
-                         <div className="grid grid-cols-3 gap-6">
+                         {status.error && <p className="text-center">There wsa an error!</p>}
+                         {!status.loading && data.length === 0 && <p className="text-center">No data found</p>}
+                         {status.loading && <LoadingMessage text="Product" />}
+                         {data.length > 0 && <div className="grid grid-cols-3 gap-6">
                               {data && data.map((product) => (
-                                   <div key={product["SKU"]}><ProductCart product={product} /></div>
+                                   <ProductCart key={product["SKU"]} product={product} />
                               ))}
-                         </div>
+                         </div>}
                     </main>
                </div>
           </>

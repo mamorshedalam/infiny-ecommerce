@@ -1,0 +1,32 @@
+.spinner {
+     animation: spin 2s linear infinite;
+     display: inline;
+ }
+ 
+ .spinner .path {
+     stroke-linecap: round;
+     animation: spinner-path 1.5s ease-in-out infinite;
+ }
+ 
+ @keyframes spin {
+     100% {
+         transform: spin(360deg);
+     }
+ }
+ 
+ @keyframes spinner-path {
+     0% {
+         stroke-dasharray: 1, 150;
+         stroke-dashoffset: 0;
+     }
+ 
+     50% {
+         stroke-dasharray: 90, 150;
+         stroke-dashoffset: -35;
+     }
+ 
+     100% {
+         stroke-dasharray: 90, 150;
+         stroke-dashoffset: -124;
+     }
+ } 
