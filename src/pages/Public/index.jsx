@@ -5,7 +5,7 @@ import saleImg from '../../assets/product-sale.png'
 import instagramImg from '../../assets/instagram-1.jpg'
 import Button from '../../components/Button/button'
 import useFilterData from '../../hooks/useFilterData'
-import { useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import LoadingMessage from '../../components/Spinner/loadingMessage'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from "swiper";
@@ -15,6 +15,25 @@ import 'swiper/css';
 export default function Index() {
      const [active, setActive] = useState("new")
      const { status, data } = useFilterData("Highlight", active);
+
+     // COUNTDOWN
+     const parsedDeadline = useMemo(() => Date.parse("November, 12, 2023"), ["November, 12, 2023"]);
+     const [time, setTime] = useState(parsedDeadline - Date.now());
+
+     const SECOND = 1000;
+     const MINUTE = SECOND * 60;
+     const HOUR = MINUTE * 60;
+     const DAY = HOUR * 24;
+
+     useEffect(() => {
+          const interval = setInterval(
+               () => setTime(parsedDeadline - Date.now()),
+               1000,
+          );
+
+          return () => clearInterval(interval);
+     }, [parsedDeadline]);
+
 
      return (
           <main>
@@ -39,12 +58,12 @@ export default function Index() {
                     {!status.loading && data.length === 0 && <p className="text-center">No data found</p>}
                     {status.loading && <LoadingMessage text="Product" />}
                     {data.length > 0 && <Swiper modules={[Autoplay]}
-                                   spaceBetween={30}
-                                   slidesPerView={4}
-                                   loop={true}
-                                   autoplay={{
-                                        delay: 1500,
-                                   }}>
+                         spaceBetween={30}
+                         slidesPerView={4}
+                         loop={true}
+                         autoplay={{
+                              delay: 1500,
+                         }}>
                          {data && data.map((product, index) => (
                               index < 6 ? <SwiperSlide key={product["SKU"]}><ProductCart product={product} /></SwiperSlide> : ""
                          ))}
@@ -68,19 +87,19 @@ export default function Index() {
                               <h3 className="font-bold leading-tight text-4xl">Multi-pocket Chest Bag Black</h3>
                               <div className="flex flex-wrap my-5">
                                    <div className="basis-1/4 text-center">
-                                        <span className="relative block font-bold text-4xl mb-2 after:absolute after:content-[':'] after:right-0 after:top-1/2 after:-translate-y-1/2">30</span>
+                                        <span className="relative block font-bold text-4xl mb-2 after:absolute after:content-[':'] after:right-0 after:top-1/2 after:-translate-y-1/2">{`${Math.floor(time / DAY)}`}</span>
                                         <p>Days</p>
                                    </div>
                                    <div className="basis-1/4 text-center">
-                                        <span className="relative block font-bold text-4xl mb-2 after:absolute after:content-[':'] after:right-0 after:top-1/2 after:-translate-y-1/2">04</span>
+                                        <span className="relative block font-bold text-4xl mb-2 after:absolute after:content-[':'] after:right-0 after:top-1/2 after:-translate-y-1/2">{`${Math.floor(time / HOUR) % 24}`}</span>
                                         <p>Hours</p>
                                    </div>
                                    <div className="basis-1/4 text-center">
-                                        <span className="relative block font-bold text-4xl mb-2 after:absolute after:content-[':'] after:right-0 after:top-1/2 after:-translate-y-1/2">59</span>
+                                        <span className="relative block font-bold text-4xl mb-2 after:absolute after:content-[':'] after:right-0 after:top-1/2 after:-translate-y-1/2">{`${Math.floor(time / MINUTE) % 60}`}</span>
                                         <p>Minutes</p>
                                    </div>
                                    <div className="basis-1/4 text-center">
-                                        <span className="relative block font-bold text-4xl mb-2">21</span>
+                                        <span className="relative block font-bold text-4xl mb-2">{`${Math.floor(time / SECOND) % 60}`}</span>
                                         <p>Seconds</p>
                                    </div>
                               </div>
