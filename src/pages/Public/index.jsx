@@ -7,6 +7,9 @@ import Button from '../../components/Button/button'
 import useFilterData from '../../hooks/useFilterData'
 import { useState } from 'react'
 import LoadingMessage from '../../components/Spinner/loadingMessage'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from "swiper";
+import 'swiper/css';
 
 
 export default function Index() {
@@ -35,11 +38,17 @@ export default function Index() {
                     {status.error && <p className="text-center">There wsa an error!</p>}
                     {!status.loading && data.length === 0 && <p className="text-center">No data found</p>}
                     {status.loading && <LoadingMessage text="Product" />}
-                    {data.length > 0 && <div className="grid grid-cols-4 gap-6">
-                         {data && data.map((product) => (
-                              <ProductCart key={product["SKU"]} product={product} />
+                    {data.length > 0 && <Swiper modules={[Autoplay]}
+                                   spaceBetween={30}
+                                   slidesPerView={4}
+                                   loop={true}
+                                   autoplay={{
+                                        delay: 1500,
+                                   }}>
+                         {data && data.map((product, index) => (
+                              index < 6 ? <SwiperSlide key={product["SKU"]}><ProductCart product={product} /></SwiperSlide> : ""
                          ))}
-                    </div>}
+                    </Swiper>}
                </section>
 
                <section className="bg-stone-100 py-32">
