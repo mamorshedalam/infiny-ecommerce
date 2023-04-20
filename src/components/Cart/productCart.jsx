@@ -8,6 +8,34 @@ export default function ProductCart({ product }) {
 
      const { SKU, Name, Highlight, Image, Price, Sizes } = product;
 
+     function handleSubmit(e) {
+          e.preventDefault();
+          let localData = JSON.parse(localStorage.getItem("localData")) || [];
+          let dataExists = false;
+
+          const storeObj = {
+               SKU: SKU,
+               Name: Name,
+               Image: Image,
+               Price: Price,
+               Size: chooseSize,
+               Quantity: 1,
+          }
+
+          for (let i = 0; i < localData.length; i++) {
+               if (storeObj.SKU === localData[i].SKU) {
+                    localData[i] = storeObj;
+                    dataExists = true;
+               }
+          }
+
+          if (!dataExists) {
+               localData.push(storeObj)
+          }
+
+          localStorage.setItem("localData", JSON.stringify(localData))
+     }
+
      return (
           <div className="group relative overflow-hidden">
                <div className="relative">
@@ -18,9 +46,9 @@ export default function ProductCart({ product }) {
                     </ul>
                     <Link to={`/shop/${SKU}`} className="absolute inset-0 w-full h-full z-20" />
                </div>
-               <div className="relative mt-2">
+               <form onSubmit={handleSubmit} className="relative mt-2">
                     <h3 className="font-semibold truncate opacity-100 group-hover:opacity-0 sl-animated-lg">{Name}</h3>
-                    <a href="" className="absolute -top-10 left-0 font-bold text-red-500 opacity-0 group-hover:top-0 group-hover:opacity-100 sl-animated-xl">+ Add To Cart</a>
+                    <button href="" className="absolute -top-10 left-0 font-bold text-red-500 opacity-0 group-hover:top-0 group-hover:opacity-100 sl-animated-xl">+ Add To Cart</button>
                     <ul className="flex my-2">
                          <li><svg className="w-4 fill-orange-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></li>
                          <li><svg className="w-4 fill-orange-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg></li>
@@ -40,7 +68,7 @@ export default function ProductCart({ product }) {
                               }
                          </ul>
                     </div>
-               </div>
+               </form>
           </div>
      )
 }

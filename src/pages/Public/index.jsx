@@ -17,7 +17,7 @@ export default function Index() {
      const { status, data } = useFilterData("Highlight", active);
 
      // COUNTDOWN
-     const parsedDeadline = useMemo(() => Date.parse("November, 12, 2023"), ["November, 12, 2023"]);
+     const parsedDeadline = useMemo(() => Date.parse("November, 12, 2023"), []);
      const [time, setTime] = useState(parsedDeadline - Date.now());
 
      const SECOND = 1000;
