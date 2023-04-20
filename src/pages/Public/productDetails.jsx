@@ -28,10 +28,37 @@ export default function ProductDetails() {
                          console.log(err);
                          dispatch({ type: "FAIL", error: "Fail to load Data, Try Again!" });
                     })
-
           }
           fetchData()
      }, [sku])
+
+     function handleSubmit(e) {
+          e.preventDefault();
+          let localData = JSON.parse(localStorage.getItem("localData")) || [];
+          let dataExists = false;
+
+          const storeObj = {
+               SKU: data.SKU,
+               Name: data.Name,
+               Image: data.Image,
+               Price: data.Price,
+               Size: chooseSize,
+               Quantity: count,
+          }
+
+          for (let i = 0; i < localData.length; i++) {
+               if (storeObj.SKU === localData[i].SKU) {
+                    localData[i] = storeObj;
+                    dataExists = true;
+               }
+          }
+
+          if (!dataExists) {
+               localData.push(storeObj)
+          }
+
+          localStorage.setItem("localData", JSON.stringify(localData))
+     }
      return (
           <>
                {status.error && <p className="text-center">There wsa an error!</p>}
@@ -47,7 +74,7 @@ export default function ProductDetails() {
                          <li className="border cursor-pointer p-2"><img onClick={() => setBigImg(bigImg3)} className="h-20 object-contain" src={bigImg3} alt="" /></li>
                     </ul> */}
                          </div>
-                         <div className="basis-1/2">
+                         <form onSubmit={handleSubmit} className="basis-1/2">
                               <h2 className="font-bold text-2xl">{data.Name}</h2>
                               <div className="flex items-center my-3">
                                    <ul className="flex mr-2">
@@ -84,18 +111,16 @@ export default function ProductDetails() {
                               </div>
                               <div className="flex items-start my-9">
                                    <div className="flex font-bold items-center fill-neutral-900 mr-10 mt-3">
-                                        <button onClick={() => setCount(Math.max(count - 1, 1))}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="w-4"><path d="M416 256c0 17.7-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z" /></svg></button>
+                                        <button type="button" onClick={() => setCount(Math.max(count - 1, 1))}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="w-4"><path d="M416 256c0 17.7-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z" /></svg></button>
                                         <input id="inputValue" type="text" value={count} onChange={(e) => { setCount(parseInt(e.target.value)) }} className="w-12 text-center px-2 py-1" />
-                                        <button onClick={() => setCount(Math.max(count + 1, 1))}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="w-4"><path d="M240 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H32c-17.7 0-32 14.3-32 32s14.3 32 32 32H176V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H384c17.7 0 32-14.3 32-32s-14.3-32-32-32H240V80z" /></svg></button>
+                                        <button type="button" onClick={() => setCount(Math.max(count + 1, 1))}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="w-4"><path d="M240 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H32c-17.7 0-32 14.3-32 32s14.3 32 32 32H176V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H384c17.7 0 32-14.3 32-32s-14.3-32-32-32H240V80z" /></svg></button>
                                    </div>
                                    <div className="flex flex-col gap-4">
                                         <Button>add to cart</Button>
-                                        <Button variant="white">ADD TO WISHLIST</Button>
+                                        <Button type="button" variant="white">ADD TO WISHLIST</Button>
                                    </div>
                               </div>
-                              <div className="flex items-center">
-                              </div>
-                         </div>
+                         </form>
                     </section>
                     <section className="py-20">
                          <h3 className="text-center font-bold text-3xl mb-10">Description</h3>
