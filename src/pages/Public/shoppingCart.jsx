@@ -3,10 +3,10 @@ import CartList from "../../components/Table/cartTable";
 import Button from "../../components/Button/button"
 import HeroSection from "../../modules/hero";
 import Input from "../../components/Input/inputField";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 
 export default function ShoppingCart() {
-     const data = JSON.parse(localStorage.getItem('localData'))
+     const [data, setData] = useState(JSON.parse(localStorage.getItem('localData')))
      const navigate = useNavigate()
 
      const subTotal = useMemo(() => {
@@ -17,6 +17,13 @@ export default function ShoppingCart() {
           }
           return (subTotal)
      }, [data])
+
+     function handleDelete(sku) {
+          const filterData = data.filter(product => product.SKU !== sku)
+
+          localStorage.setItem("localData", JSON.stringify(filterData))
+          setData(filterData)
+     }
 
      return (
           <>
@@ -37,7 +44,7 @@ export default function ShoppingCart() {
                               <tbody>
                                    {
                                         data.map((product, index) => (
-                                             <CartList data={product} key={index} />
+                                             <CartList operation={handleDelete} data={product} key={index} />
                                         ))
                                    }
                               </tbody>
