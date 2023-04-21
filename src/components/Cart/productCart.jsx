@@ -1,10 +1,18 @@
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import AlertCart from '../Alert/alertCart';
 
 export default function ProductCart({ product }) {
      const [chooseSize, setChooseSize] = useState()
+     const [show, setShow] = useState(false)
+
+     useEffect(() => {
+          setTimeout(() => {
+               setShow(false)
+          }, 3000)
+     }, [show])
 
      const { SKU, Name, Highlight, Image, Price, Sizes } = product;
 
@@ -34,6 +42,7 @@ export default function ProductCart({ product }) {
           }
 
           localStorage.setItem("localData", JSON.stringify(localData))
+          setShow(true)
      }
 
      return (
@@ -69,6 +78,8 @@ export default function ProductCart({ product }) {
                          </ul>
                     </div>
                </form>
+
+               <AlertCart bg="green" show={show} />
           </div>
      )
 }

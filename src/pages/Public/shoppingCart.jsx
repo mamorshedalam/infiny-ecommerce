@@ -3,11 +3,19 @@ import CartList from "../../components/Table/cartTable";
 import Button from "../../components/Button/button"
 import HeroSection from "../../modules/hero";
 import Input from "../../components/Input/inputField";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import AlertCart from "../../components/Alert/alertCart";
 
 export default function ShoppingCart() {
      const [data, setData] = useState(JSON.parse(localStorage.getItem('localData')))
-     const navigate = useNavigate()
+     const [show, setShow] = useState(false)
+     const navigate = useNavigate();
+
+     useEffect(() => {
+          setTimeout(() => {
+               setShow(false)
+          }, 3000)
+     }, [show])
 
      const subTotal = useMemo(() => {
           let subTotal = 0
@@ -18,11 +26,11 @@ export default function ShoppingCart() {
           return (subTotal)
      }, [data])
 
-     function handleDelete(sku) {
+     function handleRemove(sku) {
           const filterData = data.filter(product => product.SKU !== sku)
-
           localStorage.setItem("localData", JSON.stringify(filterData))
           setData(filterData)
+          setShow(true)
      }
 
      return (
@@ -44,7 +52,7 @@ export default function ShoppingCart() {
                               <tbody>
                                    {
                                         data.map((product, index) => (
-                                             <CartList operation={handleDelete} data={product} key={index} />
+                                             <CartList operation={handleRemove} data={product} key={index} />
                                         ))
                                    }
                               </tbody>
@@ -69,6 +77,8 @@ export default function ShoppingCart() {
                               <NavLink to={`/checkout`} className="w-full"><Button classes="w-full text-sm">Proceed to checkout</Button></NavLink>
                          </div>
                     </aside>
+
+                    <AlertCart bg="red" show={show} />
                </div>
           </>
      )

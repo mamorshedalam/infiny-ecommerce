@@ -5,6 +5,7 @@ import Button from '../../components/Button/button';
 import { useParams } from 'react-router-dom';
 import FilterList from "../../modules/filterList";
 import LoadingMessage from "../../components/Spinner/loadingMessage";
+import AlertCart from "../../components/Alert/alertCart";
 
 
 export default function ProductDetails() {
@@ -13,6 +14,13 @@ export default function ProductDetails() {
      const [count, setCount] = useState(1)
      const [chooseSize, setChooseSize] = useState()
      const [status, dispatch] = useReducer(reducer, initialState)
+     const [show, setShow] = useState(false)
+
+     useEffect(() => {
+          setTimeout(() => {
+               setShow(false)
+          }, 3000)
+     }, [show])
 
      useEffect(() => {
           async function fetchData() {
@@ -58,6 +66,7 @@ export default function ProductDetails() {
           }
 
           localStorage.setItem("localData", JSON.stringify(localData))
+          setShow(true)
      }
      return (
           <>
@@ -135,6 +144,8 @@ export default function ProductDetails() {
                          <h3 className="text-center font-bold text-3xl mb-10">This Brand's Product</h3>
                          {data && <FilterList child="Brand" value={data.Brand} filterChild="Category" filterValue={data.Category} />}
                     </section>
+
+                    <AlertCart bg="green" show={show} />
                </main>}
           </>
      )
