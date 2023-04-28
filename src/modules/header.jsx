@@ -5,6 +5,7 @@ import { faCartShopping, faMagnifyingGlass } from '@fortawesome/free-solid-svg-i
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
 
 export default function Header() {
+     const data = JSON.parse(localStorage.getItem('localData'))
      return (
           <header>
                <div className="bg-neutral-900 text-white px-9">
@@ -42,8 +43,9 @@ export default function Header() {
                               <NavLink to={`/wishlist`} className={({ isActive }) => isActive ? "text-red-500" : "text-neutral-900 hover:text-red-500 sl-animated-xl"}>
                                    <FontAwesomeIcon icon={faHeart} />
                               </NavLink>
-                              <NavLink to={`/shopping-cart`} className={({ isActive }) => isActive ? "text-red-500" : "text-neutral-900 hover:text-red-500 sl-animated-xl"}>
+                              <NavLink to={`/shopping-cart`} className={({ isActive }) => isActive ? "flex items-center text-red-500" : "flex items-center text-neutral-900 hover:text-red-500 sl-animated-xl"}>
                                    <FontAwesomeIcon icon={faCartShopping} />
+                                   <span className="font-bold text-xs text-red-500 pl-1">0</span>
                               </NavLink>
                          </div>
                     </div>

@@ -5,22 +5,17 @@ import Button from '../../components/Button/button';
 import { useParams } from 'react-router-dom';
 import FilterList from "../../modules/filterList";
 import LoadingMessage from "../../components/Spinner/loadingMessage";
-import AlertCart from "../../components/Alert/alertCart";
+import { setCart } from "../../utilities/localStore";
+import { useCart } from "../../contexts/CartContext";
 
 
 export default function ProductDetails() {
      const { sku } = useParams()
+     const { setCart } = useCart()
      const [data, setData] = useState({})
      const [count, setCount] = useState(1)
      const [chooseSize, setChooseSize] = useState()
      const [status, dispatch] = useReducer(reducer, initialState)
-     const [show, setShow] = useState(false)
-
-     useEffect(() => {
-          setTimeout(() => {
-               setShow(false)
-          }, 3000)
-     }, [show])
 
      useEffect(() => {
           async function fetchData() {
@@ -42,8 +37,6 @@ export default function ProductDetails() {
 
      function handleSubmit(e) {
           e.preventDefault();
-          let localData = JSON.parse(localStorage.getItem("localData")) || [];
-          let dataExists = false;
 
           const storeObj = {
                SKU: data.SKU,
@@ -54,20 +47,9 @@ export default function ProductDetails() {
                Quantity: count,
           }
 
-          for (let i = 0; i < localData.length; i++) {
-               if (storeObj.SKU === localData[i].SKU) {
-                    localData[i] = storeObj;
-                    dataExists = true;
-               }
-          }
-
-          if (!dataExists) {
-               localData.push(storeObj)
-          }
-
-          localStorage.setItem("localData", JSON.stringify(localData))
-          setShow(true)
+          setCart(storeObj)
      }
+
      return (
           <>
                {status.error && <p className="text-center">There wsa an error!</p>}
@@ -144,8 +126,6 @@ export default function ProductDetails() {
                          <h3 className="text-center font-bold text-3xl mb-10">This Brand's Product</h3>
                          {data && <FilterList child="Brand" value={data.Brand} filterChild="Category" filterValue={data.Category} />}
                     </section>
-
-                    <AlertCart bg="green" show={show} />
                </main>}
           </>
      )

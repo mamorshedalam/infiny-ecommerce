@@ -4,12 +4,12 @@ import Button from "../../components/Button/button"
 import HeroSection from "../../modules/hero";
 import Input from "../../components/Input/inputField";
 import { useEffect, useMemo, useState } from "react";
-import AlertCart from "../../components/Alert/alertCart";
+import { useCart } from "../../contexts/CartContext";
 
 export default function ShoppingCart() {
-     const [data, setData] = useState(JSON.parse(localStorage.getItem('localData')))
      const [show, setShow] = useState(false)
      const navigate = useNavigate();
+     const { data, updateCart } = useCart()
 
      useEffect(() => {
           setTimeout(() => {
@@ -27,10 +27,7 @@ export default function ShoppingCart() {
      }, [data])
 
      function handleRemove(sku) {
-          const filterData = data.filter(product => product.SKU !== sku)
-          localStorage.setItem("localData", JSON.stringify(filterData))
-          setData(filterData)
-          setShow(true)
+          updateCart(sku)
      }
 
      return (
@@ -77,8 +74,6 @@ export default function ShoppingCart() {
                               <NavLink to={`/checkout`} className="w-full"><Button classes="w-full text-sm">Proceed to checkout</Button></NavLink>
                          </div>
                     </aside>
-
-                    <AlertCart bg="red" show={show} />
                </div>
           </>
      )
