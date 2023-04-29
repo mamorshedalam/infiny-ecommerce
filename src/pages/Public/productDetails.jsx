@@ -5,8 +5,8 @@ import Button from '../../components/Button/button';
 import { useParams } from 'react-router-dom';
 import FilterList from "../../modules/filterList";
 import LoadingMessage from "../../components/Spinner/loadingMessage";
-import { setCart } from "../../utilities/localStore";
 import { useCart } from "../../contexts/CartContext";
+import AlertMessage from "../../components/Alert/alertMessage";
 
 
 export default function ProductDetails() {

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 const CartContext = React.createContext();
 
@@ -8,13 +8,21 @@ export function useCart() {    // custom hooks for CartContext
 
 export default function CartProvider({ children }) {
      const [data, setData] = useState(JSON.parse(localStorage.getItem('localData')))
-     let deliveryFee
+     const [deliveryFee, setDeliveryFee] = useState(0)
+     const [cartAlert, setCartAlert] = useState({
+          status: false,
+          message: ""
+     })
 
-     if (data) {
-          deliveryFee = 18
-     } else {
-          deliveryFee = 0
-     }
+     useEffect(() => {
+          setTimeout(() => {
+               setCartAlert({ ...cartAlert, status: false })
+          }, 3000)
+     }, [cartAlert.status])
+
+     useEffect(() => {
+          data ? setDeliveryFee(18) : setDeliveryFee(0)
+     }, [data])
 
      function setCart(Obj) {
           let localData = JSON.parse(localStorage.getItem("localData")) || [];
@@ -24,11 +32,13 @@ export default function CartProvider({ children }) {
                if (Obj.SKU === localData[i].SKU) {
                     localData[i] = Obj;
                     dataExists = true;
+                    setCartAlert({ status: true, message: "updated" })
                }
           }
 
           if (!dataExists) {
                localData.push(Obj)
+               setCartAlert({ status: true, message: "added" })
           }
 
           localStorage.setItem("localData", JSON.stringify(localData))
@@ -37,6 +47,7 @@ export default function CartProvider({ children }) {
 
      function updateCart(sku) {
           const filterData = data.filter(product => product.SKU !== sku)
+          setCartAlert({ status: true, message: "removed" })
 
           if (filterData.length > 0) {
                localStorage.setItem("localData", JSON.stringify(filterData))
@@ -44,8 +55,6 @@ export default function CartProvider({ children }) {
           } else {
                removeCart()
           }
-
-
      }
 
      function removeCart() {
@@ -53,7 +62,7 @@ export default function CartProvider({ children }) {
           setData()
      }
 
-     const value = { data, deliveryFee, setCart, updateCart, removeCart }
+     const value = { data, deliveryFee, cartAlert, setCart, updateCart, removeCart }
      return (
           <CartContext.Provider value={value}>
                {children}

@@ -1,25 +1,18 @@
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import AlertCart from '../Alert/alertMessage';
+import { useCart } from '../../contexts/CartContext';
+import AlertMessage from '../Alert/alertMessage';
 
 export default function ProductCart({ product }) {
      const [chooseSize, setChooseSize] = useState()
-     // const [show, setShow] = useState(false)
-
-     // useEffect(() => {
-     //      setTimeout(() => {
-     //           setShow(false)
-     //      }, 3000)
-     // }, [show])
+     const { setCart } = useCart();
 
      const { SKU, Name, Highlight, Image, Price, Sizes } = product;
 
      function handleSubmit(e) {
           e.preventDefault();
-          let localData = JSON.parse(localStorage.getItem("localData")) || [];
-          let dataExists = false;
 
           const storeObj = {
                SKU: SKU,
@@ -30,19 +23,7 @@ export default function ProductCart({ product }) {
                Quantity: 1,
           }
 
-          for (let i = 0; i < localData.length; i++) {
-               if (storeObj.SKU === localData[i].SKU) {
-                    localData[i] = storeObj;
-                    dataExists = true;
-               }
-          }
-
-          if (!dataExists) {
-               localData.push(storeObj)
-          }
-
-          localStorage.setItem("localData", JSON.stringify(localData))
-          // setShow(true)
+          setCart(storeObj)
      }
 
      return (
@@ -78,8 +59,6 @@ export default function ProductCart({ product }) {
                          </ul>
                     </div>
                </form>
-
-               {/* <AlertCart bg="green" show={show} /> */}
           </div>
      )
 }
