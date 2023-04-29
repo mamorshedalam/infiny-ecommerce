@@ -7,7 +7,7 @@ import CartProvider from '../contexts/CartContext';
 export default function RootLayout() {
      const { pathname } = useLocation();
      useEffect(() => { // Top in Render
-          if (pathname != "/contact") window.scrollTo(0, 0);
+          if (pathname != "/") window.scrollTo(0, 0);
      }, [pathname]);
 
      return (

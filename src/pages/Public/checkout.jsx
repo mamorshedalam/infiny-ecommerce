@@ -1,14 +1,38 @@
-import ButtonBlack from "../../components/Button/button";
+import Button from "../../components/Button/button";
 import HeroSection from "../../modules/hero";
 import Input from "../../components/Input/inputField";
+import { useCart } from "../../contexts/CartContext";
+import { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Checkout() {
+     const { data, deliveryFee, removeCart } = useCart()
+     const [placed, setPlaced] = useState(false)
+
+     const subTotal = useMemo(() => {
+          let subTotal = 0
+          if (data) {
+               for (let i = 0; i < data.length; i++) {
+                    const quantityPrice = data[i].Price * data[i].Quantity;
+                    subTotal = subTotal + quantityPrice;
+               }
+          }
+          return (subTotal)
+     }, [data])
+
+     function handleSubmit(e) {
+          e.preventDefault();
+
+          setPlaced(true)
+          removeCart()
+     }
+
      return (
           <>
                <HeroSection />
 
-               <form className="sl-container flex flex-wrap py-24">
-                    <main className="grid basis-2/3 grid-cols-2 gap-6 pr-6">
+               <form onSubmit={handleSubmit} className="sl-container flex flex-wrap py-24">
+                    <main className="grid w-2/3 grid-cols-2 gap-6 pr-6">
                          <h2 className="col-span-2 font-bold uppercase text-xl border-b border-zinc-400 pb-6">Billing Details</h2>
                          <div className="col-span-1">
                               <label htmlFor="firstName" className="relative after:absolute after:left-full after:top-0 after:text-red-500 after:content-['*']">Fist Name</label>
@@ -48,18 +72,29 @@ export default function Checkout() {
                               <Input id="note" name="Notes about your order, e.g. special notes for delivery." type="text" classes="text-zinc-400 text-sm mt-3" />
                          </div>
                     </main>
-                    <aside className="basis-1/3 pl-6">
-                         <div className="bg-stone-100 py-9 px-10">
+                    <aside className="w-1/3 pl-6">
+                         <div className="w-full bg-stone-100 py-9 px-10">
                               <h2 className="font-bold uppercase text-2xl border-b border-zinc-400 pb-6 mb-8">Your order</h2>
-                              <ul className="mb-6">
-                                   <li className="mb-4">Product <span className="float-right">Total</span></li>
-                                   <li className="mb-3"><span>01.</span> Vanilla salted caramel <span className="float-right">$ 300.0</span></li>
-                                   <li className="mb-3"><span>01.</span> Vanilla salted caramel <span className="float-right">$ 300.0</span></li>
-                                   <li className="mb-3"><span>01.</span> Vanilla salted caramel <span className="float-right">$ 300.0</span></li>
+                              <ul className="space-y-3 mb-8">
+                                   <li className="flex w-full items-center mb-4">
+                                        <span className="w-[7%]">Sl</span>
+                                        <span className="w-[70%]">Product</span>
+                                        <span className="w-[7%]">Q</span>
+                                        <span className="w-[16%]">Total</span>
+                                   </li>
+                                   {data && data.map((product, index) => (
+                                        <li key={index} className="flex w-full items-center text-left">
+                                             <span className="w-[7%]">{index + 1}</span>
+                                             <span className="w-[70%] truncate">{product.Name}</span>
+                                             <span className="w-[7%]">{product.Quantity}</span>
+                                             <span className="w-[16%]">${product.Price * product.Quantity}</span>
+                                        </li>
+                                   ))}
                               </ul>
                               <ul className="border-y border-zinc-400 py-4 mb-6">
-                                   <li className="mb-3">Subtotal <span className="float-right font-bold text-red-500">$ 169.50</span></li>
-                                   <li>Total <span className="float-right font-bold text-red-500">$ 169.50</span></li>
+                                   <li className="mb-3">Subtotal <span className="float-right font-bold text-red-500">${subTotal}</span></li>
+                                   <li className="mb-3">Delivery Fee <span className="float-right font-bold text-red-500">${deliveryFee}</span></li>
+                                   <li>Total <span className="float-right font-bold text-red-500">${subTotal + deliveryFee}</span></li>
                               </ul>
                               <h3 className="font-bold mb-4">Payment Method:</h3>
                               <ul>
@@ -67,10 +102,18 @@ export default function Checkout() {
                                    <li className="flex items-center gap-4"><input type="radio" name="payment" id="nogod" className="w-auto" /><label htmlFor="nogod">Nogod</label></li>
                                    <li className="flex items-center gap-4"><input type="radio" name="payment" id="cod" className="w-auto" /><label htmlFor="cod">Cash on Delivery</label></li>
                               </ul>
-                              <ButtonBlack classes="w-full text-sm mt-6">place order</ButtonBlack>
+                              <Button classes="w-full text-sm mt-6">place order</Button>
                          </div>
                     </aside>
                </form>
+
+               <div className={`fixed inset-0 bg-black/25 backdrop-blur-sm ${placed ? "flex" : "hidden"} items-center justify-center z-50`}>
+                    <div className="max-w-xl h-fit bg-white drop-shadow-2xl text-center space-y-6 px-6 py-9">
+                         <h3 className="font-bold text-3xl">Our order in placed</h3>
+                         <p>Thank you for shopping with iNFINY Clothing</p>
+                         <Link to={`/`}><Button variant="white" classes="text-sm">Explore More</Button></Link>
+                    </div>
+               </div>
           </>
      )
 }

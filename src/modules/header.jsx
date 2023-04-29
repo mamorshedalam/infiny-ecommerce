@@ -3,9 +3,10 @@ import logo from '../assets/iNFINY-b.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
+import { useCart } from '../contexts/CartContext'
 
 export default function Header() {
-     const data = JSON.parse(localStorage.getItem('localData'))
+     const { data } = useCart()
      return (
           <header>
                <div className="bg-neutral-900 text-white px-9">
@@ -45,7 +46,7 @@ export default function Header() {
                               </NavLink>
                               <NavLink to={`/shopping-cart`} className={({ isActive }) => isActive ? "flex items-center text-red-500" : "flex items-center text-neutral-900 hover:text-red-500 sl-animated-xl"}>
                                    <FontAwesomeIcon icon={faCartShopping} />
-                                   <span className="font-bold text-xs text-red-500 pl-1">0</span>
+                                   <span className="font-bold text-xs text-red-500 pl-1">{data && data.length}</span>
                               </NavLink>
                          </div>
                     </div>

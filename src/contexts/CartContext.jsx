@@ -8,6 +8,13 @@ export function useCart() {    // custom hooks for CartContext
 
 export default function CartProvider({ children }) {
      const [data, setData] = useState(JSON.parse(localStorage.getItem('localData')))
+     let deliveryFee
+
+     if (data) {
+          deliveryFee = 18
+     } else {
+          deliveryFee = 0
+     }
 
      function setCart(Obj) {
           let localData = JSON.parse(localStorage.getItem("localData")) || [];
@@ -30,11 +37,23 @@ export default function CartProvider({ children }) {
 
      function updateCart(sku) {
           const filterData = data.filter(product => product.SKU !== sku)
-          localStorage.setItem("localData", JSON.stringify(filterData))
-          setData(filterData)
+
+          if (filterData.length > 0) {
+               localStorage.setItem("localData", JSON.stringify(filterData))
+               setData(filterData)
+          } else {
+               removeCart()
+          }
+
+
      }
 
-     const value = { data, setCart, updateCart }
+     function removeCart() {
+          localStorage.clear();
+          setData()
+     }
+
+     const value = { data, deliveryFee, setCart, updateCart, removeCart }
      return (
           <CartContext.Provider value={value}>
                {children}

@@ -9,7 +9,7 @@ import { useCart } from "../../contexts/CartContext";
 export default function ShoppingCart() {
      const [show, setShow] = useState(false)
      const navigate = useNavigate();
-     const { data, updateCart } = useCart()
+     const { data, deliveryFee, updateCart } = useCart()
 
      useEffect(() => {
           setTimeout(() => {
@@ -19,9 +19,11 @@ export default function ShoppingCart() {
 
      const subTotal = useMemo(() => {
           let subTotal = 0
-          for (let i = 0; i < data.length; i++) {
-               const quantityPrice = data[i].Price * data[i].Quantity;
-               subTotal = subTotal + quantityPrice;
+          if (data) {
+               for (let i = 0; i < data.length; i++) {
+                    const quantityPrice = data[i].Price * data[i].Quantity;
+                    subTotal = subTotal + quantityPrice;
+               }
           }
           return (subTotal)
      }, [data])
@@ -36,8 +38,10 @@ export default function ShoppingCart() {
 
                <div className="sl-container flex flex-wrap py-24">
                     <main className="basis-3/4 px-4">
-                         <table className="w-full mb-9">
+                         {!data && <p className="text-xl text-center mb-9">Not added anything yet!</p>}
+                         {data && <table className="w-full mb-9">
                               <thead>
+
                                    <tr className="border-b text-left font-bold uppercase">
                                         <th className="pb-6">Product</th>
                                         <th className="pb-6 text-center">Size</th>
@@ -47,13 +51,9 @@ export default function ShoppingCart() {
                                    </tr>
                               </thead>
                               <tbody>
-                                   {
-                                        data.map((product, index) => (
-                                             <CartList operation={handleRemove} data={product} key={index} />
-                                        ))
-                                   }
+                                   {data && data.map((product, index) => (<CartList operation={handleRemove} data={product} key={index} />))}
                               </tbody>
-                         </table>
+                         </table>}
                          <div className="text-right">
                               <Button operation={() => { navigate(-1) }} variant="white">Continue Shopping</Button>
                          </div>
@@ -68,10 +68,10 @@ export default function ShoppingCart() {
                               <h3 className="uppercase font-bold mb-3">total</h3>
                               <ul className="mb-6">
                                    <li className="text-neutral-700 mb-3">Subtotal <span className="float-right font-bold text-red-500">${subTotal}</span></li>
-                                   <li className="text-neutral-700 border-b pb-3 mb-3">Delivery Fee <span className="float-right font-bold text-red-500">$18</span></li>
-                                   <li className="text-neutral-700 mb-3">Total <span className="float-right font-bold text-red-500">${subTotal + 18}</span></li>
+                                   <li className="text-neutral-700 border-b pb-3 mb-3">Delivery Fee <span className="float-right font-bold text-red-500">${deliveryFee}</span></li>
+                                   <li className="text-neutral-700 mb-3">Total <span className="float-right font-bold text-red-500">${subTotal + deliveryFee}</span></li>
                               </ul>
-                              <NavLink to={`/checkout`} className="w-full"><Button classes="w-full text-sm">Proceed to checkout</Button></NavLink>
+                              {data && <NavLink to={`/checkout`} className="w-full"><Button classes="w-full text-sm">Proceed to checkout</Button></NavLink>}
                          </div>
                     </aside>
                </div>
