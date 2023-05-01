@@ -1,6 +1,25 @@
-import React from "react"
+import React, { useState } from "react"
+import { useCart } from "../../contexts/CartContext"
 
 export default function CartTable({ data, operation }) {
+     const { setCart } = useCart()
+     const [count, setCount] = useState(data.Quantity)
+
+     function handleChange(condition) {
+          const updateData = data
+          let updateCount
+
+          if (condition) {
+               updateCount = Math.max(count + 1, 1)
+          } else {
+               updateCount = Math.max(count - 1, 1)
+          }
+
+          setCount(updateCount)
+          updateData.Quantity = updateCount
+
+          setCart(updateData)
+     }
      return (
           <tr className="font-bold odd:bg-white even:bg-slate-50 border-b">
                <td className="py-8">
@@ -10,6 +29,13 @@ export default function CartTable({ data, operation }) {
                               <h3 className="font-semibold mb-2.5">{data.Name}</h3>
                               <h4 className="text-lg">${data.Price}</h4>
                          </div>
+                    </div>
+               </td>
+               <td className="py-8">
+                    <div className="flex items-center fill-neutral-900">
+                         <button onClick={() => handleChange(false)}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="w-4"><path d="M416 256c0 17.7-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z" /></svg></button>
+                         <input id="inputValue" type="text" value={count} onChange={(e) => setCount(parseInt(e.target.value))} className="w-12 text-center px-2 py-1" />
+                         <button onClick={() => handleChange(true)}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" className="w-4"><path d="M240 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H32c-17.7 0-32 14.3-32 32s14.3 32 32 32H176V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H384c17.7 0 32-14.3 32-32s-14.3-32-32-32H240V80z" /></svg></button>
                     </div>
                </td>
                <td className="py-8 text-center uppercase">{data.Size}</td>

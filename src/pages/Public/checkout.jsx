@@ -6,10 +6,10 @@ import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Checkout() {
-     const { data, deliveryFee, removeCart } = useCart()
+     const { data, deliveryFee, clearCart } = useCart()
      const [placed, setPlaced] = useState(false)
 
-     const subTotal = useMemo(() => {
+     const subTotal = useMemo(() => {   // calculate sub total
           let subTotal = 0
           if (data) {
                for (let i = 0; i < data.length; i++) {
@@ -24,7 +24,7 @@ export default function Checkout() {
           e.preventDefault();
 
           setPlaced(true)
-          removeCart()
+          clearCart()
      }
 
      return (

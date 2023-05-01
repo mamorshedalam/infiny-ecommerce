@@ -30,7 +30,6 @@ export default function Index() {
                () => setTime(parsedDeadline - Date.now()),
                1000,
           );
-
           return () => clearInterval(interval);
      }, [parsedDeadline]);
 

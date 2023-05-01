@@ -3,21 +3,14 @@ import CartList from "../../components/Table/cartTable";
 import Button from "../../components/Button/button"
 import HeroSection from "../../modules/hero";
 import Input from "../../components/Input/inputField";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useCart } from "../../contexts/CartContext";
 
 export default function ShoppingCart() {
-     const [show, setShow] = useState(false)
      const navigate = useNavigate();
-     const { data, deliveryFee, updateCart } = useCart()
+     const { data, deliveryFee, removeCart } = useCart()
 
-     useEffect(() => {
-          setTimeout(() => {
-               setShow(false)
-          }, 3000)
-     }, [show])
-
-     const subTotal = useMemo(() => {
+     const subTotal = useMemo(() => {   // calculate sub total
           let subTotal = 0
           if (data) {
                for (let i = 0; i < data.length; i++) {
@@ -29,13 +22,12 @@ export default function ShoppingCart() {
      }, [data])
 
      function handleRemove(sku) {
-          updateCart(sku)
+          removeCart(sku)
      }
 
      return (
           <>
                <HeroSection />
-
                <div className="sl-container flex flex-wrap py-24">
                     <main className="basis-3/4 px-4">
                          {!data && <p className="text-xl text-center mb-9">Not added anything yet!</p>}

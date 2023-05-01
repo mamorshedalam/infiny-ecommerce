@@ -14,21 +14,21 @@ export default function CartProvider({ children }) {
           message: ""
      })
 
-     useEffect(() => {
+     useEffect(() => {   // timer for alert status remove
           setTimeout(() => {
                setCartAlert({ ...cartAlert, status: false })
           }, 3000)
      }, [cartAlert.status])
 
-     useEffect(() => {
+     useEffect(() => {   // set delivery fee for order
           data ? setDeliveryFee(18) : setDeliveryFee(0)
      }, [data])
 
-     function setCart(Obj) {
+     function setCart(Obj) {  // add product in local store
           let localData = JSON.parse(localStorage.getItem("localData")) || [];
           let dataExists = false;
 
-          for (let i = 0; i < localData.length; i++) {
+          for (let i = 0; i < localData.length; i++) { // update product
                if (Obj.SKU === localData[i].SKU) {
                     localData[i] = Obj;
                     dataExists = true;
@@ -36,7 +36,7 @@ export default function CartProvider({ children }) {
                }
           }
 
-          if (!dataExists) {
+          if (!dataExists) {  // new product added
                localData.push(Obj)
                setCartAlert({ status: true, message: "added" })
           }
@@ -45,7 +45,11 @@ export default function CartProvider({ children }) {
           setData(localData)
      }
 
-     function updateCart(sku) {
+     function updateCart(){
+
+     }
+
+     function removeCart(sku) {    // remove single product from local store
           const filterData = data.filter(product => product.SKU !== sku)
           setCartAlert({ status: true, message: "removed" })
 
@@ -57,12 +61,12 @@ export default function CartProvider({ children }) {
           }
      }
 
-     function removeCart() {
+     function clearCart() {  // clear local store
           localStorage.clear();
           setData()
      }
 
-     const value = { data, deliveryFee, cartAlert, setCart, updateCart, removeCart }
+     const value = { data, deliveryFee, cartAlert, setCart, updateCart, removeCart, clearCart }
      return (
           <CartContext.Provider value={value}>
                {children}
