@@ -1,5 +1,5 @@
-Infiny Ecommerce
-Infiny ecommerce is e-commerce, where customers can check and purchase products..
+***Infiny Ecommerce
+*Infiny ecommerce is e-commerce, where customers can check and purchase products.
 •	Filter Product by categories.
 •	Check details of the product.
 •	Can add products in shopping cart & update shopping cart as want.
