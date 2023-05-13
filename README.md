@@ -1,5 +1,5 @@
 <h1>Infiny Ecommerce</h1>
-<h6>Infiny ecommerce is e-commerce, where customers can check and purchase products.</h6>
+<h4>Infiny ecommerce is e-commerce, where customers can check and purchase products.</h4>
 •	Filter Product by categories.
 •	Check details of the product.
 •	Can add products in shopping cart & update shopping cart as want.
