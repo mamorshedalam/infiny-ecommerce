@@ -71,7 +71,7 @@ export default function Shop() {
           }
           return () => { effectRun.current = true }
      }, [selectedConsumers, selectedCategories, selectedHighlights, data]);
-     
+
      return (
           <>
                <HeroSection />
@@ -90,14 +90,14 @@ export default function Shop() {
                               <div>
                                    <span className="mr-4">Showing {filteredData.length} results</span>
                               </div>
-                              <div className="flex items-center">
+                              {/* <div className="flex items-center">
                                    <p className="w-20">Sort by:</p>
-                                   <select name="" id="" className="font-bold rounded-none">
+                                   <select className="font-bold rounded-none">
                                         <option value="default">Default</option>
                                         <option value="high">Price (High To Low)</option>
                                         <option value="low">Price (Low To High)</option>
                                    </select>
-                              </div>
+                              </div> */}
                          </div>
                          {status.error && <p className="text-center">There wsa an error!</p>}
                          {!status.loading && data.length === 0 && <p className="text-center">No data found</p>}
