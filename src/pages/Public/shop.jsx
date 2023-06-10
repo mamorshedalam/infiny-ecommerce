@@ -16,23 +16,62 @@ export default function Shop() {
      const { highlight } = useLoadHighlight()
      const { category } = useLoadCategory()
      const { consumer } = useLoadConsumer()
-     const [filterData, setFilterData] = useState([])
-     const [filterList, setFilterList] = useState([])
+     //  filter store
+     const [selectedConsumers, setSelectedConsumers] = useState([]);
+     const [selectedCategories, setSelectedCategories] = useState([]);
+     const [selectedHighlights, setSelectedHighlights] = useState([]);
+     const [filteredData, setFilteredData] = useState([]);
+
+     // Handle checkbox change for consumers
+     const handleConsumerChange = (event) => {
+          const { value, checked } = event.target;
+          setSelectedConsumers(prevSelectedConsumers => {
+               if (checked) {
+                    return [...prevSelectedConsumers, value];
+               } else {
+                    return prevSelectedConsumers.filter(consumer => consumer !== value);
+               }
+          });
+     };
+
+     // Handle checkbox change for categories
+     const handleCategoryChange = (event) => {
+          const { value, checked } = event.target;
+          setSelectedCategories(prevSelectedCategories => {
+               if (checked) {
+                    return [...prevSelectedCategories, value];
+               } else {
+                    return prevSelectedCategories.filter(category => category !== value);
+               }
+          });
+     };
+
+     // Handle checkbox change for highlights
+     const handleHighlightChange = (event) => {
+          const { value, checked } = event.target;
+          setSelectedHighlights(prevSelectedHighlights => {
+               if (checked) {
+                    return [...prevSelectedHighlights, value];
+               } else {
+                    return prevSelectedHighlights.filter(highlight => highlight !== value);
+               }
+          });
+     };
 
      useEffect(() => {
           if (effectRun.current === true) {
-               setFilterData(data)
+               setFilteredData([]);
+               const filtered = data.filter(item => {
+                    const consumerMatch = selectedConsumers.length === 0 || selectedConsumers.includes(item.Consumer);
+                    const categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(item.Category);
+                    const highlightMatch = selectedHighlights.length === 0 || selectedHighlights.includes(item.Highlight);
+                    return consumerMatch && categoryMatch && highlightMatch;
+               });
+               setFilteredData(filtered);
           }
           return () => { effectRun.current = true }
-     }, [data])
-
-     function handleFilter(filterName, filterValue) {
-          const newFilterData = filterData.filter(product => product[filterName] == filterValue)
-
-          setFilterList(prevList => [...prevList, filterValue])
-          setFilterData(newFilterData)
-     }
-
+     }, [selectedConsumers, selectedCategories, selectedHighlights, data]);
+     
      return (
           <>
                <HeroSection />
@@ -42,15 +81,14 @@ export default function Shop() {
                               <input type="text" placeholder="Search..." className="border pl-5 py-2.5" />
                               <button className="absolute right-2 top-1/2 -translate-y-1/2"><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
                          </form>
-                         <ProductFilter operation={handleFilter} name="Consumer" data={consumer} />
-                         <ProductFilter operation={handleFilter} name="Category" data={category} />
-                         <ProductFilter operation={handleFilter} name="Highlight" data={highlight} />
+                         <ProductFilter operation={handleConsumerChange} selectedArray={selectedConsumers} name="Consumer" data={consumer} />
+                         <ProductFilter operation={handleCategoryChange} selectedArray={selectedCategories} name="Category" data={category} />
+                         <ProductFilter operation={handleHighlightChange} selectedArray={selectedHighlights} name="Highlight" data={highlight} />
                     </aside>
                     <main className="basis-4/5 px-4">
                          <div className="flex flex-wrap justify-between items-center px-4 mb-10">
                               <div>
-                                   <span className="mr-4">Showing {data.length} results</span>
-                                   {filterList.length > 0 && filterList.map((list, index) => (<span key={index}>{list}; </span>))}
+                                   <span className="mr-4">Showing {filteredData.length} results</span>
                               </div>
                               <div className="flex items-center">
                                    <p className="w-20">Sort by:</p>
@@ -64,8 +102,8 @@ export default function Shop() {
                          {status.error && <p className="text-center">There wsa an error!</p>}
                          {!status.loading && data.length === 0 && <p className="text-center">No data found</p>}
                          {status.loading && <LoadingMessage text="Product" />}
-                         {data.length > 0 && <div className="grid grid-cols-3 gap-6">
-                              {data && data.map((product) => (
+                         {filteredData.length > 0 && <div className="grid grid-cols-3 gap-6">
+                              {filteredData && filteredData.map((product) => (
                                    <ProductCart key={product["SKU"]} product={product} />
                               ))}
                          </div>}
