@@ -20,8 +20,8 @@ export default function ProductFilter({ name, data, operation, selectedArray }) 
                               value={listItem.value}
                               checked={selectedArray.includes(listItem.value)}
                               onChange={operation}
-                              id={listItem.value} className="hidden" />
-                         <label htmlFor={listItem.value} className="text-zinc-400 py-1 cursor-pointer hover:text-neutral-900 sl-animated-lg">{listItem.label}</label>
+                              id={listItem.value} className="peer hidden" />
+                         <label htmlFor={listItem.value} className="text-zinc-400 py-1 cursor-pointer peer-checked:text-black peer-checked:font-semibold hover:text-neutral-900 sl-animated-lg">{listItem.label}</label>
                     </li>))}
                </ul>
           </div>

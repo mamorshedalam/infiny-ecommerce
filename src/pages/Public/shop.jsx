@@ -87,8 +87,13 @@ export default function Shop() {
                     </aside>
                     <main className="basis-4/5 px-4">
                          <div className="flex flex-wrap justify-between items-center px-4 mb-10">
-                              <div>
-                                   <span className="mr-4">Showing {filteredData.length} results</span>
+                              <div className="flex items-center">
+                                   <span className="font-semibold mr-4">Showing {filteredData.length} results</span>
+                                   <div className="flex items-center gap-x-2">
+                                        {selectedConsumers && selectedConsumers.length > 0 && <p>{selectedConsumers.map((filter) => (<i>{filter}, </i>))}</p>}
+                                        {selectedCategories && selectedCategories.length > 0 && <p>{selectedCategories.map((filter) => (<i>{filter}, </i>))}</p>}
+                                        {selectedHighlights && selectedHighlights.length > 0 && <p>{selectedHighlights.map((filter) => (<i>{filter}, </i>))}</p>}
+                                   </div>
                               </div>
                               {/* <div className="flex items-center">
                                    <p className="w-20">Sort by:</p>
@@ -99,8 +104,9 @@ export default function Shop() {
                                    </select>
                               </div> */}
                          </div>
-                         {status.error && <p className="text-center">There wsa an error!</p>}
-                         {!status.loading && data.length === 0 && <p className="text-center">No data found</p>}
+                         {status.error && <p className="text-2xl text-center font-bold pt-6">There wsa an error!</p>}
+                         {!status.loading && data.length === 0 && <p className="text-2xl text-center font-bold pt-6">No data found</p>}
+                         {!status.loading && filteredData.length === 0 && <p className="text-2xl text-center font-bold pt-6">No Product Found</p>}
                          {status.loading && <LoadingMessage text="Product" />}
                          {filteredData.length > 0 && <div className="grid grid-cols-3 gap-6">
                               {filteredData && filteredData.map((product) => (

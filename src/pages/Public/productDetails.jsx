@@ -51,8 +51,8 @@ export default function ProductDetails() {
 
      return (
           <>
-               {status.error && <p className="text-center">There wsa an error!</p>}
-               {!status.loading && data === null && <p className="text-center">No data found</p>}
+               {status.error && <p className="text-2xl text-center font-bold pt-6">There wsa an error!</p>}
+               {!status.loading && data === null && <p className="text-2xl text-center font-bold pt-6">No data found</p>}
                {status.loading && <LoadingMessage text="Product" />}
                {data && <main className="sl-container">
                     <section className="flex pt-10">
